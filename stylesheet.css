@@ -15,7 +15,7 @@
 
 .subtitle {
     margin-left: 3px;
-    margin-right: 3px;   
+    margin-right: 3px;
 }
 
 .list {
@@ -26,4 +26,8 @@
     margin-top: 0;
     margin-bottom: 30px;
     border-top: 15px solid #eeeeee;
+}
+
+.background {
+    background-color: #cccccc;
 }
