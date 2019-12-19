@@ -1,36 +1,26 @@
+.section {
+    margin: 1%;
+    overflow: auto;
+}
+
+.header {
+    width: 25%;
+    float: left;
+}
+
+#separtor {
+    margin-bottom: 2%;
+    border: 5px solid #eeeeee;
+}
+
+.list {
+    border-bottom: 50px #ffffff solid;
+    list-style: none;
+}
+
 .icon {
     width: 25%;
     text-align: center;
     font-size: 10pt;
     float: left;
-}
-
-.header {
-    width: 25%;
-    text-align: center;
-    font-size: 15pt;
-    float: left;
-    padding: 1.2%;
-}
-
-.subtitle {
-    margin-left: 3px;
-    margin-right: 3px;
-}
-
-.list {
-    border-bottom: 50px #ffffff solid;
-}
-
-#separtor {
-    margin-top: 0;
-    margin-bottom: 30px;
-    border-top: 15px solid #eeeeee;
-}
-
-.background {
-    background-color: #eeeeef;
-    padding-bottom: 5%;
-    padding-top: 10%;
-    color: #666666;
 }
