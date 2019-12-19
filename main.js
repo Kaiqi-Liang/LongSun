@@ -1,12 +1,18 @@
-const headers = document.getElementsByClassName("background")
-for (let header = 0; header < headers.length; header++) {
-    headers[header].addEventListener('click', () => {
-        // 把点击项变成蓝色
-        headers[header].style = "background-color: #344BFF; color: #ffffff;"
+const images = document.getElementsByClassName("image")
+for (let image = 0; image < images.length; image++) {
+    images[image].addEventListener('click', () => {
+        // 如果点击项不是蓝色就把它变成蓝色
+        if (images[image].src.indexOf('active') === -1) {
+            images[image].src = images[image].src.split('.')[0] + '_active.' + images[image].src.split('.')[1]
+        }
+
         // 把其他几项换回灰色
-        for (let i = 0; i < headers.length; i++) {
-            if (header != i) {
-                headers[i].style = "background-color: #eeeeef; color: #666666"
+        for (let i = 0; i < images.length; i++) {
+            if (image != i) {
+                if (images[i].src.indexOf('active') !== -1) {
+                    //console.log(images[i].src.slice(0, -11))
+                    images[i].src = images[i].src.slice(0, -11) + '.png'
+                }
             }
         }
     })

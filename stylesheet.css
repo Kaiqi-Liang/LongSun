@@ -6,6 +6,11 @@
 .header {
     width: 25%;
     float: left;
+    overflow: hidden;
+}
+
+.image {
+    width: 90%;
 }
 
 #separtor {
