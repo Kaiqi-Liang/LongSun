@@ -10,11 +10,12 @@
     text-align: center;
     font-size: 25pt;
     float: left;
+    padding: 1%;
 }
 
 .subtitle {
-    margin-left: 15px;
-    margin-right: 15px;   
+    margin-left: 3px;
+    margin-right: 3px;   
 }
 
 .list {
@@ -25,8 +26,4 @@
     margin-top: 0;
     margin-bottom: 30px;
     border-top: 15px solid #eeeeee;
-}
-
-.current{
-    background-color: blue;
 }
