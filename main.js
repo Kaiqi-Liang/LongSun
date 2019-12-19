@@ -9,5 +9,8 @@ for (let header = 0; header < headers.length; header++) {
                 headers[i].style = "background-color: #cccccc;"
             }
         }
+
+        // 换子界面
+        //document.getElementsByClassName("list")
     })
 }
