@@ -9,23 +9,11 @@
     text-align: center;
 }
 
-.image {
+.icon {
     width: 90%;
 }
 
 #separtor {
     margin-bottom: 2%;
     border: 5px solid #eeeeee;
-}
-
-.list {
-    border-bottom: 50px #ffffff solid;
-    list-style: none;
-}
-
-.icon {
-    width: 25%;
-    text-align: center;
-    font-size: 10pt;
-    float: left;
 }
