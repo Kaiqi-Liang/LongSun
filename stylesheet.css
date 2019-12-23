@@ -13,7 +13,7 @@
     width: 90%;
 }
 
-hr {
+#grey-bar {
     margin-bottom: 2%;
     border: 5px solid #eeeeee;
 }
@@ -21,4 +21,18 @@ hr {
 #ul {
     list-style: none;
     padding-left: 0%;
+}
+
+.icons {
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+.text {
+    margin-left: 2%;
+}
+
+#line {
+    border: 0.5px solid #eeeeee;
 }

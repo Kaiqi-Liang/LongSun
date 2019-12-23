@@ -1,7 +1,7 @@
 const API_URL = 'http://v.sogx.cn'
 render(1)
 
-const icons = document.getElementsByClassName("icon")
+const icons = document.getElementsByClassName('icon')
 for (let icon = 0; icon < icons.length; icon++) {
     icons[icon].addEventListener('click', () => {
         // 如果点击项不是蓝色
@@ -34,21 +34,39 @@ function render(page) {
         .then(response => response.json())
         .then(json => {
             for (data in json.data) {
-                const li = document.createElement('li')
-                li.style.cssText = "float: left; width: 25%; text-align: center"
-                ul.appendChild(li)
-
                 if (json.data[data].imgurl) {
+                    const li = document.createElement('li')
+                    li.setAttribute('id', json.data[data].id)
+                    li.className = "icons"
+                    ul.appendChild(li)
+
+                    const a = document.createElement('a')
+                    a.setAttribute('href', 'https://www.baidu.com')
+                    li.appendChild(a)
+
                     const img = document.createElement('img')
                     img.setAttribute('src', API_URL + json.data[data].imgurl)
                     img.style.width = '30%'
-                    li.appendChild(img)
-                }
+                    a.appendChild(img)
 
-                const p = document.createElement('p')
-                p.innerText = json.data[data].name
-                p.style.cssText = "margin-top: 0%; margin-bottom: 30%;"
-                li.appendChild(p)
+                    const p = document.createElement('p')
+                    p.innerText = json.data[data].name
+                    p.style.cssText = "margin-top: 0%; margin-bottom: 30%;"
+                    a.appendChild(p)
+                } else {
+                    const li = document.createElement('li')
+                    li.setAttribute('id', json.data[data].id)
+                    li.className = "text"
+                    ul.appendChild(li)
+
+                    const hr = document.createElement('hr')
+                    hr.id = "line"
+                    ul.appendChild(hr)
+
+                    const p = document.createElement('p')
+                    p.innerText = json.data[data].name
+                    li.appendChild(p)
+                }
             }
         })
 }
