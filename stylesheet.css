@@ -18,18 +18,13 @@ hr {
     border: 5px solid #eeeeee;
 }
 
-ul {
+#ul {
     list-style: none;
-    overflow: hidden;
-    padding-left: 0;
+    padding-left: 0%;
 }
 
 li {
     float: left;
     width: 25%;
-    font-size: 16px;
-}
-
-img {
-    max-width: 100%;
+    text-align: center;
 }

@@ -15,31 +15,41 @@ for (let icon = 0; icon < icons.length; icon++) {
                 }
             }
 
-            const root = document.getElementById('root')
+            const main = document.getElementById('main')
             // 清除当前列表
-            root.removeChild(document.getElementById('ul'))
+            main.removeChild(document.getElementById('ul'))
+            render(icon + 1)
         }
     })
 }
 
 new Vue({
-    el: '#root',
+    el: '#main',
     mounted() {
-        const root = document.getElementById('root')
-        const ul = document.createElement('ul')
-        root.appendChild(ul)
-        ul.setAttribute('id', 'ul')
-        axios.get(API_URL + "/api/zwfw/classify_list/ym_id/48/type/1").then(response => {
-            for (icon in response.data.data) {
-                const li = document.createElement('li')
-                ul.appendChild(li)
-                const img = document.createElement('img')
-                img.setAttribute('src', API_URL + response.data.data[icon].imgurl)
-                const p = document.createElement('p')
-                p.innerText = response.data.data[icon].name
-                li.appendChild(img)
-                li.appendChild(p)
-            }
-        })
+        render(1)
     }
 })
+
+function render(page) {
+    const main = document.getElementById('main')
+    const ul = document.createElement('ul')
+    main.appendChild(ul)
+    ul.setAttribute('id', 'ul')
+    axios.get(API_URL + "/api/zwfw/classify_list/ym_id/48/type/" + page).then(response => {
+        for (data in response.data.data) {
+            const li = document.createElement('li')
+            ul.appendChild(li)
+
+            if (response.data.data[data].imgurl) {
+                const img = document.createElement('img')
+                img.setAttribute('src', API_URL + response.data.data[data].imgurl)
+                img.style.width = '80%'
+                li.appendChild(img)
+            }
+
+            const p = document.createElement('p')
+            p.innerText = response.data.data[data].name
+            li.appendChild(p)
+        }
+    })
+}
