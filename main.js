@@ -35,17 +35,19 @@ function render(page) {
         .then(json => {
             for (data in json.data) {
                 const li = document.createElement('li')
+                li.style.cssText = "float: left; width: 25%; text-align: center"
                 ul.appendChild(li)
 
                 if (json.data[data].imgurl) {
                     const img = document.createElement('img')
                     img.setAttribute('src', API_URL + json.data[data].imgurl)
-                    img.style.width = '80%'
+                    img.style.width = '30%'
                     li.appendChild(img)
                 }
 
                 const p = document.createElement('p')
                 p.innerText = json.data[data].name
+                p.style.cssText = "margin-top: 0%; margin-bottom: 30%;"
                 li.appendChild(p)
             }
         })
