@@ -1,4 +1,6 @@
 const API_URL = 'http://v.sogx.cn'
+render(1)
+
 const icons = document.getElementsByClassName("icon")
 for (let icon = 0; icon < icons.length; icon++) {
     icons[icon].addEventListener('click', () => {
@@ -23,33 +25,29 @@ for (let icon = 0; icon < icons.length; icon++) {
     })
 }
 
-new Vue({
-    el: '#main',
-    mounted() {
-        render(1)
-    }
-})
-
 function render(page) {
     const main = document.getElementById('main')
     const ul = document.createElement('ul')
     main.appendChild(ul)
     ul.setAttribute('id', 'ul')
-    axios.get(API_URL + "/api/zwfw/classify_list/ym_id/48/type/" + page).then(response => {
-        for (data in response.data.data) {
-            const li = document.createElement('li')
-            ul.appendChild(li)
+    fetch(API_URL + "/api/zwfw/classify_list/ym_id/48/type/" + page)
+        .then(response => response.json())
+        .then(json => {
+            console.log(json.data)
+            for (data in json.data) {
+                const li = document.createElement('li')
+                ul.appendChild(li)
 
-            if (response.data.data[data].imgurl) {
-                const img = document.createElement('img')
-                img.setAttribute('src', API_URL + response.data.data[data].imgurl)
-                img.style.width = '80%'
-                li.appendChild(img)
+                if (json.data[data].imgurl) {
+                    const img = document.createElement('img')
+                    img.setAttribute('src', API_URL + json.data[data].imgurl)
+                    img.style.width = '80%'
+                    li.appendChild(img)
+                }
+
+                const p = document.createElement('p')
+                p.innerText = json.data[data].name
+                li.appendChild(p)
             }
-
-            const p = document.createElement('p')
-            p.innerText = response.data.data[data].name
-            li.appendChild(p)
-        }
-    })
+        })
 }
