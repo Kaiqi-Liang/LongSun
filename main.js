@@ -33,7 +33,6 @@ function render(page) {
     fetch(API_URL + "/api/zwfw/classify_list/ym_id/48/type/" + page)
         .then(response => response.json())
         .then(json => {
-            console.log(json.data)
             for (data in json.data) {
                 const li = document.createElement('li')
                 ul.appendChild(li)
