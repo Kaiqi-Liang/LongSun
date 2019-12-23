@@ -41,7 +41,7 @@ function render(page) {
                     ul.appendChild(li)
 
                     const a = document.createElement('a')
-                    a.setAttribute('href', 'https://www.baidu.com')
+                    a.setAttribute('href', '')
                     li.appendChild(a)
 
                     const img = document.createElement('img')
@@ -63,9 +63,13 @@ function render(page) {
                     hr.id = "line"
                     ul.appendChild(hr)
 
+                    const a = document.createElement('a')
+                    a.setAttribute('href', '')
+                    li.appendChild(a)
+
                     const p = document.createElement('p')
                     p.innerText = json.data[data].name
-                    li.appendChild(p)
+                    a.appendChild(p)
                 }
             }
         })

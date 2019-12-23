@@ -36,3 +36,8 @@
 #line {
     border: 0.5px solid #eeeeee;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
