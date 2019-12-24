@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
+
 <body>
-    <ul>
-        <li></li>
-    </ul>
+    <div id="root">
+        <div class="header">
+            <a class="back" href="../classify_list/index.html"><</a>
+            <h2>{{ name }}</h2>
+        </div>
+
+        <ul class="list">
+            <li class="item" v-for="project in projectList">
+                <a href="">
+                    <div class="info">
+                        <p>{{ project.title }}</p>
+                        <span class="service">{{ project.service }}</span>
+                        <hr>
+                    </div>
+                    <div class="button">
+                        <button class="guide">办事指南</button>
+                        <button class="advisory">咨询</button>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+        <div class="footer">
+            <p>{{ footer }}</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
     <script src="main.js"></script>
 </body>
+
 </html>

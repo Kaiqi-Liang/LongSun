@@ -1,14 +1,27 @@
 const API_URL = 'http://v.sogx.cn'
 render(1)
+/*
+const home = new Promise((resovle) => {
+    setTimeout(() => {
+        resovle()
+    }, 100)
+    render(1)
+})
+home.then(() => {
+    document.querySelectorAll('.icons').forEach(icon => {
+        console.log(icon)
+    })
+})
+*/
 
 const icons = document.getElementsByClassName('icon')
 for (let icon = 0; icon < icons.length; icon++) {
     icons[icon].addEventListener('click', () => {
-        // 如果点击项不是蓝色
+        // icon is already active
         if (icons[icon].src.indexOf('active') === -1) {
             icons[icon].src = icons[icon].src.split('.')[0] + '_active.' + icons[icon].src.split('.')[1]
 
-            // 把其他几项换回灰色
+            // deactivate every other icon
             for (let i = 0; i < icons.length; i++) {
                 if (icon != i) {
                     if (icons[i].src.indexOf('active') !== -1) {
@@ -18,7 +31,7 @@ for (let icon = 0; icon < icons.length; icon++) {
             }
 
             const main = document.getElementById('main')
-            // 清除当前列表
+            // clear the current list
             main.removeChild(document.getElementById('ul'))
             render(icon + 1)
         }
@@ -34,43 +47,51 @@ function render(page) {
         .then(response => response.json())
         .then(json => {
             for (data in json.data) {
-                if (json.data[data].imgurl) {
-                    const li = document.createElement('li')
-                    li.setAttribute('id', json.data[data].id)
-                    li.className = "icons"
-                    ul.appendChild(li)
-
-                    const a = document.createElement('a')
-                    a.setAttribute('href', '')
-                    li.appendChild(a)
-
-                    const img = document.createElement('img')
-                    img.setAttribute('src', API_URL + json.data[data].imgurl)
-                    img.style.width = '30%'
-                    a.appendChild(img)
-
-                    const p = document.createElement('p')
-                    p.innerText = json.data[data].name
-                    p.style.cssText = "margin-top: 0%; margin-bottom: 30%;"
-                    a.appendChild(p)
+                if (json.data[data].imgurl) { // if there're icons
+                    render_icons(json.data[data])
                 } else {
-                    const li = document.createElement('li')
-                    li.setAttribute('id', json.data[data].id)
-                    li.className = "text"
-                    ul.appendChild(li)
-
-                    const hr = document.createElement('hr')
-                    hr.id = "line"
-                    ul.appendChild(hr)
-
-                    const a = document.createElement('a')
-                    a.setAttribute('href', '')
-                    li.appendChild(a)
-
-                    const p = document.createElement('p')
-                    p.innerText = json.data[data].name
-                    a.appendChild(p)
+                    render_list(json.data[data])
                 }
             }
         })
+}
+
+function render_icons(data) {
+    const li = document.createElement('li')
+    li.setAttribute('id', data.id)
+    li.className = "icons"
+    ul.appendChild(li)
+
+    const a = document.createElement('a')
+    a.setAttribute('href', '../project_list/index.html?id=' + data.id + '&&name=' + data.name + '&&type=icon')
+    li.appendChild(a)
+
+    const img = document.createElement('img')
+    img.setAttribute('src', API_URL + data.imgurl)
+    img.style.width = '30%'
+    a.appendChild(img)
+
+    const p = document.createElement('p')
+    p.innerText = data.name
+    p.style.cssText = "margin-top: 0%; margin-bottom: 30%;"
+    a.appendChild(p)
+}
+
+function render_list(data) {
+    const li = document.createElement('li')
+    li.setAttribute('id', data.id)
+    li.className = "text"
+    ul.appendChild(li)
+
+    const hr = document.createElement('hr')
+    hr.id = "line"
+    ul.appendChild(hr)
+
+    const a = document.createElement('a')
+    a.setAttribute('href', '../project_list/index.html?id=' + data.id + '&&name=' + data.name + '&&type=list')
+    li.appendChild(a)
+
+    const p = document.createElement('p')
+    p.innerText = data.name
+    a.appendChild(p)
 }
