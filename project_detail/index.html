@@ -43,11 +43,17 @@
         </div>
 
         <div class="base">
-            <ul v-for="info in base">
-                <li>
-                    <hr>
-                    <p>{{ info.text }}：{{ info.value }}</p>
-                </li>
+            <ul>
+                <hr>
+                <li class="info" v-for="info in base">
+                    <p class="text"> {{ info.text}}：</p>
+                    <a v-if="info.text == '地点地图' || info.text == '联系电话' && info.value != '暂无'"
+                       :href="(info.value)"
+                       class="value">
+                        {{ info.value }}
+                    </a>
+                    
+                    <p class="" v-else> {{ info.value }} </p>
             </ul>
         </div>
     </div>

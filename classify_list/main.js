@@ -47,7 +47,7 @@ function render(page) {
         .then(response => response.json())
         .then(json => {
             for (data in json.data) {
-                if (json.data[data].imgurl) { // if there're icons
+                if (json.data[data].imgurl) { // if there are icons
                     render_icons(json.data[data])
                 } else {
                     render_list(json.data[data])
