@@ -17,7 +17,7 @@
 
         <ul class="list">
             <li class="item" v-for="project in projectList">
-                <a href="">
+                <a v-bind:href="'../project_detail/index.html?id=' + (project.id)">
                     <div class="info">
                         <p>{{ project.title }}</p>
                         <span class="service">{{ project.service }}</span>

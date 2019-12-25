@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+}
+
+hr {
+    border: 1px solid #ccc;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.header {
+    overflow: hidden;
+}
+
+.back {
+    font-weight: bold;
+    font-size: 3em;
+    margin-left: 10px;
+    float: left;
+}
+
+.maininfo {
+    padding-left: 2%;
+    border-bottom: solid 10px #dddddd;
+}
+
+.headline {
+    padding-left: 2%;
+    overflow: auto;
+}
+
+.list {
+    float: left;
+    width: 15%
+}

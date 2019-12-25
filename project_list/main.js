@@ -1,6 +1,5 @@
 /*
 data = [fetch('http://v.sogx.cn/api/zwfw/project_list_new/ym_id/48/classifyType/39/page/1'),
-        //fetch('http://v.sogx.cn/api/zwfw/project_detail/ym_id/48/id/1230'),
         fetch('http://v.sogx.cn/api/zwfw/classify_list/ym_id/48/type/3')]
 Promise.all(data)
     .then(responses => responses.map(response => response.json()))
@@ -12,6 +11,7 @@ Promise.all(data)
 new Vue({
     el: '#root',
     data: {
+        // href = index.html?id=int&&name=str&&type=(icon|list)
         id: window.location.href.split("?")[1].split('&&')[0].split('=')[1],
         name: decodeURI(window.location.href.split("?")[1].split('&&')[1].split('=')[1]),
         type: decodeURI(window.location.href.split("?")[1].split('&&')[2].split('=')[1]),
@@ -56,7 +56,7 @@ new Vue({
             }
         },
         noMoreData() {
-            this.footer = 'No more data.'
+            this.footer = 'The end.'
         }
     },
     created() {

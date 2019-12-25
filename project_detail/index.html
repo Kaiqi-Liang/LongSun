@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body>
+    <div id="root">
+        <div class="header">
+            <a class="back" href="javascript:history.go(-1)"><</a>
+        </div>
+
+        <div class="maininfo">
+            <h2>{{ title }}</h2>
+            <ul>
+                <li>
+                    <p>受理单位：{{ unit }}</p>
+                </li>
+                <li>
+                    <p>服务承诺：{{ service }}</p>
+                </li>
+                <li>
+                    <p>{{ address }}</p>
+                </li>
+                <li>
+                    <p>办理窗口：{{ window }}</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="headline">
+            <ul>
+                <li class="list">办事信息</li>
+                <li class="list">需交材料</li>
+                <li class="list">注意事项</li>
+                <li class="list">审批条件</li>
+                <li class="list">流程图</li>
+            </ul>
+        </div>
+
+        <div class="base">
+            <ul v-for="info in base">
+                <li>
+                    <hr>
+                    <p>{{ info.text }}：{{ info.value }}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
