@@ -33,20 +33,21 @@
         </div>
 
         <div class="headline">
-            <ul>
-                <li class="list">办事信息</li>
-                <li class="list">需交材料</li>
-                <li class="list">注意事项</li>
-                <li class="list">审批条件</li>
-                <li class="list">流程图</li>
+            <ul class="list">
+                <li class="category" style="color: blue;">办事信息</li>
+                <li class="category">需交材料</li>
+                <li class="category">注意事项</li>
+                <li class="category">审批条件</li>
+                <li class="category">流程图</li>
             </ul>
         </div>
 
-        <div class="base">
-            <ul>
+        <div id="main">
+            <ul id="info">
                 <hr>
                 <li class="info" v-for="info in base">
                     <p class="text"> {{ info.text}}：</p>
+
                     <a v-if="info.text == '地点地图' || info.text == '联系电话' && info.value != '暂无'"
                        :href="(info.value)"
                        class="value">
@@ -54,7 +55,14 @@
                     </a>
                     
                     <p class="" v-else> {{ info.value }} </p>
+                </li>
             </ul>
+        </div>
+
+        <div class="footer">
+            <button class="icon">收藏</button>
+            <button class="icon" style="text-align: center;">电话</button>
+            <button class="icon" style="background-color: grey; float: right;">在线办理</button>
         </div>
     </div>
 

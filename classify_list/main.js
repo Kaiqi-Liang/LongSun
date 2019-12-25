@@ -17,8 +17,8 @@ home.then(() => {
 const icons = document.getElementsByClassName('icon')
 for (let icon = 0; icon < icons.length; icon++) {
     icons[icon].addEventListener('click', () => {
-        // icon is already active
-        if (icons[icon].src.indexOf('active') === -1) {
+        if (icons[icon].src.indexOf('active') === -1) { // the onclick icon is not active
+            // activate the onclick icon
             icons[icon].src = icons[icon].src.split('.')[0] + '_active.' + icons[icon].src.split('.')[1]
 
             // deactivate every other icon
