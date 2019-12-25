@@ -43,10 +43,10 @@
         </div>
 
         <div id="main">
-            <ul id="info">
+            <ul id="base" class="section">
                 <hr>
                 <li class="info" v-for="info in base">
-                    <p class="text"> {{ info.text}}：</p>
+                    <p class="text"> {{ info.text }}：</p>
 
                     <a v-if="info.text == '地点地图' || info.text == '联系电话' && info.value != '暂无'"
                        :href="(info.value)"
@@ -57,12 +57,47 @@
                     <p class="" v-else> {{ info.value }} </p>
                 </li>
             </ul>
+
+            <div id="material" class="section" style="display: none;">
+                <hr>
+                <ul style="margin: 0">
+                    <li class="box" v-for="material in materials">
+                        <p style="margin: 10px 0;">{{ material.name }}</p>
+                        <div style="overflow: auto; border-top: solid 1px #cccccc;">
+                            <p class="detail">{{ material.count }}</p>
+                            <p class="detail">|</p>
+                            <p class="detail">{{ material.must }}</p>
+                            <a v-show="material.templateLink" class="link" :href="(material.templateLink)">空表下载</a>
+                            <div style="clear: both"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="notice" class="section" style="display: none;">
+                <hr>
+                <p class="p">{{ notice }}</p>
+            </div>
+
+            <div id="condition" class="section" style="display: none;">
+                <hr>
+                <p class="p">{{ condition }}</p>
+            </div>
+
+            <div id="flowchart" class="section" style="display: none;">
+                <hr>
+                <ul>
+                    <li v-for="flowchart in flowcharts">
+                        {{ flowchart }}
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="footer">
             <button class="icon">收藏</button>
             <button class="icon" style="text-align: center;">电话</button>
-            <button class="icon" style="background-color: grey; float: right;">在线办理</button>
+            <button class="icon" style="background-color: #555555; float: right; color: white;">在线办理</button>
         </div>
     </div>
 

@@ -29,7 +29,11 @@ new Vue({
         service: '',
         address: '',
         window: '',
-        base: []
+        base: [],
+        materials: [],
+        notice: '',
+        condition: '',
+        flowcharts: []
     },
     created() {
         axios.get('http://v.sogx.cn/api/zwfw/project_detail/ym_id/48/id/' + this.id)
@@ -49,6 +53,31 @@ new Vue({
                     })
                 })
 
+                data.meterial.forEach(material => {
+                    if (material.templateLinks[1]) {
+                        this.materials.push({
+                            name: material.name,
+                            count: material.count,
+                            must: material.must,
+                            templateLink: material.templateLinks[1].href
+                        })
+                    } else {
+                        this.materials.push({
+                            name: material.name,
+                            count: material.count,
+                            must: material.must,
+                            templateLink: ''
+                        })
+                    }
+                })
+
+                this.notice = data.notice
+                this.condition = data.condition
+
+                data.flowchart.forEach(flowchart => {
+                    this.flowcharts.push(flowchart)
+                })
+
                 // create events for switching categories
                 const categories = document.getElementsByClassName('category')
                 for (let category = 0; category < categories.length; category++) {
@@ -63,26 +92,22 @@ new Vue({
                                 }
                             }
 
-                            // clear the current list
-                            const main = document.getElementById('main')
-                            main.removeChild(document.getElementById('info'))
+                            // hide all the sections
+                            for (let section of document.getElementsByClassName('section')) {
+                                section.style.display = 'none'
+                            }
 
-                            // render the corresponding page to the onclick category
+                            // show the corresponding section to the onclick category
                             if (categories[category].innerText === '办事信息') {
+                                document.getElementById('base').style.display = "block"
                             } else if (categories[category].innerText === '需交材料') {
+                                document.getElementById('material').style.display = "block"
                             } else if (categories[category].innerText === '注意事项') {
-                                render(data.notice)
+                                document.getElementById('notice').style.display = "block"
                             } else if (categories[category].innerText === '审批条件') {
-                                render(data.condition)
+                                document.getElementById('condition').style.display = "block"
                             } else if (categories[category].innerText === '流程图') {
-                                const ul = document.createElement('ul')
-                                ul.setAttribute('id', 'info')
-                                main.appendChild(ul)
-                                data.flowchart.forEach(flowchart => {
-                                    const li = document.createElement('li')
-                                    li.innerText = flowchart
-                                    ul.appendChild(li)
-                                })
+                                document.getElementById('flowchart').style.display = "block"
                             }
                         }
                     })
@@ -90,17 +115,3 @@ new Vue({
             })
     }
 })
-
-function render(data) {
-    const info = document.createElement('div')
-    info.setAttribute('id', 'info')
-    document.getElementById('main').appendChild(info)
-
-    const hr = document.createElement('hr')
-    info.appendChild(hr)
-
-    const p = document.createElement('p')
-    p.innerText = data
-    p.style = 'padding-left: 2%;'
-    info.appendChild(p)
-}

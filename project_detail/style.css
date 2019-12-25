@@ -1,5 +1,12 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
 body {
     margin: 0;
+    height: 100%;
+    width: 100%;
 }
 
 h2 {
@@ -84,9 +91,41 @@ a {
     background-color: white;
     border: 0;
     padding: 0;
+    color: #555555;
 }
 
-#info {
+.section {
     margin-top: 0;
     margin-bottom: 50px;
+}
+
+.box {
+    border-top: solid 5px #dddddd;
+    border-bottom: solid 5px #dddddd;
+    border-left: solid 10px #dddddd;
+    border-right: solid 10px #dddddd;
+    padding-left: 2%;
+}
+
+.p {
+    padding-left: 2%;
+}
+
+.detail {
+    float: left;
+    width: 7%;
+    text-align: center;
+    line-height: 60px;
+}
+
+.link {
+    float: right;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: solid 1px -webkit-link;
+    border-radius: 10%;
+    margin: 2%;
+    padding: 1%;
 }
