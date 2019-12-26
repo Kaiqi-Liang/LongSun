@@ -10,35 +10,49 @@
 
 <body>
     <div id="root">
-        <div class="header">
+        <div id="header">
             <a class="back" href="javascript:history.go(-1)"><</a>
         </div>
 
         <div class="maininfo">
             <h2>{{ title }}</h2>
-            <ul>
-                <li>
+            <ul style="margin: 0;">
+                <li class="main">
+                    <img class="symbol" src="images/unit.png">
                     <p>受理单位：{{ unit }}</p>
                 </li>
-                <li>
+                <li class="main">
+                    <img class="symbol" src="images/service.png">
                     <p>服务承诺：{{ service }}</p>
                 </li>
-                <li>
+                <li class="main">
+                    <img class="symbol" src="images/address.png">
                     <p>{{ address }}</p>
                 </li>
-                <li>
+                <li class="main">
+                    <img class="symbol" src="images/window.png">
                     <p>办理窗口：{{ window }}</p>
                 </li>
             </ul>
         </div>
 
         <div class="headline">
-            <ul class="list">
-                <li class="category" style="color: blue;">办事信息</li>
-                <li class="category">需交材料</li>
-                <li class="category">注意事项</li>
-                <li class="category">审批条件</li>
-                <li class="category">流程图</li>
+            <ul style="margin: 0;">
+                <li class="category active">
+                    <a>办事信息</a>
+                </li>
+                <li class="category">
+                    <a>需交材料</a>
+                </li>
+                <li class="category">
+                    <a>注意事项</a>
+                </li>
+                <li class="category">
+                    <a>审批条件</a>
+                </li>
+                <li class="category">
+                    <a>流程图</a>
+                </li>
             </ul>
         </div>
 
@@ -46,15 +60,15 @@
             <ul id="base" class="section">
                 <hr>
                 <li class="info" v-for="info in base">
-                    <p class="text"> {{ info.text }}：</p>
+                    <p class="left"> {{ info.text }}：</p>
 
                     <a v-if="info.text == '地点地图' || info.text == '联系电话' && info.value != '暂无'"
                        :href="(info.value)"
-                       class="value">
+                       class="value right">
                         {{ info.value }}
                     </a>
                     
-                    <p class="" v-else> {{ info.value }} </p>
+                    <p class="right" v-else> {{ info.value }} </p>
                 </li>
             </ul>
 
@@ -63,11 +77,14 @@
                 <ul style="margin: 0">
                     <li class="box" v-for="material in materials">
                         <p style="margin: 10px 0;">{{ material.name }}</p>
-                        <div style=" border-top: solid 1px #cccccc;">
+                        <div class="details">
                             <p class="detail">{{ material.count }}</p>
-                            <p class="detail" style="width: 28px;">|</p>
+                            <p class="detail" style="width: 40px;">|</p>
                             <p class="detail">{{ material.must }}</p>
-                            <a v-show="material.templateLink" class="link" :href="(material.templateLink)">空表下载</a>
+                            <a v-show="material.templateLink" class="link" :href="(material.templateLink)">
+                                <p style="margin: 0; font-size: 14px">空表</p>
+                                <p style="margin: 0; font-size: 14px">下载</p>
+                            </a>
                             <div style="clear: both"></div>
                         </div>
                     </li>
@@ -95,8 +112,14 @@
         </div>
 
         <div class="footer">
-            <button class="icon">收藏</button>
-            <button class="icon" style="text-align: center;">电话</button>
+            <button class="icon">
+                <img class="img" src="images/favourite.png">
+                <p>收藏</p>
+            </button>
+            <button class="icon" style="text-align: center;">
+                <img class="img" src="images/phone.png">
+                <p>电话</p>
+            </button>
             <button class="icon" style="background-color: #555555; color: white;">在线办理</button>
         </div>
     </div>

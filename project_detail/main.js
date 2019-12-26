@@ -39,7 +39,6 @@ new Vue({
         axios.get('http://v.sogx.cn/api/zwfw/project_detail/ym_id/48/id/' + this.id)
             .then(response => response.data.data)
             .then(data => {
-                console.log(data)
                 this.title = data.maininfo.title
                 this.unit = data.maininfo.zwh_jbxx_sszt
                 this.service = data.maininfo.zwh_jbxx_dxccs
@@ -78,17 +77,33 @@ new Vue({
                     this.flowcharts.push(flowchart)
                 })
 
+                // add title on scroll
+                document.body.onscroll = () => {
+                    const header = document.getElementById('header')
+                    const title = document.getElementById('title')
+                    if (title) { // title already exists
+                        if ((document.documentElement.scrollTop || document.body.scrollTop) == 0) {
+                            header.removeChild(title)
+                        }
+                    } else {
+                        const span = document.createElement('span')
+                        span.innerText = this.title
+                        span.setAttribute('id', 'title')
+                        header.appendChild(span)
+                    }
+                }
+
                 // create events for switching categories
                 const categories = document.getElementsByClassName('category')
                 for (let category = 0; category < categories.length; category++) {
                     categories[category].addEventListener('click', () => {
-                        if (categories[category].style.color != 'blue') { // the onclick category is not active
-                            // change the onclick category colour to activate it
-                            categories[category].style.color = 'blue'
+                        if (categories[category].className != 'category active') { // the onclick category is not active
+                            // add a class active to activate it
+                            categories[category].className = 'category active'
                             // deactivate every other category
                             for (let i = 0; i < categories.length; i++) {
                                 if (category != i) {
-                                    categories[i].style.color = 'black'
+                                    categories[i].className = 'category'
                                 }
                             }
 

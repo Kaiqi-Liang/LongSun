@@ -11,6 +11,7 @@ body {
 
 h2 {
     margin-top: 0;
+    margin-bottom: 1%;
 }
 
 hr {
@@ -27,52 +28,93 @@ a {
     text-decoration: none;
 }
 
-.header {
-    overflow: auto;
-    height: 75px;
+#header {
+    overflow: hidden;
+    position: fixed;
+    background: white;
+    width: 100%;
+    height: 50px;
+    padding: 0 35px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#title {
+    font-size: 20px;
+    line-height: 50px;
+    height: 50px;
+    width: 100%;
+    display: block;
+    overflow: hidden;
 }
 
 .back {
-    font-weight: bold;
-    font-size: 3em;
-    margin-left: 10px;
-    float: left;
     color: black;
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 50px;
+    left: 10px;
 }
 
 .maininfo {
-    padding-left: 2%;
+    padding-left: 10px;
+    padding-top: 50px;
     border-bottom: solid 10px #dddddd;
 }
 
+.main {
+    display: flex;
+    align-items: center;
+}
+
+.symbol {
+    padding-right: 5px;
+}
+
 .headline {
-    padding-left: 2%;
+    padding: 0 10px;
     overflow: auto;
 }
 
-.list {
-    overflow: auto;
-    margin: 12px 0;
+.headline a {
+    display: block;
+    float: left;
+    padding: 5px 0;
+}
+
+.active a{
+    color: #006bff;
+    border-bottom: solid #006bff;
 }
 
 .category {
     float: left;
-    width: 15%
+    width: 20%;
+    max-width: 100px;
+    text-align: center;
+    font-size: 16px;
 }
 
 #main {
     padding-bottom: 50px;
+    overflow: hidden;
 }
 
 .info {
+    padding: 0 10px;
     overflow: auto;
     border-bottom: solid 1px #cccccc;
 }
 
-.text {
-    padding-left: 2%;
-    width: 20%;
+.left {
+    width: 25%;
     float: left;
+}
+
+.right {
+    width: 75%;
+    float: right;
 }
 
 .value {
@@ -96,10 +138,18 @@ a {
     border: 0;
     padding: 0;
     color: #555555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .section {
     margin: 0;
+}
+
+.p {
+    padding: 0 10px;
+    margin: 10px 0;
 }
 
 .box {
@@ -107,27 +157,34 @@ a {
     border-bottom: solid 5px #dddddd;
     border-left: solid 10px #dddddd;
     border-right: solid 10px #dddddd;
-    padding-left: 2%;
+    padding-left: 1%;
 }
 
-.p {
-    padding-left: 2%;
+.details {
+    padding: 10px 0;
+    border-top: solid 1px #cccccc;
 }
 
 .detail {
     float: left;
-    width: 50px;
-    line-height: 64px;
+    width: 64px;
 }
 
 .link {
-    float: right;
-    font-size: 20px;
     width: 50px;
     height: 50px;
+    line-height: 25px;
+
+    float: right;
     text-align: center;
+    margin-right: 10px;
+
     border: solid 1px -webkit-link;
     border-radius: 10%;
-    margin: 2%;
-    padding: 1%;
+}
+
+.img {
+    width: 25px;
+    height: 25px;
+    padding-right: 5px;
 }
