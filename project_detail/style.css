@@ -60,6 +60,10 @@ a {
     width: 15%
 }
 
+#main {
+    padding-bottom: 50px;
+}
+
 .info {
     overflow: auto;
     border-bottom: solid 1px #cccccc;
@@ -76,6 +80,7 @@ a {
 }
 
 .footer {
+    display: flex;
     border-top: solid 1px #dddddd;
     background-color: white;
     position: fixed;
@@ -86,8 +91,7 @@ a {
 }
 
 .icon {
-    width: 32%;
-    line-height: 50px;
+    width: 100%;
     background-color: white;
     border: 0;
     padding: 0;
@@ -95,8 +99,7 @@ a {
 }
 
 .section {
-    margin-top: 0;
-    margin-bottom: 50px;
+    margin: 0;
 }
 
 .box {
@@ -113,9 +116,8 @@ a {
 
 .detail {
     float: left;
-    width: 7%;
-    text-align: center;
-    line-height: 60px;
+    width: 50px;
+    line-height: 64px;
 }
 
 .link {

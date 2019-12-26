@@ -63,9 +63,9 @@
                 <ul style="margin: 0">
                     <li class="box" v-for="material in materials">
                         <p style="margin: 10px 0;">{{ material.name }}</p>
-                        <div style="overflow: auto; border-top: solid 1px #cccccc;">
+                        <div style=" border-top: solid 1px #cccccc;">
                             <p class="detail">{{ material.count }}</p>
-                            <p class="detail">|</p>
+                            <p class="detail" style="width: 28px;">|</p>
                             <p class="detail">{{ material.must }}</p>
                             <a v-show="material.templateLink" class="link" :href="(material.templateLink)">空表下载</a>
                             <div style="clear: both"></div>
@@ -97,7 +97,7 @@
         <div class="footer">
             <button class="icon">收藏</button>
             <button class="icon" style="text-align: center;">电话</button>
-            <button class="icon" style="background-color: #555555; float: right; color: white;">在线办理</button>
+            <button class="icon" style="background-color: #555555; color: white;">在线办理</button>
         </div>
     </div>
 

@@ -17,14 +17,14 @@ home.then(() => {
 const icons = document.getElementsByClassName('icon')
 for (let icon = 0; icon < icons.length; icon++) {
     icons[icon].addEventListener('click', () => {
-        if (icons[icon].src.indexOf('active') === -1) { // the onclick icon is not active
+        if (icons[icon].src.indexOf('active') == -1) { // the onclick icon is not active
             // activate the onclick icon
             icons[icon].src = icons[icon].src.split('.')[0] + '_active.' + icons[icon].src.split('.')[1]
 
             // deactivate every other icon
             for (let i = 0; i < icons.length; i++) {
                 if (icon != i) {
-                    if (icons[i].src.indexOf('active') !== -1) {
+                    if (icons[i].src.indexOf('active') != -1) {
                         icons[i].src = icons[i].src.slice(0, -11) + '.png'
                     }
                 }
