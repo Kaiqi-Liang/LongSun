@@ -1,4 +1,5 @@
-const API_URL = 'http://v.sogx.cn'
+const API_URL_1 = 'http://v.sogx.cn'
+const API_URL_2 = 'http://www.sogx.cn'
 render(1)
 
 const icons = document.getElementsByClassName('icon')
@@ -28,19 +29,49 @@ for (let icon = 0; icon < icons.length; icon++) {
 function render(page) {
     const main = document.getElementById('main')
     const ul = document.createElement('ul')
+    const hr = document.getElementById('bar')
     main.appendChild(ul)
     ul.setAttribute('id', 'ul')
-    fetch(API_URL + "/api/zwfw/classify_list/ym_id/48/type/" + page)
-        .then(response => response.json())
-        .then(json => {
-            for (data in json.data) {
-                if (json.data[data].imgurl) { // if there are icons
-                    render_icons(json.data[data])
-                } else {
-                    render_list(json.data[data])
+    if (page == 4) {
+        ul.style = "margin: 0"
+        hr.style = "margin: 0"
+        fetch(API_URL_2 + '/api/news/column/appid/' + window.location.href.split('?')[1].split('=')[1] + '/pid/' + 172)
+            .then(response => response.json())
+            .then(json => {
+                for (data of json.data) {
+                    const li = document.createElement('li')
+                    li.setAttribute('id', data.id)
+                    li.className = "box"
+                    ul.appendChild(li)
+
+                    const a = document.createElement('a')
+                    a.setAttribute('href', API_URL_2 + '/wap/news/list/appid/' + window.location.href.split('?')[1].split('=')[1] + '/columnid/' + data.id)
+                    li.appendChild(a)
+
+                    const img = document.createElement('img')
+                    img.setAttribute('src', API_URL_2 + data.icon)
+                    img.style.width = '30%'
+                    a.appendChild(img)
+
+                    const p = document.createElement('p')
+                    p.innerText = data.name
+                    a.appendChild(p)
                 }
-            }
-        })
+            })
+    } else {
+        hr.style = "margin: 0"
+        fetch(API_URL_1 + '/api/zwfw/classify_list/ym_id/' + window.location.href.split('?')[1].split('=')[1] + '/type/' + page)
+            .then(response => response.json())
+            .then(json => {
+                for (data in json.data) {
+                    if (json.data[data].imgurl) { // if there are icons
+                        render_icons(json.data[data])
+                    } else {
+                        render_list(json.data[data])
+                    }
+                }
+            })
+    }
 }
 
 function render_icons(data) {
@@ -54,7 +85,7 @@ function render_icons(data) {
     li.appendChild(a)
 
     const img = document.createElement('img')
-    img.setAttribute('src', API_URL + data.imgurl)
+    img.setAttribute('src', API_URL_1 + data.imgurl)
     img.style.width = '30%'
     a.appendChild(img)
 

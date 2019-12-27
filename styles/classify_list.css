@@ -18,7 +18,6 @@ body {
 }
 
 #bar {
-    margin-bottom: 2%;
     border: 5px solid #eeeeee;
 }
 
@@ -44,4 +43,17 @@ body {
 a {
     text-decoration: none;
     color: black;
+}
+
+.box {
+    width: 25%;
+    float: left;
+    text-align: center;
+    border: solid 0.5px #ccc;
+    box-sizing: border-box;
+    padding: 20px 5px;
+}
+
+.box p {
+    margin-bottom: 0;
 }
