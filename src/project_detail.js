@@ -1,15 +1,4 @@
 const API_URL = 'http://v.sogx.cn'
-/*
-const icons = document.getElementsByClassName('icon')
-for (let icon = 0; icon < icons.length; icon++) {
-    console.log(icons[icon])
-    icons[icon].addEventListener('click', (event) => {
-        console.log('hello')
-        event.preventDefault()
-    })
-}
-*/
-
 new Vue({
     el: '#root',
     data: {

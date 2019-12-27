@@ -1,18 +1,5 @@
 const API_URL = 'http://v.sogx.cn'
 render(1)
-/*
-const home = new Promise((resovle) => {
-    setTimeout(() => {
-        resovle()
-    }, 100)
-    render(1)
-})
-home.then(() => {
-    document.querySelectorAll('.icons').forEach(icon => {
-        console.log(icon)
-    })
-})
-*/
 
 const icons = document.getElementsByClassName('icon')
 for (let icon = 0; icon < icons.length; icon++) {
