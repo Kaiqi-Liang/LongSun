@@ -1,15 +1,4 @@
 /*
-data = [fetch('http://v.sogx.cn/api/zwfw/classify_list/ym_id/48/type/1'),
-        fetch('http://v.sogx.cn/api/zwfw/project_list_new/ym_id/48/classifyType/15/page/1'),
-        fetch('http://v.sogx.cn/api/zwfw/project_detail/ym_id/48/id/1218')]
-Promise.all(data)
-    .then(responses => responses.map(response => response.json()))
-    .then(jsons => {
-        console.log(jsons)
-    })
-*/
-
-/*
 const icons = document.getElementsByClassName('icon')
 for (let icon = 0; icon < icons.length; icon++) {
     console.log(icons[icon])
@@ -30,6 +19,7 @@ new Vue({
         address: '',
         window: '',
         base: [],
+        tel: '',
         materials: [],
         notice: '',
         condition: '',
@@ -45,12 +35,9 @@ new Vue({
                 this.address = data.maininfo.zwh_jbxx_bldd
                 this.window = data.maininfo.zwh_kzxx_ckmc
 
-                data.base.forEach(base => {
-                    this.base.push({
-                        text: base.text,
-                        value: base.value
-                    })
-                })
+                this.base = data.base
+                // phone number
+                this.tel = data.base[9].value
 
                 data.meterial.forEach(material => {
                     if (material.templateLinks[1]) {

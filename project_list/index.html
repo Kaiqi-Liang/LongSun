@@ -19,7 +19,7 @@
             <li class="item" v-for="project in projectList">
                 <a v-bind:href="'../project_detail/index.html?id=' + (project.id)">
                     <div class="info">
-                        <p>{{ project.title }}</p>
+                        <p class="subtitle">{{ project.title }}</p>
                         <span class="service">{{ project.service }}</span>
                         <hr>
                     </div>
@@ -32,6 +32,7 @@
         </ul>
 
         <div class="footer">
+            <img id="rotate" src="images/rotate.gif">
             <p>{{ footer }}</p>
         </div>
     </div>

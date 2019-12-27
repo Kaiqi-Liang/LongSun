@@ -28,8 +28,11 @@ a {
     text-decoration: none;
 }
 
+a:visited {
+    color: #0000ee;
+}
+
 #header {
-    overflow: hidden;
     position: fixed;
     background: white;
     width: 100%;
@@ -46,6 +49,8 @@ a {
     width: 100%;
     display: block;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .back {
@@ -58,8 +63,7 @@ a {
 }
 
 .maininfo {
-    padding-left: 10px;
-    padding-top: 50px;
+    padding: 50px 10px 0 10px;
     border-bottom: solid 10px #dddddd;
 }
 
@@ -70,6 +74,13 @@ a {
 
 .symbol {
     padding-right: 5px;
+}
+
+.main p {
+    overflow: hidden;
+    height: 21px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .headline {
@@ -83,7 +94,7 @@ a {
     padding: 5px 0;
 }
 
-.active a{
+.active a {
     color: #006bff;
     border-bottom: solid #006bff;
 }
@@ -108,12 +119,12 @@ a {
 }
 
 .left {
-    width: 25%;
+    width: 30%;
     float: left;
 }
 
 .right {
-    width: 75%;
+    width: 70%;
     float: right;
 }
 
@@ -134,9 +145,6 @@ a {
 
 .icon {
     width: 100%;
-    background-color: white;
-    border: 0;
-    padding: 0;
     color: #555555;
     display: flex;
     align-items: center;
@@ -147,9 +155,9 @@ a {
     margin: 0;
 }
 
-.p {
-    padding: 0 10px;
-    margin: 10px 0;
+.text {
+    margin: 10px 10px;
+    line-height: 30px;
 }
 
 .box {

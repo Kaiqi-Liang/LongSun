@@ -10,27 +10,36 @@ new Vue({
         footer: 'Loading...'
     },
     methods: {
-        getData() {
+        getData(first) {
             if (this.type === 'icon') path = 'http://v.sogx.cn/api/zwfw/project_list_new/ym_id/48/classifyType/' + this.id + '/page/' + this.page 
             else if (this.type === 'list') path = 'http://v.sogx.cn/api/zwfw/project_list_new/ym_id/48/dept_id/' + this.id + '/page/' + this.page 
             axios.get(path)
                 .then(response => response.data.data)
                 .then(data => {
-                    if (data.projectList) {
-                        if (data.projectList.length < 20) { // last fetch
-                            this.noMoreData()
-                        }
-                        data.projectList.forEach(item => {
-                            this.projectList.push({
-                                id: item.id,
-                                title: item.zwh_title_bt,
-                                service: item.zwh_jbxx_dxccs
-                            })
-                        })
-                    } else { // nothing is fetched
-                        this.noMoreData()
+                    if (first) { // fetching it for the first time
+                        this.processData(data)
+                    } else { // show a bit of delay
+                        setTimeout(() => this.processData(data), 200)
                     }
                 })
+        },
+        processData(data) {
+            if (data.projectList) {
+                if (data.projectList.length < 20) { // last fetch
+                    this.noMoreData()
+                }
+                data.projectList.forEach(item => {
+                    this.projectList.push({
+                        id: item.id,
+                        title: item.zwh_title_bt,
+                        service: item.zwh_jbxx_dxccs
+                    })
+                })
+            } else { // nothing is fetched
+                if (this.footer == 'Loading...') { // the last fetch fetched 20 items
+                    this.noMoreData()
+                }
+            }
         },
         onScroll() {
             // overall scroll height
@@ -42,15 +51,16 @@ new Vue({
             if (scrollTop + clientHeight === scrollHeight) { // scrolled to the bottom
                 // load the next page
                 this.page++
-                this.getData()
+                this.getData(false)
             }
         },
         noMoreData() {
             this.footer = 'The end.'
+            document.getElementsByClassName('footer')[0].removeChild(document.getElementById('rotate'))
         }
     },
     created() {
-        this.getData();
+        this.getData(true);
         window.addEventListener('scroll', this.onScroll);
     },
     destroyed() {

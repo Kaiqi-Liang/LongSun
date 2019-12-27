@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=yes"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 
@@ -19,7 +20,8 @@
             <ul style="margin: 0;">
                 <li class="main">
                     <img class="symbol" src="images/unit.png">
-                    <p>受理单位：{{ unit }}</p>
+                    <p>受理单位：</p>
+                    <a href="">{{ unit }}</a>
                 </li>
                 <li class="main">
                     <img class="symbol" src="images/service.png">
@@ -62,8 +64,8 @@
                 <li class="info" v-for="info in base">
                     <p class="left"> {{ info.text }}：</p>
 
-                    <a v-if="info.text == '地点地图' || info.text == '联系电话' && info.value != '暂无'"
-                       :href="(info.value)"
+                    <a v-if="info.text == '地点地图' || (info.text == '联系电话' && info.value != '暂无' && info.value.length < 13)"
+                       :href="'tel:' + (info.value)"
                        class="value right">
                         {{ info.value }}
                     </a>
@@ -82,8 +84,8 @@
                             <p class="detail" style="width: 40px;">|</p>
                             <p class="detail">{{ material.must }}</p>
                             <a v-show="material.templateLink" class="link" :href="(material.templateLink)">
-                                <p style="margin: 0; font-size: 14px">空表</p>
-                                <p style="margin: 0; font-size: 14px">下载</p>
+                                <p style="margin: 0">空表</p>
+                                <p style="margin: 0">下载</p>
                             </a>
                             <div style="clear: both"></div>
                         </div>
@@ -93,12 +95,12 @@
 
             <div id="notice" class="section" style="display: none;">
                 <hr>
-                <p class="p">{{ notice }}</p>
+                <p class="text">{{ notice }}</p>
             </div>
 
             <div id="condition" class="section" style="display: none;">
                 <hr>
-                <p class="p">{{ condition }}</p>
+                <p class="text">{{ condition }}</p>
             </div>
 
             <div id="flowchart" class="section" style="display: none;">
@@ -112,15 +114,17 @@
         </div>
 
         <div class="footer">
-            <button class="icon">
+            <a class="icon">
                 <img class="img" src="images/favourite.png">
                 <p>收藏</p>
-            </button>
-            <button class="icon" style="text-align: center;">
+            </a>
+
+            <a :href="'tel:' + (tel)" class="icon">
                 <img class="img" src="images/phone.png">
                 <p>电话</p>
-            </button>
-            <button class="icon" style="background-color: #555555; color: white;">在线办理</button>
+            </a>
+
+            <a class="icon" style="background-color: #555555; color: white;">在线办理</a>
         </div>
     </div>
 
