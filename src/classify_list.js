@@ -81,7 +81,7 @@ function render_icons(data) {
     ul.appendChild(li)
 
     const a = document.createElement('a')
-    a.setAttribute('href', 'project_list.html?id=' + data.id + '&&ym_id=48' + '&&name=' + data.name + '&&type=icon')
+    a.setAttribute('href', 'project_list.html?id=' + data.id + '&&ym_id=' + window.location.href.split('?')[1].split('=')[1] + '&&name=' + data.name + '&&type=icon')
     li.appendChild(a)
 
     const img = document.createElement('img')
@@ -106,7 +106,7 @@ function render_list(data) {
     ul.appendChild(hr)
 
     const a = document.createElement('a')
-    a.setAttribute('href', 'project_list.html?id=' + data.id + '&&ym_id=48' + '&&name=' + data.name + '&&type=list')
+    a.setAttribute('href', 'project_list.html?id=' + data.id + '&&ym_id=' + window.location.href.split('?')[1].split('=')[1] + '&&name=' + data.name + '&&type=list')
     li.appendChild(a)
 
     const p = document.createElement('p')
