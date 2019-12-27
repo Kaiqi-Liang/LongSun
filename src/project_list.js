@@ -1,18 +1,20 @@
+const API_URL = 'http://v.sogx.cn'
 new Vue({
     el: '#root',
     data: {
         // href = index.html?id=int&&name=str&&type=(icon|list)
         id: window.location.href.split("?")[1].split('&&')[0].split('=')[1],
-        name: decodeURI(window.location.href.split("?")[1].split('&&')[1].split('=')[1]),
-        type: decodeURI(window.location.href.split("?")[1].split('&&')[2].split('=')[1]),
+        ym_id: window.location.href.split("?")[1].split('&&')[1].split('=')[1],
+        name: decodeURI(window.location.href.split("?")[1].split('&&')[2].split('=')[1]),
+        type: decodeURI(window.location.href.split("?")[1].split('&&')[3].split('=')[1]),
         page: 1,
         projectList: [],
         footer: 'Loading...'
     },
     methods: {
         getData(first) {
-            if (this.type === 'icon') path = 'http://v.sogx.cn/api/zwfw/project_list_new/ym_id/48/classifyType/' + this.id + '/page/' + this.page 
-            else if (this.type === 'list') path = 'http://v.sogx.cn/api/zwfw/project_list_new/ym_id/48/dept_id/' + this.id + '/page/' + this.page 
+            if (this.type === 'icon') path = API_URL + '/api/zwfw/project_list_new/ym_id/' + this.ym_id + '/classifyType/' + this.id + '/page/' + this.page 
+            else if (this.type === 'list') path = API_URL + '/api/zwfw/project_list_new/ym_id/' + this.ym_id + '/dept_id/' + this.id + '/page/' + this.page 
             axios.get(path)
                 .then(response => response.data.data)
                 .then(data => {

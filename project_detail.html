@@ -63,13 +63,20 @@
                 <hr>
                 <li class="info" v-for="info in base">
                     <p class="left"> {{ info.text }}：</p>
+                    
+                    <!-- || (info.text == '联系电话' && info.value != '暂无' && info.value.length < 13)-->
+                    <a v-if="info.text == '地点地图' && info.value != '暂无'"
+                       :href="info.value"
+                       class="value right">
+                        {{ info.value }}
+                    </a>
 
-                    <a v-if="info.text == '地点地图' || (info.text == '联系电话' && info.value != '暂无' && info.value.length < 13)"
+                    <a v-else-if="info.text == '联系电话' && info.value != '暂无' && info.value.length < 13"
                        :href="'tel:' + (info.value)"
                        class="value right">
                         {{ info.value }}
                     </a>
-                    
+
                     <p class="right" v-else> {{ info.value }} </p>
                 </li>
             </ul>

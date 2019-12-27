@@ -1,3 +1,4 @@
+const API_URL = 'http://v.sogx.cn'
 /*
 const icons = document.getElementsByClassName('icon')
 for (let icon = 0; icon < icons.length; icon++) {
@@ -12,7 +13,8 @@ for (let icon = 0; icon < icons.length; icon++) {
 new Vue({
     el: '#root',
     data: {
-        id: window.location.href.split('?')[1].split('=')[1],
+        id: window.location.href.split('?')[1].split('&&')[0].split('=')[1],
+        ym_id: window.location.href.split('?')[1].split('&&')[1].split('=')[1],
         title: '',
         unit: '',
         service: '',
@@ -26,7 +28,7 @@ new Vue({
         flowcharts: []
     },
     created() {
-        axios.get('http://v.sogx.cn/api/zwfw/project_detail/ym_id/48/id/' + this.id)
+        axios.get(API_URL + '/api/zwfw/project_detail/ym_id/' + this.ym_id + '/id/' + this.id)
             .then(response => response.data.data)
             .then(data => {
                 this.title = data.maininfo.title
