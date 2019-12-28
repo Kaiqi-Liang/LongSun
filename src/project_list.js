@@ -13,8 +13,12 @@ new Vue({
     },
     methods: {
         getData(first) {
-            if (this.type === 'icon') path = API_URL + '/api/zwfw/project_list_new/ym_id/' + this.ym_id + '/classifyType/' + this.id + '/page/' + this.page 
-            else if (this.type === 'list') path = API_URL + '/api/zwfw/project_list_new/ym_id/' + this.ym_id + '/dept_id/' + this.id + '/page/' + this.page 
+            if (this.type === 'icon') {
+                path = API_URL + '/api/zwfw/project_list_new/ym_id/' + this.ym_id + '/classifyType/' + this.id + '/page/' + this.page 
+            } else{
+                path = API_URL + '/api/zwfw/project_list_new/ym_id/' + this.ym_id + '/dept_id/' + this.id + '/page/' + this.page 
+            }
+
             axios.get(path)
                 .then(response => response.data.data)
                 .then(data => {
@@ -58,6 +62,7 @@ new Vue({
         },
         noMoreData() {
             this.footer = 'The end.'
+            // remove the loading gif
             document.getElementsByClassName('footer')[0].removeChild(document.getElementById('rotate'))
         }
     },
