@@ -2,6 +2,7 @@
 <html lang="zh">
 
 <head>
+    <link rel="stylesheet" href="style.css" type="text/css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,6 +10,89 @@
 </head>
 
 <body>
+    <div id="root">
+        <img src="images/headline.png" class="headline">
+        <div class="header">
+            <div class="left">
+                <p class="top">{{ bmcount }}个</p>
+                <p class="top">单位参与问政</p>
+            </div>
+            <div class="right">
+                <p class="top">{{ replycount }}个</p>
+                <p class="top">问题已有回应</p>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="filter">
+                <p class="condition">筛选条件</p>
+                <div class="classify">
+                    <p>全部分类</p>
+                    <img src="images/arrow.png">
+                </div>
+            </div>
+
+            <div id="modal">
+                <div>分类</div>
+                <ul>
+                    <li>
+                        <p>全部分类</p>
+                    </li>
+                    <li>
+                        <p>留言</p>
+                    </li>
+                    <li>
+                        <p>建议</p>
+                    </li>
+                    <li>
+                        <p>投诉</p>
+                    </li>
+                </ul>
+                <div>取消</div>
+            </div>
+
+            <div>
+                <ul>
+                    <li v-for="item in list" style="padding: 10px">
+                        <div class="user">
+                            <div class="avatar">
+                                <img src="images/avatar.png">
+                            </div>
+                            <div class="macro">
+                                <p style="line-height: 21px;">{{ item.username }}</p>
+                                <p class="time">{{ item.time }}</p>
+                            </div>
+                            <div class="icon">
+                                <span class="not-yet-replied" v-if="item.status == 1">待回复</span>
+                                <span class="replied" v-else>已回复</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p style="margin: 0">{{ item.intro }}</p>
+                        </div>
+
+                        <div class="bottom">
+                            <p>{{ item.name }}</p>
+                            <div class="reacts">
+                                <div class="comments">
+                                    <img src="images/comment.png">
+                                    <p>{{ item.comments }}</p>
+                                </div>
+                                <div class="likes">
+                                    <img src="images/like.png">
+                                    <p>{{ item.likes }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="main.js"></script>
 </body>
 
