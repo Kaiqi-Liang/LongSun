@@ -1,5 +1,7 @@
 const API_URL_1 = 'http://v.sogx.cn'
 const API_URL_2 = 'http://www.sogx.cn'
+const ym_id = location.href.split('?')[1].split('=')[1]
+console.log(ym_id)
 render(1)
 
 const icons = document.getElementsByClassName('icon')
@@ -35,7 +37,7 @@ function render(page) {
     if (page == 4) {
         ul.style = "margin: 0"
         hr.style = "margin: 0"
-        fetch(API_URL_2 + '/api/news/column/appid/' + window.location.href.split('?')[1].split('=')[1] + '/pid/' + 172)
+        fetch(API_URL_2 + '/api/news/column/appid/' + ym_id + '/pid/' + 172)
             .then(response => response.json())
             .then(json => {
                 for (data of json.data) {
@@ -45,7 +47,7 @@ function render(page) {
                     ul.appendChild(li)
 
                     const a = document.createElement('a')
-                    a.setAttribute('href', API_URL_2 + '/wap/news/list/appid/' + window.location.href.split('?')[1].split('=')[1] + '/columnid/' + data.id)
+                    a.setAttribute('href', API_URL_2 + '/wap/news/list/appid/' + ym_id + '/columnid/' + data.id)
                     li.appendChild(a)
 
                     const img = document.createElement('img')
@@ -60,7 +62,7 @@ function render(page) {
             })
     } else {
         hr.style = "margin: 0"
-        fetch(API_URL_1 + '/api/zwfw/classify_list/ym_id/' + window.location.href.split('?')[1].split('=')[1] + '/type/' + page)
+        fetch(API_URL_1 + '/api/zwfw/classify_list/ym_id/' + ym_id + '/type/' + page)
             .then(response => response.json())
             .then(json => {
                 for (data in json.data) {
@@ -81,7 +83,7 @@ function render_icons(data) {
     ul.appendChild(li)
 
     const a = document.createElement('a')
-    a.setAttribute('href', 'project_list.html?id=' + data.id + '&&ym_id=' + window.location.href.split('?')[1].split('=')[1] + '&&name=' + data.name + '&&type=icon')
+    a.setAttribute('href', 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=icon')
     li.appendChild(a)
 
     const img = document.createElement('img')
@@ -106,7 +108,7 @@ function render_list(data) {
     ul.appendChild(hr)
 
     const a = document.createElement('a')
-    a.setAttribute('href', 'project_list.html?id=' + data.id + '&&ym_id=' + window.location.href.split('?')[1].split('=')[1] + '&&name=' + data.name + '&&type=list')
+    a.setAttribute('href', 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=list')
     li.appendChild(a)
 
     const p = document.createElement('p')
