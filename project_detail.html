@@ -64,7 +64,6 @@
                 <li class="info" v-for="info in base">
                     <p class="left"> {{ info.text }}：</p>
                     
-                    <!-- || (info.text == '联系电话' && info.value != '暂无' && info.value.length < 13)-->
                     <a v-if="info.text == '地点地图' && info.value != '暂无'"
                        :href="info.value"
                        class="value right">
@@ -114,7 +113,7 @@
                 <hr>
                 <ul>
                     <li v-for="flowchart in flowcharts">
-                       <img src="(flowchart)">
+                       <img :src="(flowchart)">
                     </li>
                 </ul>
             </div>
