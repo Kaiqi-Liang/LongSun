@@ -1,0 +1,237 @@
+body {
+    margin: 0;
+    background-color: #eee;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+hr {
+    margin: 5px 0;
+    border: solid 1px #eee;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.headline {
+    width: 100%;
+    display: block;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+}
+
+.left {
+    width: 50%;
+    padding: 0 7.5px 15px 15px;
+}
+
+.right {
+    width: 50%;
+    padding: 0 15px 15px 7.5px;
+}
+
+.left div {
+    background: url('../images/blue.png') no-repeat center;
+    background-size: cover;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.right div {
+    background: url('../images/orange.png') no-repeat center;
+    background-size: cover;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.top {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.main {
+    background: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.filter {
+    overflow: auto;
+    padding: 10px 10px;
+    border-bottom: solid 1px #eee;
+}
+
+.condition {
+    float: left;
+    margin: 0;
+}
+
+.classify {
+    float: right;
+}
+
+.classify p {
+    float: right;
+}
+
+.classify img {
+    width: 5%;
+    float: right;
+    padding: 5px 0 0 10px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    overflow: auto;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.content {
+    background-color: white;
+    overflow: auto;
+    padding: 0 20px;
+    margin: 50% auto;
+    width: 50%;
+}
+
+.list p {
+    float: left;
+}
+
+.tick {
+    float: right;
+    width: 5%;
+}
+
+.cancel {
+    text-align: center;
+    padding: 5px 0 10px 0;
+}
+
+.user {
+    overflow: auto;
+}
+
+.avatar {
+    float: left;
+}
+
+.macro {
+    padding: 15px 0px;
+    float: left;
+}
+
+.icon {
+    float: right;
+    text-align: center;
+}
+
+.not-yet-replied {
+    line-height: 76px;
+    background-color: green;
+    color: white;
+    padding: 0 10px;
+    border-radius: 25px;
+}
+
+.replied {
+    line-height: 76px;
+    background-color: #006bff;
+    color: white;
+    padding: 0 10px;
+    border-radius: 25px;
+}
+
+.time {
+    color: #888;
+    font-size: 0.7em;
+    line-height: 16px;
+}
+
+.bottom {
+    width: 100%;
+    overflow: auto;
+}
+
+.bottom p {
+    font-size: 0.7em;
+    color: #888;
+    float: left;
+    line-height: 30px;
+}
+
+.reacts {
+    float: right;
+}
+
+.reacts span {
+    float: right;
+    padding-left: 5px;
+    line-height: 30px;
+    color: #888;
+}
+
+.comments {
+    float: left;
+}
+
+.likes {
+    float: left;
+}
+
+.likes img {
+    float: right;
+    padding-left: 20px;
+}
+
+.footer {
+    border-top: solid 5px #eeeeee;
+    color: #aaaaaa;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer p {
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+.ask {
+    right: 10px;
+    bottom: 10px;
+    position: fixed;
+}
+
+.ask img {
+    width: 50px;
+    height: 50px;
+    display: block;
+}

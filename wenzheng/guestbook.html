@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <link rel="stylesheet" href="styles/guestbook.css" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>问政</title>
+</head>
+
+<body>
+    <div id="root">
+        <img src="images/headline.png" class="headline">
+        <div class="header">
+            <div class="left">
+                <div>
+                    <p class="top">{{ bmcount }}个</p>
+                    <p class="top">单位参与问政</p>
+                </div>
+            </div>
+
+            <div class="right">
+                <div>
+                    <p class="top">{{ replycount }}个</p>
+                    <p class="top">问题已有回应</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="filter">
+                <p class="condition">筛选条件</p>
+                <div class="classify">
+                    <img src="images/arrow.png">
+                    <p id="classify">全部分类</p>
+                </div>
+            </div>
+
+            <div class="modal" @click="hideModal">
+                <div class="content">
+                    <h3>分类</h3>
+                    <hr>
+                    <ul>
+                        <li class="list" v-for="classify in classes" @click="changeClassify(classify.id, classify.name)">
+                            <div style="overflow: auto;">
+                                <p name="classify">{{ classify.name }}</p>
+                                <img class="tick" v-if="classify.id == 0" src="images/green_tick.png">
+                                <img class="tick" v-else src="images/grey_tick.png">
+                            </div>
+                            <hr>
+                        </li>
+                    </ul>
+                    <div class="cancel">取消</div>
+                </div>
+            </div>
+
+            <div>
+                <ul>
+                    <li v-for="item in list" style="padding: 10px">
+                        <a :href="'show.html?id=' + (item.id)">
+                            <div class="user">
+                                <div class="avatar">
+                                    <img src="images/avatar.png">
+                                </div>
+                                <div class="macro">
+                                    <p style="line-height: 21px;">{{ item.username }}</p>
+                                    <p class="time">{{ item.time }}</p>
+                                </div>
+                                <div class="icon">
+                                    <span class="not-yet-replied" v-if="item.status == 1">待回复</span>
+                                    <span class="replied" v-else>已回复</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p style="margin: 0">{{ item.intro }}</p>
+                            </div>
+
+                            <div class="bottom">
+                                <p>{{ item.name }}</p>
+                                <div class="reacts">
+                                    <div class="comments">
+                                        <span>{{ item.comments }}</span>
+                                        <img src="images/comment.png">
+                                    </div>
+                                    <div class="likes">
+                                        <span>{{ item.likes }}</span>
+                                        <img src="images/like.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="footer">
+                    <img id="rotate" src="images/rotate.gif">
+                    <p>{{ footer }}</p>
+                </div>
+            </div>
+
+        </div>
+
+        <a href="add.html" class="ask">
+            <img src="images/ask.png">
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="src/guestbook.js"></script>
+</body>
+
+</html>

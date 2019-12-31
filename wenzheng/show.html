@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <link rel="stylesheet" href="styles/show.css" type="text/css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+
+<body>
+    <div id="root">
+        <div class="header">
+            <a class="back" href="javascript:history.go(-1)"><</a>
+            <span class="title">问政</span>
+        </div>
+
+        <div class="main">
+            <div class="user">
+                <div class="avatar">
+                    <img src="images/avatar.png">
+                </div>
+                <div class="macro">
+                    <p style="line-height: 21px;">{{ username }}</p>
+                    <p class="time">{{ addtime }}</p>
+                </div>
+                <div class="icon">
+                    <span class="replied">{{ typename }}</span>
+                </div>
+            </div>
+
+            <div>
+                <p style="margin: 0">{{ intro }}</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="src/show.js"></script>
+</body>
+
+</html>
