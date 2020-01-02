@@ -6,7 +6,9 @@ new Vue({
         replycount: '',
         classes: [],
         list: [],
-        footer: 'Loading...'
+        pagesize: 10,
+        page: 1,
+        footer: '加载中...'
     },
     methods: {
         getCount() {
@@ -45,60 +47,67 @@ new Vue({
 
             const ticks = document.getElementsByClassName('tick')
             for (let tick  = 0; tick < ticks.length; tick++) {
-                if (ticks[tick].src.indexOf('grey_tick.png') != -1) { // the tick is grey
+                if (ticks[tick].src.indexOf('tick_grey.png') != -1) { // the tick is grey
                     if (tick == id) { // if the tick is clicked
-                        ticks[tick].src = 'images/green_tick.png'
+                        ticks[tick].src = 'images/tick_green.png'
                         // clear out list
                         this.list = []
 
                         // more data to load
-                        this.footer = 'Loading...'
-                        const rotate = document.createElement('img')
-                        rotate.setAttribute('id', 'rotate')
-                        rotate.setAttribute('src', 'images/rotate.gif')
-                        document.getElementsByClassName('footer')[0].appendChild(rotate)
+                        this.footer = '加载中...'
+                        document.getElementById('rotate').style.display = 'block'
+                        // reset page to the first page
+                         this.page = 1
                         // reload list
-                        this.getList(id, 10, true)
+                        this.getList(id, true)
                     }
                 } else { // the tick is green
                     if (tick != id) { // if the tick not clicked
-                        ticks[tick].src = 'images/grey_tick.png'
+                        ticks[tick].src = 'images/tick_grey.png'
                     }
                 }
             }
         },
-        getList(type_id, pagesize, first) {
-            fetch('http://www.sogx.cn/api/guestbook/list?ym_id=' + this.ym_id + '&&typeid=' + type_id + "&&pagesize=" + pagesize)
+        getList(type_id, first) {
+            fetch('http://www.sogx.cn/api/guestbook/list?ym_id=' + this.ym_id + '&&typeid=' + type_id + '&&page=' + this.page + '&&pagesize=' + this.pagesize)
                 .then(response => response.json())
                 .then(json => {
-                    if(first) this.renderList(json.data, pagesize)
-                    else setTimeout(() => this.renderList(json.data, pagesize), 200)
+                    if(first) this.renderList(json.data)
+                    else setTimeout(() => this.renderList(json.data), 200)
                 })
         },
-        renderList(json, pagesize) {
-            if (json) {
-                if (json.length < pagesize) this.noMoreData()
-                json.forEach(data => {
-                    this.list.push({
-                        id: data.id,
-                        username: data.username,
-                        time: this.formatDate(data.addtime),
-                        status: this.status,
-                        intro: data.introduce,
-                        name: data.name,
-                        comments: data.commentcount,
-                        likes: data.likes,
-                        avatar: data.avatar
-                    })
+        renderList(json) {
+            if (json.length < this.pagesize) this.noMoreData()
+            json.forEach(data => {
+                this.list.push({
+                    id: data.id,
+                    username: data.username,
+                    time: this.formatDate(data.addtime),
+                    status: data.status,
+                    intro: data.introduce,
+                    name: data.name,
+                    comments: data.commentcount,
+                    likes: data.likes,
+                    avatar: data.avatar
                 })
-            } else {
-                this.noMoreData()
+            })
+        },
+        onScroll() {
+            // overall scroll height
+            let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
+            // current length between the top of the page and the scroll bar
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+            // current height of the scroll bar
+            let clientHeight = document.documentElement.clientHeight || document.body.clientHeight
+            if (scrollTop + clientHeight === scrollHeight) { // scrolled to the bottom
+                // load the next page
+                this.page++
+                this.getList(0 ,false)
             }
         },
         noMoreData() {
-            this.footer = 'The end.'
-            // remove the loading gif
-            document.getElementsByClassName('footer')[0].removeChild(document.getElementById('rotate'))
+            this.footer = '没有更多数据.'
+            document.getElementById('rotate').style.display = 'none'
         },
         formatDate(time) {
             const date = new Date(time * 1000)
@@ -110,7 +119,7 @@ new Vue({
     },
     created() {
         this.getCount()
-        this.getList(0, 10, true)
+        this.getList(0, true)
         new Promise((resolve) => {
             resolve()
         }).then(() => this.getClassify())
@@ -118,5 +127,6 @@ new Vue({
         //    console.log(document.getElementsByTagName('h3')[0])
         //    document.getElementsByTagName('h3')[0].removeEventListener('click', this.hideModal())
         //})
+        window.addEventListener('scroll', this.onScroll);
     },
 })

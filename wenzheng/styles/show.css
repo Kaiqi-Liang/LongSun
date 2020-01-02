@@ -7,6 +7,18 @@ a {
     color: black;
 }
 
+p {
+    margin: 0;
+}
+
+h2 {
+    font-weight: normal;
+}
+
+div {
+    box-sizing: border-box;
+}
+
 .header {
     text-align: center;
     background: white;
@@ -32,5 +44,160 @@ a {
 }
 
 .main {
-    padding-top: 50px;
+    padding: 50px 10px 0 10px;
 }
+
+.user {
+    overflow: auto;
+    padding: 10px 0;
+}
+
+.avatar {
+    float: left;
+    width: 72px;
+    border-radius: 50%;
+}
+
+.macro {
+    padding: 15px 10px;
+    float: left;
+}
+
+.type {
+    float: right;
+    line-height: 76px;
+}
+
+.grey {
+    color: #888;
+    font-size: 0.7em;
+    padding: 5px 0;
+}
+
+.intro {
+    padding-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.reply {
+    border: solid 1px #ccc;
+    padding: 10px 0 10px 10px;
+    border-radius: 10px;
+}
+
+.top {
+    overflow: auto;
+    padding-bottom: 10px;
+}
+
+.top p {
+    float: left;
+    color: #888;
+}
+
+.top span {
+    float: right;
+    color: white;
+    background-color: #006bff;
+    padding: 3px 10px;
+    border-radius: 25px 0 0 25px;
+}
+
+#separator {
+    border: solid #ddd 5px;
+    margin-bottom: 5px;
+}
+
+.bottom {
+    padding-bottom: 50px;
+}
+
+.comments {
+    padding: 0 5px 5px 5px;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #eee;
+}
+
+.comments div {
+    margin: 5px 8px 5px 5px;
+    width: 3px;
+    height: 25px;
+    background-color: #006bff;
+}
+
+.footer {
+    border-top: solid 1px #ccc;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+}
+
+.comment {
+    float: left;
+    border: solid 1px #ccc;
+    border-radius: 30px;
+    margin: 5px;
+    padding: 5px 20%;
+    width: 60%;
+    display: flex;
+    text-align: center;
+}
+
+.comment div {
+    width: 30%;
+}
+
+.comment img {
+    width: 22px;
+    height: 22px;
+}
+
+.comment p {
+    width: 70%;
+}
+
+.icons {
+    float: right;
+    width: 35%;
+    display: flex;
+    padding: 10px;
+}
+
+.icons div {
+    width: 35%;
+    text-align: center;
+}
+
+.icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.list {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.end {
+    color: #888;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.end img {
+    width: 30px;
+    height: 30px;
+}
+
+.end p {
+    line-height: 40px;
+    padding-left: 10px;
+}
+

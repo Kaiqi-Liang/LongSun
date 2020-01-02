@@ -17,21 +17,71 @@
         </div>
 
         <div class="main">
+            <h2>{{ title }}</h2>
             <div class="user">
-                <div class="avatar">
-                    <img src="images/avatar.png">
-                </div>
+                <img class="avatar" :src="avatar">
                 <div class="macro">
-                    <p style="line-height: 21px;">{{ username }}</p>
-                    <p class="time">{{ addtime }}</p>
+                    <p>{{ username }}</p>
+                    <p class="grey">{{ addtime }}</p>
                 </div>
-                <div class="icon">
-                    <span class="replied">{{ typename }}</span>
+                <div class="type">
+                    <span class="grey">{{ typename }}</span>
                 </div>
             </div>
 
-            <div>
-                <p style="margin: 0">{{ intro }}</p>
+            <p class="intro">{{ intro }}</p>
+
+            <div v-if="status == 2 && reply != ''" class="reply">
+                <div class="top">
+                    <p>{{ name }}</p>
+                    <span>官方回复</span>
+                </div>
+                <p>{{ reply }}</p>
+            </div>
+        </div>
+
+        <hr id="separator">
+
+        <div class="bottom">
+            <div class="comments">
+                <div></div>
+                <p>评论</p>
+            </div>
+
+            <ul class="list">
+                <li class="user" v-for="comment in comments" style="padding-bottom: 30px">
+                    <img class="avatar" :src="comment.avatar">
+                    <div class="macro">
+                        <p class="grey">{{ comment.nickname }}</p>
+                        <p>{{ comment.content }}</p>
+                    </div>
+                    <div class="type">
+                        <p class="grey">{{ comment.createtime }}</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="end">
+                <img id="rotate" src="images/rotate.gif">
+                <p>{{ footer }}</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="comment">
+                <div><img src="images/edit.png"></div>
+                <p>写评论</p>
+            </div>
+            <div class="icons">
+                <div>
+                    <img src="images/comment_detail.png">
+                </div>
+                <div>
+                    <img src="images/favourite.png">
+                </div>
+                <div>
+                    <img src="images/share_detail.png">
+                </div>
             </div>
         </div>
     </div>

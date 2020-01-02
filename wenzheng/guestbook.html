@@ -42,11 +42,11 @@
                     <h3>分类</h3>
                     <hr>
                     <ul>
-                        <li class="list" v-for="classify in classes" @click="changeClassify(classify.id, classify.name)">
+                        <li v-for="classify in classes" @click="changeClassify(classify.id, classify.name)">
                             <div style="overflow: auto;">
-                                <p name="classify">{{ classify.name }}</p>
-                                <img class="tick" v-if="classify.id == 0" src="images/green_tick.png">
-                                <img class="tick" v-else src="images/grey_tick.png">
+                                <p style="float: left;">{{ classify.name }}</p>
+                                <img class="tick" v-if="classify.id == 0" src="images/tick_green.png">
+                                <img class="tick" v-else src="images/tick_grey.png">
                             </div>
                             <hr>
                         </li>
@@ -57,14 +57,12 @@
 
             <div>
                 <ul>
-                    <li v-for="item in list" style="padding: 10px">
-                        <a :href="'show.html?id=' + (item.id)">
+                    <li v-for="item in list" class="list">
+                        <a :href="'show.html?id=' + (item.id) + '&&ym_id=' + (ym_id)">
                             <div class="user">
-                                <div class="avatar">
-                                    <img src="images/avatar.png">
-                                </div>
+                                <img class="avatar" :src="item.avatar">
                                 <div class="macro">
-                                    <p style="line-height: 21px;">{{ item.username }}</p>
+                                    <p>{{ item.username }}</p>
                                     <p class="time">{{ item.time }}</p>
                                 </div>
                                 <div class="icon">
@@ -73,16 +71,14 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <p style="margin: 0">{{ item.intro }}</p>
-                            </div>
+                            <p class="intro">{{ item.intro }}</p>
 
                             <div class="bottom">
                                 <p>{{ item.name }}</p>
                                 <div class="reacts">
                                     <div class="comments">
                                         <span>{{ item.comments }}</span>
-                                        <img src="images/comment.png">
+                                        <img src="images/comment_list.png">
                                     </div>
                                     <div class="likes">
                                         <span>{{ item.likes }}</span>
