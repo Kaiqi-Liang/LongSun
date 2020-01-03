@@ -3,6 +3,10 @@ body {
     background-color: #eee;
 }
 
+p {
+    margin: 0;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -35,4 +39,42 @@ a {
 .submit {
     position: absolute;
     right: 10px;
+}
+
+.form {
+    padding: 70px 8px 8px;
+    box-sizing: border-box;
+}
+
+input, select, textarea {
+    font-size: 1em;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+input, select {
+    height: 50px;
+}
+
+textarea {
+    height: 120px;
+}
+
+.upload {
+    color: #888;
+    padding-bottom: 5px;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+}
+
+.bottom img {
+    width: 5%;
+    padding-right: 5px;
 }

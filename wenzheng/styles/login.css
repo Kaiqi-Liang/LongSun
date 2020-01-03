@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    background-color: #eee;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.header {
+    overflow: hidden;
+    position: fixed;
+    background: white;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0 35px;
+}
+
+.back {
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 50px;
+    left: 10px;
+}
+
+.title {
+    font-size: 20px;
+    line-height: 50px;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.form {
+    padding-top: 50px;
+}
+
+input {
+    background-color: white;
+    box-sizing: border-box;
+    border: none;
+    padding: 15px;
+    width: 100%;
+}
+
+hr {
+    margin: 0;
+    border: solid 0.5px #aaa;
+}
+
+.forgot {
+    color: #888;
+    text-align: right;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons button {
+    padding: 10px;
+    border: none;
+}
+
+.login {
+    color: white;
+    background-color: red;
+    margin-right: 2.5%;
+    width: 40%;
+}
+
+.signup {
+    background-color: grey;
+    margin-left: 2.5%;
+    width: 40%;
+}

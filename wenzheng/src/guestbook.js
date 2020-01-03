@@ -35,10 +35,10 @@ new Vue({
                     })
                 })
 
-            const classify = document.getElementsByClassName('classify')[0]
+            const classify = document.querySelector('.classify')
             classify.addEventListener('click', () => {
                 // show the classify modal
-                document.getElementsByClassName('modal')[0].style.display = 'block'
+                document.querySelector('.modal').style.display = 'block'
             })
         },
         changeClassify(id, name) {
@@ -114,7 +114,7 @@ new Vue({
             return date.getFullYear() + '-' + (parseInt(date.getMonth()) + 1) + '-' + date.getDate()
         },
         hideModal() {
-            document.getElementsByClassName('modal')[0].style.display = 'none'
+            document.querySelector('.modal').style.display = 'none'
         }
     },
     created() {

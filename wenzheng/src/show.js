@@ -77,7 +77,7 @@ const app = new Vue({
         noMoreData() {
             this.footer = '没有更多数据.'
             // remove the loading gif
-            document.getElementsByClassName('end')[0].removeChild(document.getElementById('rotate'))
+            document.querySelector('.end').removeChild(document.getElementById('rotate'))
         },
         formatDate(time) {
             const date = new Date(time * 1000)

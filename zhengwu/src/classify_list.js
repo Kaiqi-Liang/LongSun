@@ -1,7 +1,6 @@
 const API_URL_1 = 'http://v.sogx.cn'
 const API_URL_2 = 'http://www.sogx.cn'
 const ym_id = location.href.split('?')[1].split('=')[1]
-console.log(ym_id)
 render(1)
 
 const icons = document.getElementsByClassName('icon')
@@ -9,13 +8,13 @@ for (let icon = 0; icon < icons.length; icon++) {
     icons[icon].addEventListener('click', () => {
         if (icons[icon].src.indexOf('active') == -1) { // the onclick icon is not active
             // activate the onclick icon
-            icons[icon].src = icons[icon].src.split('.')[0] + '_active.' + icons[icon].src.split('.')[1]
+            icons[icon].src = icons[icon].src.slice(0, icons[icon].src.lastIndexOf('.')) + '_active.png'
 
-            // deactivate every other icon
-            for (let i = 0; i < icons.length; i++) {
+            for (let i = 0; i < icons.length; i++) { // loop through every other icon
                 if (icon != i) {
-                    if (icons[i].src.indexOf('active') != -1) {
-                        icons[i].src = icons[i].src.slice(0, -11) + '.png'
+                    if (icons[i].src.indexOf('active') != -1) { // find the last active icon
+                        // deactivate it
+                        icons[i].src = icons[i].src.slice(0, icons[i].src.indexOf('_active')) + '.png'
                     }
                 }
             }
