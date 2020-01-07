@@ -40,14 +40,59 @@ new Vue({
             classify.addEventListener('click', () => {
                 // show the classify modal
                 document.querySelector('.modal').style.display = 'block'
+                setTimeout(() => window.addEventListener('click', this.onHide), 0)
             })
+        },
+        hideModal() {
+            document.querySelector('.modal').style.display = 'none'
+            window.removeEventListener('click', this.onHide)
+        },
+        onHide(event) {
+            let classes = false
+            document.querySelectorAll('.classes').forEach(classify => {
+                if (classify == event.target) {
+                    setTimeout(() => {
+                        this.hideModal()
+                    }, 100)
+                    classes = true
+                }
+            })
+
+            document.querySelectorAll('.tick').forEach(classify => {
+                if (classify == event.target) {
+                    setTimeout(() => {
+                        this.hideModal()
+                    }, 100)
+                    classes = true
+                }
+            })
+
+            document.querySelectorAll('.float').forEach(classify => {
+                if (classify == event.target) {
+                    setTimeout(() => {
+                        this.hideModal()
+                    }, 100)
+                    classes = true
+                }
+            })
+
+            if (event.target != document.querySelector('.content') &&
+                event.target != document.querySelector('h3') &&
+                //event.target != document.querySelector('hr') &&
+                event.target != document.querySelector('ul') &&
+                !classes) this.hideModal()
         },
         changeClassify(id, name) {
             // change the classify name
             document.getElementById('classify').innerText = name
 
+            const classes = document.getElementsByClassName('classes')
+            classes[id].style = 'background-color: #eee;'
+            setTimeout(() => {
+                classes[id].style = 'background-color: white;'
+            }, 100)
             const ticks = document.getElementsByClassName('tick')
-            for (let tick  = 0; tick < ticks.length; tick++) {
+            for (let tick = 0; tick < ticks.length; tick++) {
                 if (ticks[tick].src.indexOf('tick_grey.png') != -1) { // the tick is grey
                     if (tick == id) { // if the tick is clicked
                         ticks[tick].src = 'images/tick_green.png'
@@ -58,7 +103,7 @@ new Vue({
                         this.footer = '加载中...'
                         document.getElementById('rotate').style.display = 'block'
                         // reset page to the first page
-                         this.page = 1
+                        this.page = 1
                         // reload list
                         this.getList(id, true)
                     }
@@ -73,7 +118,7 @@ new Vue({
             fetch(API_URL + '/api/guestbook/list?ym_id=' + this.ym_id + '&&typeid=' + type_id + '&&page=' + this.page + '&&pagesize=' + this.pagesize)
                 .then(response => response.json())
                 .then(json => {
-                    if(first) this.renderList(json.data)
+                    if (first) this.renderList(json.data)
                     else setTimeout(() => this.renderList(json.data), 200)
                 })
         },
@@ -103,7 +148,7 @@ new Vue({
             if (scrollTop + clientHeight === scrollHeight) { // scrolled to the bottom
                 // load the next page
                 this.page++
-                this.getList(0 ,false)
+                this.getList(0, false)
             }
         },
         noMoreData() {
@@ -113,9 +158,6 @@ new Vue({
         formatDate(time) {
             const date = new Date(time * 1000)
             return date.getFullYear() + '-' + (parseInt(date.getMonth()) + 1) + '-' + date.getDate()
-        },
-        hideModal() {
-            document.querySelector('.modal').style.display = 'none'
         }
     },
     created() {
@@ -124,10 +166,6 @@ new Vue({
         new Promise((resolve) => {
             resolve()
         }).then(() => this.getClassify())
-        //.then(() => {
-        //    console.log(document.getElementsByTagName('h3')[0])
-        //    document.getElementsByTagName('h3')[0].removeEventListener('click', this.hideModal())
-        //})
         window.addEventListener('scroll', this.onScroll);
     },
 })

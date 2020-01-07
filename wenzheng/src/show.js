@@ -62,6 +62,56 @@ new Vue({
                 }
             }
         },
+        writeComment() {
+            document.querySelector('.modal').style.display = 'block'
+            document.querySelector('.back').href = 'javascript: void(0)'
+
+            // 2 areas that will hide the comment writing section
+            document.querySelector('.back').addEventListener('click', () => { // the back icon
+                this.hideComment()
+            })
+            setTimeout(() => { // the grey area
+                window.addEventListener('click', this.onHide)
+            }, 0)
+        },
+        hideComment() {
+            document.querySelector('.modal').style.display = 'none'
+            setTimeout(() => document.querySelector('.back').href = 'javascript: history.go(-1)', 0)
+            window.removeEventListener('click', this.onHide)
+        },
+        onHide(event) {
+            if (event.target != document.querySelector('.content') &&
+                event.target != document.querySelector('.box') &&
+                event.target != document.querySelector('.write') &&
+                event.target != document.querySelector('.send') &&
+                event.target != document.querySelector('button') &&
+                event.target != document.querySelector('.header') &&
+                event.target != document.querySelector('.title'))
+                this.hideComment()
+        },
+        sendComment() {
+            const payload = new FormData(document.querySelector('form'))
+            payload.append('rel_id', this.id)
+            payload.append('ym_id', this.ym_id)
+            if (payload.get('content')) {
+                axios.post(API_URL + '/api/guestbook/addComment', payload)
+                    .then(response => {
+                        if (response.data.msg == '评论成功，等待管理员审核') {
+                            layer.msg('评论成功')
+                            this.hideComment()
+                        }
+                        else if (response.data.msg == '未登录') {
+                            layer.msg(response.data.msg)
+                            setTimeout(() => window.location.href = 'login.html?appid=' + this.ym_id, 300)
+                        } else {
+                            layer.msg('评论失败')
+                            setTimeout(() => location.reload(), 300)
+                        }
+                    })
+            } else {
+                layer.msg('请输入评论内容')
+            }
+        },
         onScroll() {
             // overall scroll height
             let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight

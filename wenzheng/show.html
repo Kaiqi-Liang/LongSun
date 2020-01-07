@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="styles/show.css" type="text/css">
+    <link rel="stylesheet" href="styles/basics.css" type="text/css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,7 +11,7 @@
 
 
 <body>
-    <div id="root">
+    <div id="root" v-cloak>
         <div class="header">
             <a class="back" href="javascript:history.go(-1)"><</a>
             <span class="title">问政</span>
@@ -68,7 +69,7 @@
         </div>
 
         <div class="footer">
-            <div class="comment">
+            <div class="comment" @click="writeComment">
                 <div><img src="images/edit.png"></div>
                 <p>写评论</p>
             </div>
@@ -84,9 +85,25 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal">
+            <div class="content">
+                <form>
+                    <div class="box">
+                        <input name="content" placeholder="写点什么吧" class="write">
+                    </div>
+                </form>
+                <div class="send">
+                    <button @click="sendComment">发送</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="https://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+    <script src="src/layer/layer.js"></script>
     <script src="src/show.js"></script>
 </body>
 

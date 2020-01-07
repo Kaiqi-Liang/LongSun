@@ -1,5 +1,4 @@
 body {
-    margin: 0;
     background-color: #eee;
 }
 
@@ -7,9 +6,8 @@ p {
     margin: 0;
 }
 
-a {
-    text-decoration: none;
-    color: black;
+textarea {
+    resize: none;
 }
 
 .header {
@@ -47,7 +45,6 @@ a {
 }
 
 .title, select, textarea {
-    font-size: 1em;
     margin-bottom: 15px;
     padding: 10px;
     width: 100%;
@@ -58,9 +55,11 @@ a {
 
 .title, select {
     height: 50px;
+    font-size: 1em;
 }
 
 textarea {
+    font-size: 1.2em;
     height: 120px;
 }
 

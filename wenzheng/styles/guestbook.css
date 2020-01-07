@@ -1,5 +1,4 @@
 body {
-    margin: 0;
     background-color: #eee;
 }
 
@@ -15,12 +14,7 @@ p {
 
 hr {
     margin: 5px 0;
-    border: solid 1px #eee;
-}
-
-a {
-    text-decoration: none;
-    color: black;
+    border: solid 0.5px #eee;
 }
 
 .headline {
@@ -111,7 +105,16 @@ a {
     overflow: auto;
     padding: 0 20px;
     margin: 50% auto;
-    width: 50%;
+    width: 60%;
+}
+
+.classes {
+    overflow: auto;
+    padding: 5px 0;
+}
+
+.float {
+    float: left;
 }
 
 .tick {

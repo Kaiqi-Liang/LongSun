@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="styles/guestbook.css" type="text/css">
+    <link rel="stylesheet" href="styles/basics.css" type="text/css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,7 +11,7 @@
 </head>
 
 <body>
-    <div id="root">
+    <div id="root" v-cloak>
         <img src="images/headline.png" class="headline">
         <div class="header">
             <div class="left">
@@ -37,14 +38,14 @@
                 </div>
             </div>
 
-            <div class="modal" @click="hideModal">
+            <div class="modal">
                 <div class="content">
                     <h3>分类</h3>
                     <hr>
                     <ul>
                         <li v-for="classify in classes" @click="changeClassify(classify.id, classify.name)">
-                            <div style="overflow: auto;">
-                                <p style="float: left;">{{ classify.name }}</p>
+                            <div class="classes">
+                                <p class="float">{{ classify.name }}</p>
                                 <img class="tick" v-if="classify.id == 0" src="images/tick_green.png">
                                 <img class="tick" v-else src="images/tick_grey.png">
                             </div>

@@ -1,11 +1,5 @@
 body {
-    margin: 0;
     background-color: #eee;
-}
-
-a {
-    text-decoration: none;
-    color: black;
 }
 
 .header {
@@ -47,9 +41,15 @@ input {
     width: 100%;
 }
 
-hr {
+#line {
+    margin: 0;
+    border: solid 0.5px #ddd;
+}
+
+#separator {
     margin: 0;
     border: solid 0.5px #aaa;
+    margin-top: 20px;
 }
 
 .forgot {
@@ -65,17 +65,18 @@ hr {
 .buttons button {
     padding: 10px;
     border: none;
+    border-radius: 3px;
 }
 
 .login {
     color: white;
-    background-color: red;
+    background-color: #ff0000ba;
     margin-right: 2.5%;
     width: 40%;
 }
 
 .signup {
-    background-color: grey;
+    background-color: #ccc;
     margin-left: 2.5%;
     width: 40%;
 }
