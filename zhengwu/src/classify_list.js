@@ -12,7 +12,7 @@ for (let icon = 0; icon < icons.length; icon++) {
 
             for (let i = 0; i < icons.length; i++) { // loop through every other icon
                 if (icon != i) {
-                    if (icons[i].src.indexOf('active') != -1) { // find the last active icon
+                    if (icons[i].src.indexOf('active') >= 0) { // find the last active icon
                         // deactivate it
                         icons[i].src = icons[i].src.slice(0, icons[i].src.indexOf('_active')) + '.png'
                     }

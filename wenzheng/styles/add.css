@@ -23,7 +23,7 @@ a {
     align-items: center;
 }
 
-.back {
+.header a {
     position: absolute;
     left: 10px;
 
@@ -31,12 +31,12 @@ a {
     font-size: 20px;
 }
 
-.title {
+.header span {
     font-size: 20px;
     width: 100%;
 }
 
-.submit {
+.header div {
     position: absolute;
     right: 10px;
 }
@@ -46,7 +46,7 @@ a {
     box-sizing: border-box;
 }
 
-input, select, textarea {
+.title, select, textarea {
     font-size: 1em;
     margin-bottom: 15px;
     padding: 10px;
@@ -56,7 +56,7 @@ input, select, textarea {
     box-sizing: border-box;
 }
 
-input, select {
+.title, select {
     height: 50px;
 }
 
@@ -64,9 +64,48 @@ textarea {
     height: 120px;
 }
 
-.upload {
+.grey {
     color: #888;
     padding-bottom: 5px;
+}
+
+.upload {
+    margin-bottom: 15px;
+    width: 100%;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.add {
+    position: relative;
+    background: url(../images/upload.png) center;
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin: 5px;
+}
+
+.add input {
+    position: absolute;
+    display: block;
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.image {
+    float: left;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    text-align: center;
+    margin: 5px;
+}
+
+.preview {
+    max-height: 50px;
+    max-width: 50px;
 }
 
 .bottom {

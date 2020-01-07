@@ -12,36 +12,54 @@
 <body>
     <div id="root">
         <div class="header">
-            <a class="back" href="javascript:history.go(-1)"><</a>
-            <span class="title">我要提问</span>
-            <div class="submit" @click="submit">提交</div>
+            <a href="javascript:history.go(-1)"><</a>
+            <span>我要提问</span>
+            <div @click="submit">提交</div>
         </div>
 
         <div class="form">
-            <formm method="post">
-                <input placeholder="提问标题">
-                <select>
+            <form id="form">
+                <input name="title" placeholder="提问标题" class="title">
+
+                <select name="typeid">
                     <option value="0">分类</option>
                     <option v-for="type in typeList" :value="type.id">{{ type.name }}</option>
                 </select>
-                <select>
+
+                <select name="adminid">
                     <option value="0">问政部门</option>
                     <option v-for="branch in branchList" :value="branch.id">{{ branch.name }}</option>
                 </select>
-                <textarea placeholder="提问内容"></textarea>
-                <p class="upload">上传图片</p>
-                <input type="file" accept="image/*">
-                <p class="upload">上传视频</p>
-                <input type="file" accept="video/*">
+
+                <textarea name="introduce" placeholder="提问内容"></textarea>
+
+                <p class="grey">上传图片</p>
+                <div class="upload">
+                    <div id="images"></div>
+                    <div class="add">
+                        <input name="images" type="file" accept="image/*" @change="uploadImage">
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+
+                <p class="grey">上传视频</p>
+                <div class="upload">
+                    <div class="add">
+                        <input name="video" type="file" accept="video/*" @change="uploadVideo">
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+
                 <div class="bottom">
                     <img src="images/location.png">
                     <p>当前位置</p>
                 </div>
-            </formm>
+            </form>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
     <script src="https://www.jq22.com/jquery/jquery-2.1.1.js"></script>
     <script src="src/layer/layer.js"></script>
     <script src="src/add.js"></script>
