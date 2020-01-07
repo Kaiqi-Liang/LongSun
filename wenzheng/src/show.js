@@ -1,4 +1,5 @@
-const app = new Vue({
+const API_URL = 'http://www.sogx.cn'
+new Vue({
     el: '#root',
     data: {
         id: location.href.split('?')[1].split('&&')[0].split('=')[1],
@@ -19,7 +20,7 @@ const app = new Vue({
         footer: '加载中...'
     }, methods: {
         getDetail() {
-            fetch('http://www.sogx.cn/api/guestbook/show?ym_id=' + this.ym_id + '&&id=' + this.id)
+            fetch(API_URL + '/api/guestbook/show?ym_id=' + this.ym_id + '&&id=' + this.id)
                 .then(response => response.json())
                 .then(json => {
                     this.title = json.data.title
@@ -35,7 +36,7 @@ const app = new Vue({
                 })
         },
         getComments(first) {
-            fetch('http://www.sogx.cn/api/guestbook/commentList?ym_id=' + this.ym_id + '&&rel_id=' + this.id + '&&page=' + this.page + '&&pagesize=' + this.pagesize)
+            fetch(API_URL + '/api/guestbook/commentList?ym_id=' + this.ym_id + '&&rel_id=' + this.id + '&&page=' + this.page + '&&pagesize=' + this.pagesize)
                 .then(response => response.json())
                 .then(json => {
                     if(first) this.renderComments(json.data)

@@ -22,12 +22,12 @@
                 <input name="title" placeholder="提问标题" class="title">
 
                 <select name="typeid">
-                    <option value="0">分类</option>
+                    <option value="0">选择分类</option>
                     <option v-for="type in typeList" :value="type.id">{{ type.name }}</option>
                 </select>
 
-                <select name="adminid">
-                    <option value="0">问政部门</option>
+                <select name="adminId">
+                    <option value="0">选择部门</option>
                     <option v-for="branch in branchList" :value="branch.id">{{ branch.name }}</option>
                 </select>
 

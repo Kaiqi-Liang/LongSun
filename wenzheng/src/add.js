@@ -1,4 +1,5 @@
-const app = new Vue({
+const API_URL = 'http://www.sogx.cn'
+new Vue({
     el: '#root',
     data: {
         ym_id: location.href.split('?')[1].split('=')[1],
@@ -9,7 +10,7 @@ const app = new Vue({
     },
     methods: {
         getTypeList() {
-            fetch('http://www.sogx.cn/api/guestbook/typeList?ym_id=' + this.ym_id)
+            fetch(API_URL + '/api/guestbook/typeList?ym_id=' + this.ym_id)
                 .then(response => response.json())
                 .then(json => {
                     json.data.forEach(data => {
@@ -21,7 +22,7 @@ const app = new Vue({
                 })
         },
         getBranchList() {
-            fetch('http://www.sogx.cn/api/guestbook/branchList?ym_id=' + this.ym_id)
+            fetch(API_URL + '/api/guestbook/branchList?ym_id=' + this.ym_id)
                 .then(response => response.json())
                 .then(json => {
                     json.data.forEach(data => {
@@ -50,30 +51,30 @@ const app = new Vue({
                 if (this.video) payload.set('video', this.video)
                 // remove the video field
                 else payload.delete('video')
-                axios.post('http://www.sogx.cn/api/guestbook/add', payload)
+                axios.post(API_URL + '/api/guestbook/add', payload)
                     .then(response => {
-                        if (response.data.msg == '未登录') {
-                            layer.msg('爆料失败')
+                        if (response.data.msg == '未登录') { // go to login page
+                            layer.msg(response.data.msg)
                             setTimeout(() => window.location.href = 'login.html?appid=' + this.ym_id, 300)
                         } else if (response.data.msg == '问政内容不能为空') {
                             layer.msg('请输入内容')
                         } else if (response.data.msg == '标题必须是3-50个字符') {
-                            layer.msg(json.msg)
-                        } else if (response.data.msg == '添加成功，等待管理员审核') {
+                            layer.msg(response.data.msg)
+                        } else if (response.data.msg == '添加成功，等待管理员审核') { // go back to home page
                             layer.msg('问政成功')
-                        } else {
+                            setTimeout(() => window.location.href = 'guestbook.html?ym_id=' + this.ym_id, 300)
+                        } else { // reload the page
                             layer.msg('爆料失败')
                             setTimeout(() => location.reload(), 300)
                         }
                     })
-
             }
         },
         uploadImage() {
             const data = new FormData()
             data.append('appid', this.ym_id)
             data.append('file', new FormData(document.getElementById('form')).get('images'))
-            axios.post('http://www.sogx.cn/api/common/uploadImage', data)
+            axios.post(API_URL + '/api/common/uploadImage', data)
                 .then(response => {
                     layer.msg(response.data.msg)
                     if (response.data.msg == '上传成功') { // image is uploaded successfully
@@ -113,7 +114,7 @@ const app = new Vue({
             const data = new FormData()
             data.append('appid', this.ym_id)
             data.append('file', new FormData(document.getElementById('form')).get('video'))
-            axios.post('http://www.sogx.cn/api/common/uploadVideo', data)
+            axios.post(API_URL + '/api/common/uploadVideo', data)
                 .then(response => {
                     layer.msg(response.data.msg)
                     if (response.data.msg == '上传成功') { // video is uploaded successfully

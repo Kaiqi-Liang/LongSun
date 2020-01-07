@@ -1,3 +1,4 @@
+const API_URL = 'http://www.sogx.cn'
 const id = location.href.split('?')[1].split('=')[1]
 document.querySelector('.login').addEventListener('click', (event) => {
     event.preventDefault()
@@ -12,12 +13,12 @@ document.querySelector('.login').addEventListener('click', (event) => {
  
         const data = new FormData(document.getElementById('form'))
         data.append('appid', id)
-        axios.post('http://www.sogx.cn/api/user/login', data)
+        axios.post(API_URL + '/api/user/login', data)
             .then(response => {
                 layer.msg(response.data.msg, { offset: 'b' })
                 setTimeout(() => {
                     modal.style.display = 'none'
-                    if (response.data.msg == '登录成功') window.location.href = 'guestbook.html?ym_id=' + id
+                    if (response.data.msg == '登录成功') history.go(-1)
                 }, 500)
             })
     }

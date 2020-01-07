@@ -1,3 +1,4 @@
+const API_URL = 'http://www.sogx.cn'
 new Vue({
     el: '#root',
     data: {
@@ -12,7 +13,7 @@ new Vue({
     },
     methods: {
         getCount() {
-            fetch('http://www.sogx.cn/api/guestbook/getCount?ym_id=' + this.ym_id)
+            fetch(API_URL + '/api/guestbook/getCount?ym_id=' + this.ym_id)
                 .then(response => response.json())
                 .then(json => {
                     this.bmcount = json.data.bmcount
@@ -20,7 +21,7 @@ new Vue({
                 })
         },
         getClassify() {
-            fetch('http://www.sogx.cn/api/guestbook/typeList?ym_id=' + this.ym_id)
+            fetch(API_URL + '/api/guestbook/typeList?ym_id=' + this.ym_id)
                 .then(response => response.json())
                 .then(json => {
                     this.classes.push({
@@ -69,7 +70,7 @@ new Vue({
             }
         },
         getList(type_id, first) {
-            fetch('http://www.sogx.cn/api/guestbook/list?ym_id=' + this.ym_id + '&&typeid=' + type_id + '&&page=' + this.page + '&&pagesize=' + this.pagesize)
+            fetch(API_URL + '/api/guestbook/list?ym_id=' + this.ym_id + '&&typeid=' + type_id + '&&page=' + this.page + '&&pagesize=' + this.pagesize)
                 .then(response => response.json())
                 .then(json => {
                     if(first) this.renderList(json.data)
