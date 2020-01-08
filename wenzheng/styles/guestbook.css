@@ -135,12 +135,12 @@ hr {
 
 .avatar {
     float: left;
-    width: 72px;
+    width: 60px;
     border-radius: 50%;
 }
 
 .macro {
-    padding: 15px 10px;
+    padding: 10px;
     float: left;
 }
 
@@ -151,7 +151,7 @@ hr {
 }
 
 .not-yet-replied {
-    background-color: green;
+    background-color: #00a000;
     padding: 0 10px;
     border-radius: 25px;
 }
@@ -230,8 +230,8 @@ hr {
 }
 
 .ask {
-    right: 10px;
-    bottom: 10px;
+    right: 15px;
+    bottom: 40px;
     position: fixed;
 }
 

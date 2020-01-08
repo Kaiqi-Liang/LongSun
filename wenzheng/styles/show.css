@@ -41,12 +41,12 @@ div {
 
 .avatar {
     float: left;
-    width: 72px;
+    width: 60px;
     border-radius: 50%;
 }
 
 .macro {
-    padding: 15px 10px;
+    padding: 10px;
     float: left;
 }
 

@@ -20,7 +20,7 @@
         <div class="main">
             <h2>{{ title }}</h2>
             <div class="user">
-                <img class="avatar" :src="avatar">
+                <img class="avatar" :src="avatar" onerror="javascript:this.src='images/avatar.png'">
                 <div class="macro">
                     <p>{{ username }}</p>
                     <p class="grey">{{ addtime }}</p>
@@ -51,7 +51,7 @@
 
             <ul class="list">
                 <li class="user" v-for="comment in comments" style="padding-bottom: 30px">
-                    <img class="avatar" :src="comment.avatar">
+                    <img class="avatar" :src="comment.avatar" onerror="javascript:this.src='images/avatar.png'">
                     <div class="macro">
                         <p class="grey">{{ comment.nickname }}</p>
                         <p>{{ comment.content }}</p>
