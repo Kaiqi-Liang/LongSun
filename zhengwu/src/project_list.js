@@ -3,10 +3,10 @@ new Vue({
     el: '#root',
     data: {
         // href = index.html?id=int&&ym_id=48&&name=str&&type=(icon|list)
-        id: window.location.href.split("?")[1].split('&&')[0].split('=')[1],
-        ym_id: window.location.href.split("?")[1].split('&&')[1].split('=')[1],
+        id: location.href.split("?")[1].split('&&')[0].split('=')[1],
+        ym_id: location.href.split("?")[1].split('&&')[1].split('=')[1],
         name: decodeURI(window.location.href.split("?")[1].split('&&')[2].split('=')[1]),
-        type: decodeURI(window.location.href.split("?")[1].split('&&')[3].split('=')[1]),
+        type: location.href.split("?")[1].split('&&')[3].split('=')[1],
         page: 1,
         projectList: [],
         footer: 'Loading...'
@@ -15,7 +15,7 @@ new Vue({
         getData(first) {
             if (this.type === 'icon') {
                 path = API_URL + '/api/zwfw/project_list_new/ym_id/' + this.ym_id + '/classifyType/' + this.id + '/page/' + this.page 
-            } else{
+            } else {
                 path = API_URL + '/api/zwfw/project_list_new/ym_id/' + this.ym_id + '/dept_id/' + this.id + '/page/' + this.page 
             }
 
@@ -70,7 +70,4 @@ new Vue({
         this.getData(true);
         window.addEventListener('scroll', this.onScroll);
     },
-    destroyed() {
-        window.removeEventListener('scroll', this.onScroll);
-    }
 })
