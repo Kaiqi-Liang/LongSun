@@ -209,7 +209,7 @@ div {
 }
 
 .box {
-    padding: 8px;
+    padding: 5px;
 }
 
 .write {
@@ -221,8 +221,14 @@ div {
     width: 100%;
 }
 
+form {
+    float: left;
+    width: calc(100% - 77px);
+}
+
 .send {
     float: right;
+    line-height: 50px;
 }
 
 .send button {
