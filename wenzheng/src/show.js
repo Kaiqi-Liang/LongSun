@@ -144,18 +144,24 @@ new Vue({
             const hours = parseInt(now.getHours()) - parseInt(date.getHours());
             const minutes = parseInt(now.getMinutes()) - parseInt(date.getMinutes());
             const seconds = parseInt(now.getSeconds()) - parseInt(date.getSeconds());
-            if (years > 0) {
-                time = years + '年前';
-            } else if (years === 0 && months > 0) {
+            if (years === 1) {
+                time = '去年';
+            } else if (years === 0 && months > 1) {
                 time = months + '月前';
-            } else if (months === 0 && days > 0) {
+            } else if (months === 1) {
+                time = '上个月';
+            } else if (months === 0 && days > 1) {
                 time = days + '天前';
+            } else if (days === 1) {
+                time = '昨天';
             } else if (days === 0 && hours > 0) {
                 time = hours + '小时前';
             } else if (hours === 0 && minutes > 0) {
                 time = minutes + '分钟前';
-            } else {
+            } else if (minutes === 0 && seconds > 0) {
                 time = seconds + '秒前';
+            } else {
+                time = years + '年前';
             }
             return time
         }
