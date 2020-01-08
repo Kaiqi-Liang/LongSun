@@ -1,4 +1,4 @@
-const API_URL = 'http://www.sogx.cn'
+const API_URL = 'http://test.sogx.cn'
 new Vue({
     el: '#root',
     data: {
@@ -36,8 +36,13 @@ new Vue({
                     })
                 })
 
-            const classify = document.querySelector('.classify')
-            classify.addEventListener('click', () => {
+            document.getElementById('arrow').addEventListener('click', () => {
+                // show the classify modal
+                document.querySelector('.modal').style.display = 'block'
+                setTimeout(() => window.addEventListener('click', this.onHide), 0)
+            })
+
+            document.getElementById('classify').addEventListener('click', () => {
                 // show the classify modal
                 document.querySelector('.modal').style.display = 'block'
                 setTimeout(() => window.addEventListener('click', this.onHide), 0)
@@ -49,38 +54,58 @@ new Vue({
         },
         onHide(event) {
             let classes = false
-            document.querySelectorAll('.classes').forEach(classify => {
+            document.querySelectorAll('.classes').forEach(classify => { // click anywhere within the li tag
                 if (classify == event.target) {
                     setTimeout(() => {
                         this.hideModal()
-                    }, 100)
+                    }, 200)
                     classes = true
                 }
             })
 
-            document.querySelectorAll('.tick').forEach(classify => {
+            document.querySelectorAll('.tick').forEach(classify => { // click any of the tick icons
                 if (classify == event.target) {
                     setTimeout(() => {
                         this.hideModal()
-                    }, 100)
+                    }, 200)
                     classes = true
                 }
             })
 
-            document.querySelectorAll('.float').forEach(classify => {
+            document.querySelectorAll('.float').forEach(classify => { // click any of the p tags in li tag
                 if (classify == event.target) {
                     setTimeout(() => {
                         this.hideModal()
-                    }, 100)
+                    }, 200)
+                    classes = true
+                }
+            })
+
+            document.querySelectorAll('hr').forEach(classify => { // click anywhere between the li tags
+                if (classify == event.target) {
+                    setTimeout(() => {
+                        this.hideModal()
+                    }, 200)
                     classes = true
                 }
             })
 
             if (event.target != document.querySelector('.content') &&
                 event.target != document.querySelector('h3') &&
-                //event.target != document.querySelector('hr') &&
-                event.target != document.querySelector('ul') &&
-                !classes) this.hideModal()
+                event.target != document.querySelector('.cancel') &&
+                !classes) { // click anywhere outside of the modal content, the title in the content and the cancel button
+                    // hide the modal immediately
+                    this.hideModal()
+                }
+        },
+        cancel() {
+            const cancel = document.querySelector('.cancel')
+            cancel.style = 'background-color: #eee;'
+            setTimeout(() => {
+                this.hideModal()
+                cancel.style = 'background-color: white;'
+            }, 100)
+
         },
         changeClassify(id, name) {
             // change the classify name
@@ -90,7 +115,7 @@ new Vue({
             classes[id].style = 'background-color: #eee;'
             setTimeout(() => {
                 classes[id].style = 'background-color: white;'
-            }, 100)
+            }, 150)
             const ticks = document.getElementsByClassName('tick')
             for (let tick = 0; tick < ticks.length; tick++) {
                 if (ticks[tick].src.indexOf('tick_grey.png') != -1) { // the tick is grey

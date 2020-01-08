@@ -1,4 +1,4 @@
-const API_URL = 'http://www.sogx.cn'
+const API_URL = 'http://test.sogx.cn'
 new Vue({
     el: '#root',
     data: {
