@@ -72,11 +72,12 @@ hr {
 
 .condition {
     float: left;
-    margin: 0;
+    width: 50%;
 }
 
 .classify {
     float: right;
+    width: 50%;
 }
 
 .classify p {

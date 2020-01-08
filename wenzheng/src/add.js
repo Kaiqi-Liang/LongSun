@@ -40,7 +40,7 @@ new Vue({
                 layer.msg('请输入标题');
             } else if (payload.get('typeid') == 0) {
                 layer.msg('请选择分类');
-            } else if (payload.get('adminid') == 0) {
+            } else if (payload.get('adminId') == 0) {
                 layer.msg('请选择部门');
             } else {
                 // there are images uploaded

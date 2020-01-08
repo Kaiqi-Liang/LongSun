@@ -98,6 +98,7 @@ new Vue({
                     .then(response => {
                         if (response.data.msg == '评论成功，等待管理员审核') {
                             layer.msg('评论成功')
+                            document.getElementsByName('content')[0].value = ''
                             this.hideComment()
                         }
                         else if (response.data.msg == '未登录') {
@@ -105,7 +106,8 @@ new Vue({
                             setTimeout(() => window.location.href = 'login.html?appid=' + this.ym_id, 300)
                         } else {
                             layer.msg('评论失败')
-                            setTimeout(() => location.reload(), 300)
+                            document.getElementsByName('content')[0].value = ''
+                            this.hideComment()
                         }
                     })
             } else {
