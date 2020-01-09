@@ -1,12 +1,15 @@
 const API_URL = 'https://www.sogx.cn'
-new Vue({
+const app = new Vue({
     el: '#root',
     data: {
         ym_id: location.href.split('?')[1].split('=')[1],
         typeList: [],
         branchList: [],
         images: '',
-        video: ''
+        video: '',
+        lng: '',
+        lat: '',
+        locate: ''
     },
     methods: {
         getTypeList() {
@@ -35,6 +38,7 @@ new Vue({
         },
         submit() {
             const payload = new FormData(document.getElementById('form'))
+            payload.append('locate', this.locate)
             payload.append('ym_id', this.ym_id)
             if (!payload.get('title')) {
                 layer.msg('请输入标题');
@@ -55,7 +59,7 @@ new Vue({
                     .then(response => {
                         if (response.data.msg == '未登录') { // go to login page
                             layer.msg(response.data.msg)
-                            setTimeout(() => window.location.href = 'login.html?appid=' + this.ym_id, 300)
+                            //setTimeout(() => window.location.href = 'login.html?appid=' + this.ym_id, 300)
                         } else if (response.data.msg == '问政内容不能为空') {
                             layer.msg('请输入内容')
                         } else if (response.data.msg == '标题必须是3-50个字符') {
@@ -68,6 +72,10 @@ new Vue({
                             setTimeout(() => location.reload(), 300)
                         }
                     })
+                //console.log(this.lat)
+                payload.append('lng', this.lng)
+                payload.append('lat', this.lat)
+                //for (let [k, v] of payload.entries()) console.log(k, v)
             }
         },
         uploadImage() {
@@ -107,8 +115,8 @@ new Vue({
                         })
                     }
                 })
-                // reset the value to allow selecting the same image
-                document.getElementsByName('images')[0].value = ''
+            // reset the value to allow selecting the same image
+            document.getElementsByName('images')[0].value = ''
         },
         uploadVideo() {
             const data = new FormData()
@@ -152,10 +160,24 @@ new Vue({
                         })
                     }
                 })
-        }
+        },
+        getLocation() {
+            var myCity = new BMap.LocalCity()
+            myCity.get((result) => this.locate = result.name)
+        },
+        getCoordinates() {
+            var geolocation = new BMap.Geolocation()
+            geolocation.enableSDKLocation()
+            geolocation.getCurrentPosition((result) => {
+                this.lng = result.longitude
+                this.lat = result.latitude
+            })
+        },
     },
     created() {
         this.getBranchList()
         this.getTypeList()
+        this.getLocation()
+        this.getCoordinates()
     }
 })

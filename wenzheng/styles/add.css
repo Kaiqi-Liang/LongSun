@@ -120,3 +120,7 @@ textarea {
     width: 5%;
     padding-right: 5px;
 }
+
+.bottom p {
+    color: #888;
+}

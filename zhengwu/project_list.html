@@ -22,7 +22,7 @@
 
         <ul class="list">
             <li class="item" v-for="project in projectList">
-                <a v-bind:href="'project_detail.html?id=' + (project.id) + '&&ym_id=' + (ym_id)">
+                <a v-bind:href="'project_detail.html?id=' + project.id + '&&ym_id=' + ym_id">
                     <div class="info">
                         <p class="subtitle">{{ project.title }}</p>
                         <span class="service">{{ project.service }}</span>
