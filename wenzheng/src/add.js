@@ -162,15 +162,19 @@ const app = new Vue({
                 })
         },
         getLocation() {
-            // get current city
-            new BMap.LocalCity().get((result) => this.locate = result.name)
-
             // get current coordinates
             const geolocation = new BMap.Geolocation()
             geolocation.enableSDKLocation()
             geolocation.getCurrentPosition((result) => {
                 this.lng = result.longitude
                 this.lat = result.latitude
+
+                // get location from the coordinates
+                const point = new BMap.Point(this.lng, this.lat)
+                const geoc = new BMap.Geocoder()
+                geoc.getLocation(point, (result) => {
+                    this.locate = result.address
+                })
             })
         },
     },
