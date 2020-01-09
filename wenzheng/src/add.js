@@ -59,7 +59,7 @@ const app = new Vue({
                     .then(response => {
                         if (response.data.msg == '未登录') { // go to login page
                             layer.msg(response.data.msg)
-                            //setTimeout(() => window.location.href = 'login.html?appid=' + this.ym_id, 300)
+                            setTimeout(() => window.location.href = 'login.html?appid=' + this.ym_id, 300)
                         } else if (response.data.msg == '问政内容不能为空') {
                             layer.msg('请输入内容')
                         } else if (response.data.msg == '标题必须是3-50个字符') {
@@ -162,11 +162,11 @@ const app = new Vue({
                 })
         },
         getLocation() {
-            var myCity = new BMap.LocalCity()
-            myCity.get((result) => this.locate = result.name)
-        },
-        getCoordinates() {
-            var geolocation = new BMap.Geolocation()
+            // get current city
+            new BMap.LocalCity().get((result) => this.locate = result.name)
+
+            // get current longitude and latitude
+            const geolocation = new BMap.Geolocation()
             geolocation.enableSDKLocation()
             geolocation.getCurrentPosition((result) => {
                 this.lng = result.longitude
@@ -178,6 +178,5 @@ const app = new Vue({
         this.getBranchList()
         this.getTypeList()
         this.getLocation()
-        this.getCoordinates()
     }
 })
