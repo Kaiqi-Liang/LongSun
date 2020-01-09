@@ -1,4 +1,4 @@
-const API_URL = 'https://www.sogx.cn'
+const API_URL = 'http://test.sogx.cn'
 const id = location.href.split('?')[1].split('=')[1]
 document.querySelector('.login').addEventListener('click', (event) => {
     event.preventDefault()
