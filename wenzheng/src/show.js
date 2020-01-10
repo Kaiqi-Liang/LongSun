@@ -114,6 +114,9 @@ new Vue({
                 layer.msg('请输入评论内容')
             }
         },
+        refreshComment() {
+            location.reload()
+        },
         onScroll() {
             // overall scroll height
             let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
