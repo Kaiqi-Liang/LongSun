@@ -52,7 +52,7 @@ new Vue({
             document.querySelector('.modal').style.display = 'none'
             window.removeEventListener('click', this.onHide)
         },
-        onHide(event) {
+        onHide(event) { // 制造点击背景变化效应
             let classes = false
             document.querySelectorAll('.classes').forEach(classify => { // click anywhere within the li tag
                 if (classify == event.target) {
