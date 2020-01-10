@@ -70,15 +70,17 @@
 
         <div class="footer">
             <div class="comment" @click="writeComment">
-                <div><img src="images/edit.png"></div>
-                <p>写评论</p>
+                <div>
+                    <img src="images/edit.png">
+                    <p>写评论</p>
+                </div>
             </div>
             <div class="icons">
                 <div>
-                    <img src="images/comment_detail.png">
+                    <img src="images/comment_detail.png" @click="refreshComment">
                 </div>
                 <div>
-                    <img src="images/favourite.png">
+                    <img :src="favourite" @click="addFavourite">
                 </div>
                 <div>
                     <img src="images/share_detail.png">

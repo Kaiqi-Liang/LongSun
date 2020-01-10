@@ -6,7 +6,10 @@ new Vue({
         typeList: [],
         branchList: [],
         images: '',
-        video: ''
+        video: '',
+        lng: '',
+        lat: '',
+        locate: ''
     },
     methods: {
         getTypeList() {
@@ -35,6 +38,7 @@ new Vue({
         },
         submit() {
             const payload = new FormData(document.getElementById('form'))
+            payload.append('locate', this.locate)
             payload.append('ym_id', this.ym_id)
             if (!payload.get('title')) {
                 layer.msg('请输入标题');
@@ -68,6 +72,8 @@ new Vue({
                             setTimeout(() => location.reload(), 300)
                         }
                     })
+                payload.append('lng', this.lng)
+                payload.append('lat', this.lat)
             }
         },
         uploadImage() {
@@ -107,8 +113,8 @@ new Vue({
                         })
                     }
                 })
-                // reset the value to allow selecting the same image
-                document.getElementsByName('images')[0].value = ''
+            // reset the value to allow selecting the same image
+            document.getElementsByName('images')[0].value = ''
         },
         uploadVideo() {
             const data = new FormData()
@@ -152,10 +158,27 @@ new Vue({
                         })
                     }
                 })
-        }
+        },
+        getLocation() {
+            // get current coordinates
+            const geolocation = new BMap.Geolocation()
+            geolocation.enableSDKLocation()
+            geolocation.getCurrentPosition((result) => {
+                this.lng = result.longitude
+                this.lat = result.latitude
+
+                // get location from the coordinates
+                const point = new BMap.Point(this.lng, this.lat)
+                const geoc = new BMap.Geocoder()
+                geoc.getLocation(point, (result) => {
+                    this.locate = result.address
+                })
+            })
+        },
     },
     created() {
         this.getBranchList()
         this.getTypeList()
+        this.getLocation()
     }
 })

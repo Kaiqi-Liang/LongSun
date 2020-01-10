@@ -59,7 +59,7 @@
             <div>
                 <ul>
                     <li v-for="item in list" class="list">
-                        <a :href="'show.html?id=' + (item.id) + '&&ym_id=' + (ym_id)">
+                        <a :href="'show.html?id=' + item.id + '&&ym_id=' + ym_id">
                             <div class="user">
                                 <img class="avatar" :src="item.avatar" onerror="javascript: this.src='images/avatar.png'">
                                 <div class="macro">
@@ -99,7 +99,7 @@
 
         </div>
 
-        <a :href="'add.html?ym_id=' + (ym_id)" class="ask">
+        <a :href="'add.html?ym_id=' + ym_id" class="ask">
             <img src="images/ask.png">
         </a>
     </div>

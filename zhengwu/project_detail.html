@@ -7,10 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=yes"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        [v-cloak] {
+            display: none!important;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="root">
+    <div id="root" v-cloak>
         <div id="header">
             <a class="back" href="javascript:history.go(-1)"><</a>
         </div>
@@ -64,14 +69,14 @@
                 <li class="info" v-for="info in base">
                     <p class="left"> {{ info.text }}：</p>
                     
-                    <a v-if="info.text == '地点地图' && info.value != '暂无'"
+                    <a v-if="info.text == '地点地图' && info.value.match(/https?:\/\/[\w|.]+\w+/g)"
                        :href="info.value"
                        class="value right">
                         {{ info.value }}
                     </a>
 
                     <a v-else-if="info.text == '联系电话' && info.value != '暂无' && info.value.length < 13"
-                       :href="'tel:' + (info.value)"
+                       :href="'tel:' + info.value"
                        class="value right">
                         {{ info.value }}
                     </a>
@@ -89,7 +94,7 @@
                             <p class="detail">{{ material.count }}</p>
                             <p class="detail" style="width: 40px;">|</p>
                             <p class="detail">{{ material.must }}</p>
-                            <a v-show="material.templateLink" class="link" :href="(material.templateLink)">
+                            <a v-show="material.templateLink" class="link" :href="material.templateLink">
                                 <p style="margin: 0">空表</p>
                                 <p style="margin: 0">下载</p>
                             </a>
@@ -113,7 +118,7 @@
                 <hr>
                 <ul>
                     <li v-for="flowchart in flowcharts">
-                       <img :src="(flowchart)">
+                       <img :src="flowchart">
                     </li>
                 </ul>
             </div>
@@ -125,7 +130,7 @@
                 <p>收藏</p>
             </a>
 
-            <a :href="'tel:' + (tel)" class="icon">
+            <a :href="'tel:' + (tel == '暂无' ? '' : tel)" class="icon">
                 <img class="img" src="images/phone.png">
                 <p>电话</p>
             </a>
