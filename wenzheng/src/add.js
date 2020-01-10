@@ -72,10 +72,8 @@ new Vue({
                             setTimeout(() => location.reload(), 300)
                         }
                     })
-                //console.log(this.lat)
                 payload.append('lng', this.lng)
                 payload.append('lat', this.lat)
-                //for (let [k, v] of payload.entries()) console.log(k, v)
             }
         },
         uploadImage() {
