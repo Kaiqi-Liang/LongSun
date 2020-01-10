@@ -116,7 +116,7 @@ new Vue({
             }
         },
         refreshComment() {
-            location.reload()
+            if (this.commentcount == 0) layer.msg('还没有评论。')
         },
         addFavourite() {
             if (this.favourite == 'images/favourite.png') {
