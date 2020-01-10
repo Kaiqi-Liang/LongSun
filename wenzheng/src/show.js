@@ -17,7 +17,8 @@ new Vue({
         comments: [],
         page: 1,
         pagesize: 10,
-        footer: '加载中...'
+        footer: '加载中...',
+        favourite: 'images/favourite.png'
     }, methods: {
         getDetail() {
             fetch(API_URL + '/api/guestbook/show?ym_id=' + this.ym_id + '&&id=' + this.id)
@@ -112,6 +113,18 @@ new Vue({
                     })
             } else {
                 layer.msg('请输入评论内容')
+            }
+        },
+        refreshComment() {
+            if (this.commentcount == 0) layer.msg('还没有评论。')
+        },
+        addFavourite() {
+            if (this.favourite == 'images/favourite.png') {
+                this.favourite = 'images/favourite_add.png'
+                layer.msg('收藏成功')
+            } else {
+                this.favourite = 'images/favourite.png'
+                layer.msg('取消收藏成功')
             }
         },
         onScroll() {
