@@ -64,7 +64,8 @@ new Vue({
             }
         },
         writeComment() {
-            document.querySelector('.modal').style.display = 'block'
+            const modal = document.querySelector('.modal').
+            modal.style.display = 'block'
             document.querySelector('.back').href = 'javascript: void(0)'
 
             // 2 areas that will hide the comment writing section
@@ -72,7 +73,7 @@ new Vue({
                 this.hideComment()
             })
             setTimeout(() => { // the grey area
-                document.querySelector('.modal').addEventListener('click', this.onHide)
+                modal.addEventListener('click', this.onHide)
             }, 0)
         },
         hideComment() {

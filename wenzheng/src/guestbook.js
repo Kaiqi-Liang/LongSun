@@ -36,21 +36,20 @@ new Vue({
                     })
                 })
 
+            // show the classify modal on click
+            const modal = document.querySelector('.modal')
             document.getElementById('arrow').addEventListener('click', () => {
-                // show the classify modal
-                document.querySelector('.modal').style.display = 'block'
-                setTimeout(() => window.addEventListener('click', this.onHide), 0)
+                modal.style.display = 'block'
+                setTimeout(() => modal.addEventListener('click', this.onHide), 0)
             })
 
             document.getElementById('classify').addEventListener('click', () => {
-                // show the classify modal
-                document.querySelector('.modal').style.display = 'block'
-                setTimeout(() => window.addEventListener('click', this.onHide), 0)
+                modal.style.display = 'block'
+                setTimeout(() => modal.addEventListener('click', this.onHide), 0)
             })
         },
         hideModal() {
             document.querySelector('.modal').style.display = 'none'
-            window.removeEventListener('click', this.onHide)
         },
         onHide(event) { // 制造点击背景变化效应
             let classes = false
