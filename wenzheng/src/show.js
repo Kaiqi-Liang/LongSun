@@ -40,7 +40,7 @@ new Vue({
             fetch(API_URL + '/api/guestbook/commentList?ym_id=' + this.ym_id + '&&rel_id=' + this.id + '&&page=' + this.page + '&&pagesize=' + this.pagesize)
                 .then(response => response.json())
                 .then(json => {
-                    if(first) this.renderComments(json.data)
+                    if (first) this.renderComments(json.data)
                     else setTimeout(() => this.renderComments(json.data), 200)
                 })
         },
@@ -126,6 +126,25 @@ new Vue({
                 this.favourite = 'images/favourite.png'
                 layer.msg('取消收藏成功')
             }
+        },
+        share() {
+            if (typeof WeixinJSBridge != "undefined") {
+                document.getElementsByClassName('modal')[1].style.display = 'block'
+                document.querySelector('.back').href = 'javascript: void(0)'
+
+                // 2 areas that will hide the comment writing section
+                document.querySelector('.back').addEventListener('click', () => { // the back icon
+                    this.hideShare()
+                })
+                // the grey area
+                document.getElementsByClassName('modal')[1].addEventListener('click', this.hideShare)
+            } else {
+                alert("请先通过微信打开，再分享文章.");
+            }
+        },
+        hideShare() {
+            document.getElementsByClassName('modal')[1].style.display = 'none'
+            setTimeout(() => document.querySelector('.back').href = 'javascript: history.go(-1)', 0)
         },
         onScroll() {
             // overall scroll height
