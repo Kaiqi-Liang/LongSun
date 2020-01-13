@@ -9,7 +9,7 @@ new Vue({
         type: location.href.split("?")[1].split('&&')[3].split('=')[1],
         page: 1,
         projectList: [],
-        footer: 'Loading...'
+        footer: '加载中...'
     },
     methods: {
         getData(first) {
@@ -42,7 +42,7 @@ new Vue({
                     })
                 })
             } else { // nothing is fetched
-                if (this.footer == 'Loading...') { // the last fetch fetched 20 items
+                if (this.footer == '加载中...') { // the last fetch fetched 20 items
                     this.noMoreData()
                 }
             }
@@ -61,7 +61,7 @@ new Vue({
             }
         },
         noMoreData() {
-            this.footer = 'The end.'
+            this.footer = '没有更多数据.'
             // remove the loading gif
             document.getElementsByClassName('footer')[0].removeChild(document.getElementById('rotate'))
         }
