@@ -59,7 +59,7 @@ new Vue({
                     .then(response => {
                         if (response.data.msg == '未登录') { // go to login page
                             layer.msg(response.data.msg)
-                            setTimeout(() => window.location.href = 'wap/my/login?appid/' + this.ym_id, 300)
+                            setTimeout(() => window.location.href = '../wap/my/login?appid/' + this.ym_id, 300)
                         } else if (response.data.msg == '问政内容不能为空') {
                             layer.msg('请输入内容')
                         } else if (response.data.msg == '标题必须是3-50个字符') {
