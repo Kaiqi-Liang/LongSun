@@ -183,6 +183,19 @@ new Vue({
         formatDate(time) {
             const date = new Date(time * 1000)
             return date.getFullYear() + '-' + (parseInt(date.getMonth()) + 1) + '-' + date.getDate()
+        },
+        addLinks() {
+            setTimeout(() => {
+                const detail = document.getElementsByName("detail")
+                detail.forEach(a => {
+                    a.addEventListener('click', () => {
+                        top.location.href = a.getAttribute("link")
+                    })
+                })
+            }, 100);
+
+            const ask = document.querySelector(".ask")
+            ask.addEventListener('click', () => top.location.href = ask.getAttribute("link"))
         }
     },
     created() {
@@ -190,7 +203,10 @@ new Vue({
         this.getList(0, true)
         new Promise((resolve) => {
             resolve()
-        }).then(() => this.getClassify())
+        }).then(() => {
+            this.getClassify()
+            this.addLinks()
+        })
         window.addEventListener('scroll', this.onScroll);
     },
 })
