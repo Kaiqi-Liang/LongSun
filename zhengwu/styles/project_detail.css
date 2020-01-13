@@ -37,15 +37,17 @@ a:visited {
     background: white;
     width: 100%;
     height: 50px;
+
     padding: 0 35px;
     text-align: center;
     box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
 }
 
 #title {
     font-size: 20px;
-    line-height: 50px;
-    height: 50px;
     width: 100%;
     display: block;
     overflow: hidden;
@@ -54,12 +56,13 @@ a:visited {
 }
 
 .back {
-    color: black;
     position: absolute;
-    font-weight: bold;
-    font-size: 20px;
     line-height: 50px;
     left: 10px;
+}
+
+.back img {
+    display: block;
 }
 
 .maininfo {

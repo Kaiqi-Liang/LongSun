@@ -16,12 +16,13 @@ body {
 .header a {
     position: absolute;
     left: 10px;
-
-    font-weight: bold;
-    font-size: 20px;
 }
 
-.header span {
+.header img {
+    display: block;
+}
+
+.header p {
     font-size: 20px;
     width: 100%;
 }
