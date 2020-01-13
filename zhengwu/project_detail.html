@@ -130,7 +130,7 @@
                 <p>收藏</p>
             </a>
 
-            <a :href="'tel:' + (tel == '暂无' ? '' : tel)" class="icon">
+            <a :href="'tel:' + (tel != '暂无' && tel.length < 13 ? 'tel' : '')" class="icon">
                 <img class="img" src="images/phone.png">
                 <p>电话</p>
             </a>

@@ -46,7 +46,8 @@ function render(page) {
                     ul.appendChild(li)
 
                     const a = document.createElement('a')
-                    a.setAttribute('href', API_URL_2 + '/wap/news/list/appid/' + ym_id + '/columnid/' + data.id)
+                    a.setAttribute('link',  API_URL_2 + '/wap/news/list/appid/' + ym_id + '/columnid/' + data.id)
+                    a.onclick = () => top.location.href = a.getAttribute('link')
                     li.appendChild(a)
 
                     const img = document.createElement('img')
@@ -82,7 +83,8 @@ function render_icons(data) {
     ul.appendChild(li)
 
     const a = document.createElement('a')
-    a.setAttribute('href', 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=icon')
+    a.setAttribute('link', 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=icon')
+    a.onclick = () => top.location.href = a.getAttribute('link')
     li.appendChild(a)
 
     const img = document.createElement('img')
@@ -107,7 +109,8 @@ function render_list(data) {
     ul.appendChild(hr)
 
     const a = document.createElement('a')
-    a.setAttribute('href', 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=list')
+    a.setAttribute('link', 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=list')
+    a.onclick = () => top.location.href = a.getAttribute('link')
     li.appendChild(a)
 
     const p = document.createElement('p')

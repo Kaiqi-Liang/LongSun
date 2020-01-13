@@ -68,6 +68,14 @@ new Vue({
     },
     created() {
         this.getData(true);
+        const detail = document.getElementsByName("detail")
+        setTimeout(() => {
+            detail.forEach(a => {
+                a.addEventListener('click', () => {
+                    top.location.href = a.getAttribute("link")
+                })
+            })
+        }, 100);
         window.addEventListener('scroll', this.onScroll);
     },
 })
