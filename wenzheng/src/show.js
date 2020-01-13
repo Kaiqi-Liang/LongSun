@@ -72,22 +72,19 @@ new Vue({
                 this.hideComment()
             })
             setTimeout(() => { // the grey area
-                window.addEventListener('click', this.onHide)
+                document.querySelector('.modal').addEventListener('click', this.onHide)
             }, 0)
         },
         hideComment() {
             document.querySelector('.modal').style.display = 'none'
             setTimeout(() => document.querySelector('.back').href = 'javascript: history.go(-1)', 0)
-            window.removeEventListener('click', this.onHide)
         },
         onHide(event) {
             if (event.target != document.querySelector('.content') &&
                 event.target != document.querySelector('.box') &&
                 event.target != document.querySelector('.write') &&
                 event.target != document.querySelector('.send') &&
-                event.target != document.querySelector('button') &&
-                event.target != document.querySelector('.header') &&
-                event.target != document.querySelector('.title'))
+                event.target != document.querySelector('button'))
                 this.hideComment()
         },
         sendComment() {
