@@ -51,7 +51,7 @@ new Vue({
         hideModal() {
             document.querySelector('.modal').style.display = 'none'
         },
-        onHide(event) { // 制造点击背景变化效应
+        onHide(event) { // create effects for click events
             let classes = false
             document.querySelectorAll('.classes').forEach(classify => { // click anywhere within the li tag
                 if (classify == event.target) {
@@ -104,17 +104,19 @@ new Vue({
                 this.hideModal()
                 cancel.style = 'background-color: white;'
             }, 100)
-
         },
         changeClassify(id, name) {
             // change the classify name
             document.getElementById('classify').innerText = name
 
+            // change background colour of the clicked bar to create effect
             const classes = document.getElementsByClassName('classes')
             classes[id].style = 'background-color: #eee;'
             setTimeout(() => {
                 classes[id].style = 'background-color: white;'
             }, 150)
+
+            // change the colour of the tick
             const ticks = document.getElementsByClassName('tick')
             for (let tick = 0; tick < ticks.length; tick++) {
                 if (ticks[tick].src.indexOf('tick_grey.png') != -1) { // the tick is grey
@@ -130,6 +132,7 @@ new Vue({
                         this.page = 1
                         // reload list
                         this.getList(id, true)
+                        this.addLinks()
                     }
                 } else { // the tick is green
                     if (tick != id) { // if the tick not clicked
