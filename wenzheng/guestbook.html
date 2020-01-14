@@ -59,11 +59,7 @@
             <div>
                 <ul>
                     <li v-for="item in list" class="list">
-<<<<<<< HEAD
                         <a @click=link(item.id)>
-=======
-                        <a name="detail" href="javascript:" :link="'show.html?id=' + item.id + '&&ym_id=' + ym_id">
->>>>>>> master
                             <div class="user">
                                 <img class="avatar" :src="item.avatar" onerror="javascript: this.src='images/avatar.png'">
                                 <div class="macro">
@@ -91,7 +87,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </a
+                        </a>
                     </li>
                 </ul>
 
@@ -103,11 +99,7 @@
 
         </div>
 
-<<<<<<< HEAD
         <a class="ask" @click=link()>
-=======
-        <a class="ask" href="javascript:" :link="'add.html?ym_id=' + ym_id">
->>>>>>> master
             <img src="images/ask.png">
         </a>
     </div>
