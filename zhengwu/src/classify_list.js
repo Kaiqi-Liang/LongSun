@@ -46,7 +46,8 @@ function render(page) {
                     ul.appendChild(li)
 
                     const a = document.createElement('a')
-                    //a.onclick = aLinkClick(API_URL_2 + '/wap/news/list/appid/' + ym_id + '/columnid/' + data.id)
+                    const link = API_URL_2 + '/wap/news/list/appid/' + ym_id + '/columnid/' + data.id
+                    a.setAttribute('onclick', "aLinkClick('" + link + "')")
                     li.appendChild(a)
 
                     const img = document.createElement('img')
