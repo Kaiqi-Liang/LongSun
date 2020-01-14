@@ -2,23 +2,34 @@ body {
     margin: 0;
 }
 
+.headline {
+    padding: 10px;
+}
+
+.headline img {
+    display: block;
+}
+
 .section {
-    margin: 1%;
+    padding: 0 5px 10px;
     overflow: auto;
 }
 
 .header {
     width: 25%;
     float: left;
-    text-align: center;
+    box-sizing: border-box;
+    padding: 0 5px;
 }
 
-.icon {
-    width: 90%;
+.header img {
+    width: 100%;
+    display: block;
 }
 
 #bar {
-    border: 5px solid #eeeeee;
+    border: 5px solid #eee;
+    margin: 0;
 }
 
 #ul {
@@ -26,7 +37,7 @@ body {
     padding-left: 0%;
 }
 
-.icons {
+.icon {
     float: left;
     width: 25%;
     text-align: center;
