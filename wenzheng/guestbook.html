@@ -59,7 +59,7 @@
             <div>
                 <ul>
                     <li v-for="item in list" class="list">
-                        <a name="detail" @click=link(item.id)>
+                        <a @click=link(item.id)>
                             <div class="user">
                                 <img class="avatar" :src="item.avatar" onerror="javascript: this.src='images/avatar.png'">
                                 <div class="macro">
@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </a
                     </li>
                 </ul>
 

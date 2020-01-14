@@ -24,7 +24,7 @@
 
         <ul class="list">
             <li class="item" v-for="project in projectList">
-                <a name="detail" @click=link(project.id)>
+                <a @click=link(project.id)>
                     <div class="info">
                         <p class="subtitle">{{ project.title }}</p>
                         <span class="service">{{ project.service }}</span>

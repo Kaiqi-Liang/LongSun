@@ -81,7 +81,6 @@ new Vue({
     },
     created() {
         this.getData(true);
-        const detail = document.getElementsByName("detail")
         window.addEventListener('scroll', this.onScroll);
     },
 })
