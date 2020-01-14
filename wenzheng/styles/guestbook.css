@@ -141,7 +141,14 @@ hr {
 
 .macro {
     padding: 10px;
+    width: calc(100% - 160px);
     float: left;
+}
+
+.hide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .icon {
