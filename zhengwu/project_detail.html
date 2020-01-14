@@ -24,10 +24,10 @@
 
         <div class="maininfo">
             <h2>{{ title }}</h2>
-            <ul style="margin: 0;">
+            <ul>
                 <li class="main">
                     <img class="symbol" src="images/unit.png">
-                    <p>受理单位：</p>
+                    <p style="overflow: unset;">受理单位：</p>
                     <a href="">{{ unit }}</a>
                 </li>
                 <li class="main">
@@ -46,7 +46,7 @@
         </div>
 
         <div class="headline">
-            <ul style="margin: 0;">
+            <ul>
                 <li class="category active">
                     <a>办事信息</a>
                 </li>
@@ -66,30 +66,32 @@
         </div>
 
         <div id="main">
-            <ul id="base" class="section">
+            <div id="base" name="section">
                 <hr>
-                <li class="info" v-for="info in base">
-                    <p class="left"> {{ info.text }}：</p>
-                    
-                    <a v-if="info.text == '地点地图' && info.value.match(/https?:\/\/[\w|.]+\w+/g)"
-                       :href="info.value"
-                       class="value right">
-                        {{ info.value }}
-                    </a>
+                <ul>
+                    <li class="info" v-for="info in base">
+                        <p class="left"> {{ info.text }}：</p>
 
-                    <a v-else-if="info.text == '联系电话' && info.value != '暂无' && info.value.length < 13"
-                       :href="'tel:' + info.value"
-                       class="value right">
-                        {{ info.value }}
-                    </a>
+                        <a v-if="info.text == '地点地图' && info.value.match(/https?:\/\/[\w|.]+\w+/g)"
+                           :href="info.value"
+                           class="value right">
+                            {{ info.value }}
+                        </a>
 
-                    <p class="right" v-else> {{ info.value }} </p>
-                </li>
-            </ul>
+                        <a v-else-if="info.text == '联系电话' && info.value != '暂无' && info.value.length < 13"
+                           :href="'tel:' + info.value"
+                           class="value right">
+                            {{ info.value }}
+                        </a>
 
-            <div id="material" class="section" style="display: none;">
+                        <p class="right" v-else> {{ info.value }} </p>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="material" name="section" style="display: none;">
                 <hr>
-                <ul style="margin: 0">
+                <ul>
                     <li class="box" v-for="material in materials">
                         <p style="margin: 10px 0;">{{ material.name }}</p>
                         <div class="details">
@@ -106,17 +108,17 @@
                 </ul>
             </div>
 
-            <div id="notice" class="section" style="display: none;">
+            <div id="notice" name="section" style="display: none;">
                 <hr>
                 <p class="text">{{ notice }}</p>
             </div>
 
-            <div id="condition" class="section" style="display: none;">
+            <div id="condition" name="section" style="display: none;">
                 <hr>
                 <p class="text">{{ condition }}</p>
             </div>
 
-            <div id="flowchart" class="section" style="display: none;">
+            <div id="flowchart" name="section" style="display: none;">
                 <hr>
                 <ul>
                     <li v-for="flowchart in flowcharts">

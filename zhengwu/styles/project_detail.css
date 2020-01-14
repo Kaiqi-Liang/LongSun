@@ -22,6 +22,7 @@ hr {
 ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 a {
@@ -79,9 +80,8 @@ a:visited {
     padding-right: 5px;
 }
 
-.main p {
+.main p, a {
     overflow: hidden;
-    height: 21px;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -124,6 +124,7 @@ a:visited {
 
 .left {
     width: 100px;
+    color: #444;
     float: left;
 }
 
@@ -155,21 +156,17 @@ a:visited {
     justify-content: center;
 }
 
-.section {
-    margin: 0;
-}
-
 .text {
     margin: 10px 10px;
     line-height: 30px;
 }
 
 .box {
-    border-top: solid 5px #dddddd;
-    border-bottom: solid 5px #dddddd;
-    border-left: solid 10px #dddddd;
-    border-right: solid 10px #dddddd;
-    padding-left: 1%;
+    border-top: solid 5px #ddd;
+    border-bottom: solid 5px #ddd;
+    border-left: solid 10px #ddd;
+    border-right: solid 10px #ddd;
+    padding: 0 10px;
 }
 
 .details {
@@ -189,7 +186,6 @@ a:visited {
 
     float: right;
     text-align: center;
-    margin-right: 10px;
 
     border: solid 1px -webkit-link;
     border-radius: 10%;
@@ -199,4 +195,12 @@ a:visited {
     width: 25px;
     height: 25px;
     padding-right: 5px;
+}
+
+#flowchart ul {
+    margin: 10px;
+}
+
+#flowchart li {
+    margin: 10px 0;
 }

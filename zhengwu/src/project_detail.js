@@ -86,7 +86,7 @@ new Vue({
                             }
 
                             // hide all the sections
-                            for (let section of document.getElementsByClassName('section')) {
+                            for (let section of document.getElementsByName('section')) {
                                 section.style.display = 'none'
                             }
 
