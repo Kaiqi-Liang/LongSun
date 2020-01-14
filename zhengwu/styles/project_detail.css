@@ -95,6 +95,7 @@ a:visited {
     display: block;
     float: left;
     padding: 5px 0;
+    font-size: 14px;
 }
 
 .active a {
@@ -122,12 +123,12 @@ a:visited {
 }
 
 .left {
-    width: 30%;
+    width: 100px;
     float: left;
 }
 
 .right {
-    width: 70%;
+    width: calc(100% - 100px);
     float: right;
 }
 
