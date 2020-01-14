@@ -130,3 +130,10 @@ p {
     line-height: 40px;
     padding-left: 10px;
 }
+
+.exclamation {
+    border-top: solid 5px #eee;
+    color: #666;
+    text-align: center;
+    padding: calc((100% - 50px) / 2) 0;
+}

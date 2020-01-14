@@ -23,7 +23,16 @@ new Vue({
                 .then(response => response.data.data)
                 .then(data => {
                     if (first) { // fetching it for the first time
-                        this.processData(data)
+                        if (data == '') { // no data at all
+                            const footer = document.querySelector('.footer')
+                            footer.className = 'exclamation'
+                            const children = footer.children
+                            children[1].innerText = '暂无内容'
+                            children[0].setAttribute('src', 'images/nothing.png')
+                            children[0].style = "width: unset; height: unset;"
+                        } else {
+                            this.processData(data)
+                        }
                     } else { // show a bit of delay
                         setTimeout(() => this.processData(data), 200)
                     }
@@ -63,7 +72,8 @@ new Vue({
         noMoreData() {
             this.footer = '没有更多数据.'
             // remove the loading gif
-            document.getElementsByClassName('footer')[0].removeChild(document.getElementById('rotate'))
+            const footer = document.querySelector('.footer')
+            footer.removeChild(footer.firstChild)
         }
     },
     created() {
