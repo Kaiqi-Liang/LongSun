@@ -78,7 +78,6 @@ new Vue({
                         this.page = 1
                         // reload list
                         this.getList(id, true)
-                        this.addLinks()
                     }
                 } else { // the tick is green
                     if (tick != id) { // if the tick not clicked
@@ -132,18 +131,9 @@ new Vue({
             const date = new Date(time * 1000)
             return date.getFullYear() + '-' + (parseInt(date.getMonth()) + 1) + '-' + date.getDate()
         },
-        addLinks() {
-            setTimeout(() => {
-                const detail = document.getElementsByName("detail")
-                detail.forEach(a => {
-                    a.addEventListener('click', () => {
-                        top.location.href = a.getAttribute("link")
-                    })
-                })
-            }, 100);
-
-            const ask = document.querySelector(".ask")
-            ask.addEventListener('click', () => top.location.href = ask.getAttribute("link"))
+        link(id) {
+            if (id) aLinkClick('show.html?id=' + id + '&&ym_id=' + this.ym_id)
+            else aLinkClick('add.html?ym_id=' + this.ym_id)
         }
     },
     created() {
@@ -153,7 +143,6 @@ new Vue({
             resolve()
         }).then(() => {
             this.getClassify()
-            this.addLinks()
         })
         window.addEventListener('scroll', this.onScroll);
     },

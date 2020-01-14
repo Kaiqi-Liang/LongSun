@@ -59,7 +59,7 @@
             <div>
                 <ul>
                     <li v-for="item in list" class="list">
-                        <a name="detail" href="javascript: ":link="'show.html?id=' + item.id + '&&ym_id=' + ym_id">
+                        <a name="detail" @click=link(item.id)>
                             <div class="user">
                                 <img class="avatar" :src="item.avatar" onerror="javascript: this.src='images/avatar.png'">
                                 <div class="macro">
@@ -99,11 +99,13 @@
 
         </div>
 
-        <a class="ask" href="javascript: ":link="'add.html?ym_id=' + ym_id">
+        <a class="ask" @click=link()>
             <img src="images/ask.png">
         </a>
     </div>
 
+    <script src="http://test.sogx.cn/assets/wap/style/js/aLinkClick.js"></script>
+    <script src="https://www.jq22.com/jquery/jquery-2.1.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="src/guestbook.js"></script>
 </body>

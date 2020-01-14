@@ -24,7 +24,7 @@
 
         <ul class="list">
             <li class="item" v-for="project in projectList">
-                <a name="detail" href="javascript: " :link="'project_detail.html?id=' + project.id + '&&ym_id=' + ym_id">
+                <a name="detail" @click=link(project.id)>
                     <div class="info">
                         <p class="subtitle">{{ project.title }}</p>
                         <span class="service">{{ project.service }}</span>
@@ -44,8 +44,10 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="http://test.sogx.cn/assets/wap/style/js/aLinkClick.js"></script>
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="https://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="src/project_list.js"></script>
 </body>
 

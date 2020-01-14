@@ -46,8 +46,7 @@ function render(page) {
                     ul.appendChild(li)
 
                     const a = document.createElement('a')
-                    a.setAttribute('link',  API_URL_2 + '/wap/news/list/appid/' + ym_id + '/columnid/' + data.id)
-                    a.onclick = () => top.location.href = a.getAttribute('link')
+                    //a.onclick = aLinkClick(API_URL_2 + '/wap/news/list/appid/' + ym_id + '/columnid/' + data.id)
                     li.appendChild(a)
 
                     const img = document.createElement('img')
@@ -67,24 +66,23 @@ function render(page) {
             .then(json => {
                 for (data in json.data) {
                     if (json.data[data].imgurl) { // if there are icons
-                        render_icons(json.data[data])
+                        render_icons(json.data[data], 'project_list.html?id=' + json.data[data].id + '&&ym_id=' + ym_id + '&&name=' + json.data[data].name + '&&type=icon')
                     } else {
-                        render_list(json.data[data])
+                        render_list(json.data[data], 'project_list.html?id=' + json.data[data].id + '&&ym_id=' + ym_id + '&&name=' + json.data[data].name + '&&type=list')
                     }
                 }
             })
     }
 }
 
-function render_icons(data) {
+function render_icons(data, link) {
     const li = document.createElement('li')
     li.setAttribute('id', data.id)
     li.className = "icons"
     ul.appendChild(li)
 
     const a = document.createElement('a')
-    a.setAttribute('link', 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=icon')
-    a.onclick = () => top.location.href = a.getAttribute('link')
+    a.setAttribute('onclick', "aLinkClick('" + link + "')")
     li.appendChild(a)
 
     const img = document.createElement('img')
@@ -98,7 +96,7 @@ function render_icons(data) {
     a.appendChild(p)
 }
 
-function render_list(data) {
+function render_list(data, link) {
     const li = document.createElement('li')
     li.setAttribute('id', data.id)
     li.className = "text"
@@ -109,8 +107,7 @@ function render_list(data) {
     ul.appendChild(hr)
 
     const a = document.createElement('a')
-    a.setAttribute('link', 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=list')
-    a.onclick = () => top.location.href = a.getAttribute('link')
+    a.setAttribute('onclick', "aLinkClick('" + link + "')")
     li.appendChild(a)
 
     const p = document.createElement('p')
