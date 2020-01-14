@@ -28,7 +28,7 @@ new Vue({
                             footer.className = 'exclamation'
                             const children = footer.children
                             children[1].innerText = '暂无内容'
-                            children[0].setAttribute('src', 'images/nothing.png')
+                            children[0].setAttribute('src', 'images/exclamation.png')
                             children[0].style = "width: unset; height: unset;"
                         } else {
                             this.processData(data)

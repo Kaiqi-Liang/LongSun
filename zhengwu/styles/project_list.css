@@ -133,7 +133,7 @@ p {
 
 .exclamation {
     border-top: solid 5px #eee;
-    color: #666;
+    color: #888;
     text-align: center;
     padding: calc((100% - 50px) / 2) 0;
 }
