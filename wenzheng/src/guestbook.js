@@ -51,70 +51,16 @@ new Vue({
         hideModal() {
             document.querySelector('.modal').style.display = 'none'
         },
-        onHide(event) { // 制造点击背景变化效应
-            let classes = false
-            document.querySelectorAll('.classes').forEach(classify => { // click anywhere within the li tag
-                if (classify == event.target) {
-                    setTimeout(() => {
-                        this.hideModal()
-                    }, 200)
-                    classes = true
-                }
-            })
-
-            document.querySelectorAll('.tick').forEach(classify => { // click any of the tick icons
-                if (classify == event.target) {
-                    setTimeout(() => {
-                        this.hideModal()
-                    }, 200)
-                    classes = true
-                }
-            })
-
-            document.querySelectorAll('.float').forEach(classify => { // click any of the p tags in li tag
-                if (classify == event.target) {
-                    setTimeout(() => {
-                        this.hideModal()
-                    }, 200)
-                    classes = true
-                }
-            })
-
-            document.querySelectorAll('hr').forEach(classify => { // click anywhere between the li tags
-                if (classify == event.target) {
-                    setTimeout(() => {
-                        this.hideModal()
-                    }, 200)
-                    classes = true
-                }
-            })
-
+        onHide(event) {
+            // click anywhere outside of the modal content, the title in the content and the cancel button
             if (event.target != document.querySelector('.content') &&
-                event.target != document.querySelector('h3') &&
-                event.target != document.querySelector('.cancel') &&
-                !classes) { // click anywhere outside of the modal content, the title in the content and the cancel button
-                    // hide the modal immediately
+                event.target != document.querySelector('h3')) {
                     this.hideModal()
                 }
-        },
-        cancel() {
-            const cancel = document.querySelector('.cancel')
-            cancel.style = 'background-color: #eee;'
-            setTimeout(() => {
-                this.hideModal()
-                cancel.style = 'background-color: white;'
-            }, 100)
         },
         changeClassify(id, name) {
             // change the classify name
             document.getElementById('classify').innerText = name
-
-            // change background colour of the clicked bar to create effect
-            const classes = document.getElementsByClassName('classes')
-            classes[id].style = 'background-color: #eee;'
-            setTimeout(() => {
-                classes[id].style = 'background-color: white;'
-            }, 150)
 
             // change the colour of the tick
             const ticks = document.getElementsByClassName('tick')
