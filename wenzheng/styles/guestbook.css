@@ -146,12 +146,6 @@ hr {
     float: left;
 }
 
-.hide {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
 .icon {
     float: right;
     line-height: 66px;
