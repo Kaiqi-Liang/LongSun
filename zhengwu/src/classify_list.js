@@ -3,7 +3,7 @@ const API_URL_2 = 'http://www.sogx.cn'
 const ym_id = location.href.split('?')[1].split('=')[1]
 render(1)
 
-const icons = document.getElementsByClassName('icon')
+const icons = document.getElementsByName('icon')
 for (let icon = 0; icon < icons.length; icon++) {
     icons[icon].addEventListener('click', () => {
         if (icons[icon].src.indexOf('active') == -1) { // the onclick icon is not active
@@ -30,12 +30,10 @@ for (let icon = 0; icon < icons.length; icon++) {
 function render(page) {
     const main = document.getElementById('main')
     const ul = document.createElement('ul')
-    const hr = document.getElementById('bar')
     main.appendChild(ul)
     ul.setAttribute('id', 'ul')
     if (page == 4) {
         ul.style = "margin: 0"
-        hr.style = "margin: 0"
         fetch(API_URL_2 + '/api/news/column/appid/' + ym_id + '/pid/' + 172)
             .then(response => response.json())
             .then(json => {
@@ -61,7 +59,6 @@ function render(page) {
                 }
             })
     } else {
-        hr.style = "margin: 0"
         fetch(API_URL_1 + '/api/zwfw/classify_list/ym_id/' + ym_id + '/type/' + page)
             .then(response => response.json())
             .then(json => {
@@ -79,7 +76,7 @@ function render(page) {
 function render_icons(data, link) {
     const li = document.createElement('li')
     li.setAttribute('id', data.id)
-    li.className = "icons"
+    li.className = "icon"
     ul.appendChild(li)
 
     const a = document.createElement('a')
