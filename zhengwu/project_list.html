@@ -24,7 +24,11 @@
 
         <ul class="list">
             <li class="item" v-for="project in projectList">
+<<<<<<< HEAD
                 <a @click=link(project.id)>
+=======
+                <a name="detail" href="javascript:" :link="'project_detail.html?id=' + project.id + '&&ym_id=' + ym_id">
+>>>>>>> master
                     <div class="info">
                         <p class="subtitle">{{ project.title }}</p>
                         <span class="service">{{ project.service }}</span>
