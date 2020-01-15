@@ -75,8 +75,8 @@ function render_icons(data, link) {
     const li = document.createElement('li')
     ul.appendChild(li)
 
-    li.setAttribute('id', data.id)
     li.className = "icon"
+    li.setAttribute('id', data.id)
     li.onclick = () => aLinkClick(link)
 
     const img = document.createElement('img')
@@ -94,9 +94,9 @@ function render_list(data, link) {
     const li = document.createElement('li')
     ul.appendChild(li)
 
-    li.onclick = () => aLinkClick(link)
-    li.setAttribute('id', data.id)
     li.className = "text"
+    li.setAttribute('id', data.id)
+    li.onclick = () => aLinkClick(link)
 
     const hr = document.createElement('hr')
     hr.id = "line"
