@@ -28,7 +28,7 @@
                 <li class="main">
                     <img class="symbol" src="images/unit.png">
                     <p style="overflow: unset;">受理单位：</p>
-                    <a href="">{{ unit }}</a>
+                    <a :href="API_URL + '/wap/main/index/id/' + zwh_id">{{ unit }}</a>
                 </li>
                 <li class="main">
                     <img class="symbol" src="images/service.png">
@@ -78,7 +78,7 @@
                             {{ info.value }}
                         </a>
 
-                        <a v-else-if="info.text == '联系电话' && info.value != '暂无' && info.value.length < 13"
+                        <a v-else-if="info.text == '联系电话' && info.value.match(/[0-9]{4}-?[0-9]{7}/g)"
                            :href="'tel:' + info.value"
                            class="value right">
                             {{ info.value }}
@@ -134,7 +134,7 @@
                 <p>收藏</p>
             </a>
 
-            <a :href="'tel:' + (tel != '暂无' && tel.length < 13 ? 'tel' : '')" class="icon">
+            <a :href="'tel:' + (tel.match(/[0-9]{4}-?[0-9]{7}/g) ? tel : '')" class="icon">
                 <img class="img" src="images/phone.png">
                 <p>电话</p>
             </a>

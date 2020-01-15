@@ -1,34 +1,34 @@
-const API_URL = 'http://v.sogx.cn'
 new Vue({
     el: '#root',
     data: {
+        API_URL: 'http://v.sogx.cn',
         id: location.href.split('?')[1].split('&&')[0].split('=')[1],
         ym_id: location.href.split('?')[1].split('&&')[1].split('=')[1],
+        zwh_id: '',
         title: '',
         unit: '',
         service: '',
         address: '',
         window: '',
-        base: [],
         tel: '',
+        base: [],
         materials: [],
         notice: '',
         condition: '',
         flowcharts: []
     },
     created() {
-        axios.get(API_URL + '/api/zwfw/project_detail/ym_id/' + this.ym_id + '/id/' + this.id)
+        axios.get(this.API_URL + '/api/zwfw/project_detail/ym_id/' + this.ym_id + '/id/' + this.id)
             .then(response => response.data.data)
             .then(data => {
+                console.log(data)
                 this.title = data.maininfo.title
                 this.unit = data.maininfo.zwh_jbxx_sszt
                 this.service = data.maininfo.zwh_jbxx_dxccs
                 this.address = data.maininfo.zwh_jbxx_bldd
                 this.window = data.maininfo.zwh_kzxx_ckmc
-
-                this.base = data.base
-                // phone number
-                this.tel = data.base[9].value
+                this.tel = data.maininfo.zwh_kzxx_ckdh
+                this.zwh_id = data.maininfo.zwh_id
 
                 data.meterial.forEach(material => {
                     if (material.templateLinks[1]) {
@@ -48,6 +48,7 @@ new Vue({
                     }
                 })
 
+                this.base = data.base
                 this.notice = data.notice
                 this.condition = data.condition
 

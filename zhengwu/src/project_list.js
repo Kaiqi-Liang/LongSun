@@ -74,18 +74,13 @@ new Vue({
             // remove the loading gif
             const footer = document.querySelector('.footer')
             footer.removeChild(footer.firstChild)
+        },
+        link(id) {
+            top.location.href = 'project_detail.html?id=' + id + '&&ym_id=' + this.ym_id
         }
     },
     created() {
         this.getData(true);
-        const detail = document.getElementsByName("detail")
-        setTimeout(() => {
-            detail.forEach(a => {
-                a.addEventListener('click', () => {
-                    top.location.href = a.getAttribute("link")
-                })
-            })
-        }, 100);
         window.addEventListener('scroll', this.onScroll);
     },
 })
