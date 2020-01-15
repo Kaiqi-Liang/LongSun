@@ -202,7 +202,7 @@ new Vue({
                 .then(response => response.json())
                 .then(json => {
                     wx.config({
-                        debug: false,  //调式模式，设置为ture后会直接在网页上弹出调试信息，用于排查问题
+                        debug: true,  //调式模式，设置为ture后会直接在网页上弹出调试信息，用于排查问题
                         appId: json.data.appId,
                         timestamp: json.data.timestamp,
                         nonceStr: json.data.nonceStr,
@@ -269,7 +269,9 @@ new Vue({
     created() {
         this.getDetail()
         this.getComments(true)
-        this.setupSharing()
+        new Promise((resolve) => {
+            setTimeout(resolve(), 100)
+        }).then(() => this.setupSharing())
         window.addEventListener('scroll', this.onScroll);
     },
 })

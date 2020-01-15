@@ -141,9 +141,7 @@ new Vue({
         this.getList(0, true)
         new Promise((resolve) => {
             resolve()
-        }).then(() => {
-            this.getClassify()
-        })
+        }).then(() => this.getClassify())
         window.addEventListener('scroll', this.onScroll);
     },
 })
