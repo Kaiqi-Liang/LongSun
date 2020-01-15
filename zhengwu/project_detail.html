@@ -129,7 +129,7 @@
         </div>
 
         <div class="footer">
-            <a class="icon">
+            <a class="icon" @click="favourite">
                 <img class="img" src="images/favourite.png">
                 <p>收藏</p>
             </a>
@@ -139,12 +139,14 @@
                 <p>电话</p>
             </a>
 
-            <a class="icon" style="background-color: #555555; color: white;">在线办理</a>
+            <a class="icon" style="background-color: #555555; color: white;" @click="favourite">在线办理</a>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="https://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="../wenzheng/src/layer/layer.js"></script>
     <script src="src/project_detail.js"></script>
 </body>
 

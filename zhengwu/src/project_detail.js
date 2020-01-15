@@ -17,6 +17,11 @@ new Vue({
         condition: '',
         flowcharts: []
     },
+    methods: {
+        favourite() {
+            layer.msg('该功能暂未开发!')
+        }
+    },
     created() {
         axios.get(this.API_URL + '/api/zwfw/project_detail/ym_id/' + this.ym_id + '/id/' + this.id)
             .then(response => response.data.data)
