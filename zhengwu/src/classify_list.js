@@ -41,21 +41,19 @@ function render(page) {
                     const li = document.createElement('li')
                     li.setAttribute('id', data.id)
                     li.className = "box"
+                    const link = API_URL_2 + '/wap/news/list/appid/' + ym_id + '/columnid/' + data.id
+                    li.onclick = () => top.location.href = link
                     ul.appendChild(li)
 
-                    const a = document.createElement('a')
-                    a.setAttribute('link',  API_URL_2 + '/wap/news/list/appid/' + ym_id + '/columnid/' + data.id)
-                    a.onclick = () => top.location.href = a.getAttribute('link')
-                    li.appendChild(a)
 
                     const img = document.createElement('img')
                     img.setAttribute('src', API_URL_2 + data.icon)
                     img.style.width = '30%'
-                    a.appendChild(img)
+                    li.appendChild(img)
 
                     const p = document.createElement('p')
                     p.innerText = data.name
-                    a.appendChild(p)
+                    li.appendChild(p)
                 }
             })
     } else {
@@ -75,42 +73,38 @@ function render(page) {
 
 function render_icons(data) {
     const li = document.createElement('li')
-    li.setAttribute('id', data.id)
-    li.className = "icon"
     ul.appendChild(li)
 
-    const a = document.createElement('a')
-    a.setAttribute('link', 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=icon')
-    a.onclick = () => top.location.href = a.getAttribute('link')
-    li.appendChild(a)
+    li.setAttribute('id', data.id)
+    li.className = "icon"
+    const link = 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=icon'
+    li.onclick = () => top.location.href = link
 
     const img = document.createElement('img')
     img.setAttribute('src', API_URL_1 + data.imgurl)
     img.style.width = '30%'
-    a.appendChild(img)
+    li.appendChild(img)
 
     const p = document.createElement('p')
     p.innerText = data.name
     p.style.cssText = "margin-top: 0%; margin-bottom: 30%;"
-    a.appendChild(p)
+    li.appendChild(p)
 }
 
 function render_list(data) {
     const li = document.createElement('li')
+    ul.appendChild(li)
+
+    const link = 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=list'
+    li.onclick = () => top.location.href = link
     li.setAttribute('id', data.id)
     li.className = "text"
-    ul.appendChild(li)
 
     const hr = document.createElement('hr')
     hr.id = "line"
     ul.appendChild(hr)
 
-    const a = document.createElement('a')
-    a.setAttribute('link', 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=list')
-    a.onclick = () => top.location.href = a.getAttribute('link')
-    li.appendChild(a)
-
     const p = document.createElement('p')
     p.innerText = data.name
-    a.appendChild(p)
+    li.appendChild(p)
 }
