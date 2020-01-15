@@ -39,12 +39,12 @@ function render(page) {
             .then(json => {
                 for (data of json.data) {
                     const li = document.createElement('li')
+                    ul.appendChild(li)
+
                     li.setAttribute('id', data.id)
                     li.className = "box"
                     const link = API_URL_2 + '/wap/news/list/appid/' + ym_id + '/columnid/' + data.id
                     li.onclick = () => top.location.href = link
-                    ul.appendChild(li)
-
 
                     const img = document.createElement('img')
                     img.setAttribute('src', API_URL_2 + data.icon)
