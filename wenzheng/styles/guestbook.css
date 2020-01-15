@@ -27,32 +27,45 @@ hr {
 .left {
     width: 50%;
     padding: 0 5px 10px 10px;
+    box-sizing: border-box;
 }
 
 .right {
     width: 50%;
     padding: 0 10px 10px 5px;
+    box-sizing: border-box;
 }
 
-.left div {
+.blue {
     background: url('../images/blue.png') no-repeat center;
     background-size: cover;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
 }
 
-.right div {
+.orange {
     background: url('../images/orange.png') no-repeat center;
     background-size: cover;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
 }
 
 .top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.number {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding-right: 3px;
+}
+
+.header p {
     color: white;
     text-align: center;
-    font-weight: bold;
-    font-size: 1.2em;
 }
 
 .main {
