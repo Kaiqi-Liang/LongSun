@@ -58,36 +58,34 @@
 
             <div>
                 <ul>
-                    <li v-for="item in list" class="list">
-                        <a name="detail" href="javascript:" :link="'show.html?id=' + item.id + '&&ym_id=' + ym_id">
-                            <div class="user">
-                                <img class="avatar" :src="item.avatar" onerror="javascript: this.src='images/avatar.png'">
-                                <div class="macro">
-                                    <p>{{ item.username }}</p>
-                                    <p class="time">{{ item.time }}</p>
+                    <li v-for="item in list" class="list" @click="link(item.id)">
+                        <div class="user">
+                            <img class="avatar" :src="item.avatar" onerror="javascript: this.src='images/avatar.png'">
+                            <div class="macro">
+                                <p>{{ item.username }}</p>
+                                <p class="time">{{ item.time }}</p>
+                            </div>
+                            <div class="icon">
+                                <span class="not-yet-replied" v-if="item.status == 1">待回复</span>
+                                <span class="replied" v-else>已回复</span>
+                            </div>
+                        </div>
+
+                        <p class="intro">{{ item.intro }}</p>
+
+                        <div class="bottom">
+                            <p>{{ item.name }}</p>
+                            <div class="reacts">
+                                <div class="comments">
+                                    <span>{{ item.comments }}</span>
+                                    <img src="images/comment_list.png">
                                 </div>
-                                <div class="icon">
-                                    <span class="not-yet-replied" v-if="item.status == 1">待回复</span>
-                                    <span class="replied" v-else>已回复</span>
+                                <div class="likes">
+                                    <span>{{ item.likes }}</span>
+                                    <img src="images/like.png">
                                 </div>
                             </div>
-
-                            <p class="intro">{{ item.intro }}</p>
-
-                            <div class="bottom">
-                                <p>{{ item.name }}</p>
-                                <div class="reacts">
-                                    <div class="comments">
-                                        <span>{{ item.comments }}</span>
-                                        <img src="images/comment_list.png">
-                                    </div>
-                                    <div class="likes">
-                                        <span>{{ item.likes }}</span>
-                                        <img src="images/like.png">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                        </div>
                     </li>
                 </ul>
 
@@ -99,7 +97,7 @@
 
         </div>
 
-        <a class="ask" href="javascript:" :link="'add.html?ym_id=' + ym_id">
+        <a class="ask" @click="link()">
             <img src="images/ask.png">
         </a>
     </div>
