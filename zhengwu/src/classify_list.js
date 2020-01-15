@@ -39,34 +39,32 @@ function render(page) {
             .then(json => {
                 for (data of json.data) {
                     const li = document.createElement('li')
-                    li.setAttribute('id', data.id)
-                    li.className = "box"
                     ul.appendChild(li)
 
-                    const a = document.createElement('a')
+                    li.setAttribute('id', data.id)
+                    li.className = "box"
                     const link = API_URL_2 + '/wap/news/list/appid/' + ym_id + '/columnid/' + data.id
-                    a.setAttribute('onclick', "aLinkClick('" + link + "')")
-                    li.appendChild(a)
+                    li.onclick = () => aLinkClick(link)
 
                     const img = document.createElement('img')
                     img.setAttribute('src', API_URL_2 + data.icon)
                     img.style.width = '30%'
-                    a.appendChild(img)
+                    li.appendChild(img)
 
                     const p = document.createElement('p')
                     p.innerText = data.name
-                    a.appendChild(p)
+                    li.appendChild(p)
                 }
             })
     } else {
         fetch(API_URL_1 + '/api/zwfw/classify_list/ym_id/' + ym_id + '/type/' + page)
             .then(response => response.json())
             .then(json => {
-                for (data in json.data) {
-                    if (json.data[data].imgurl) { // if there are icons
-                        render_icons(json.data[data], 'project_list.html?id=' + json.data[data].id + '&&ym_id=' + ym_id + '&&name=' + json.data[data].name + '&&type=icon')
+                for (data of json.data) {
+                    if (data.imgurl) { // if there are icons
+                        render_icons(data, 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=icon')
                     } else {
-                        render_list(json.data[data], 'project_list.html?id=' + json.data[data].id + '&&ym_id=' + ym_id + '&&name=' + json.data[data].name + '&&type=list')
+                        render_list(data, 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=list')
                     }
                 }
             })
@@ -75,40 +73,36 @@ function render(page) {
 
 function render_icons(data, link) {
     const li = document.createElement('li')
-    li.setAttribute('id', data.id)
-    li.className = "icon"
     ul.appendChild(li)
 
-    const a = document.createElement('a')
-    a.setAttribute('onclick', "aLinkClick('" + link + "')")
-    li.appendChild(a)
+    li.setAttribute('id', data.id)
+    li.className = "icon"
+    li.onclick = () => aLinkClick(link)
 
     const img = document.createElement('img')
     img.setAttribute('src', API_URL_1 + data.imgurl)
     img.style.width = '30%'
-    a.appendChild(img)
+    li.appendChild(img)
 
     const p = document.createElement('p')
     p.innerText = data.name
     p.style.cssText = "margin-top: 0%; margin-bottom: 30%;"
-    a.appendChild(p)
+    li.appendChild(p)
 }
 
 function render_list(data, link) {
     const li = document.createElement('li')
+    ul.appendChild(li)
+
+    li.onclick = () => aLinkClick(link)
     li.setAttribute('id', data.id)
     li.className = "text"
-    ul.appendChild(li)
 
     const hr = document.createElement('hr')
     hr.id = "line"
     ul.appendChild(hr)
 
-    const a = document.createElement('a')
-    a.setAttribute('onclick', "aLinkClick('" + link + "')")
-    li.appendChild(a)
-
     const p = document.createElement('p')
     p.innerText = data.name
-    a.appendChild(p)
+    li.appendChild(p)
 }

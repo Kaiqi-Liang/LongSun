@@ -78,7 +78,7 @@
                             {{ info.value }}
                         </a>
 
-                        <a v-else-if="info.text == '联系电话' && info.value.match(/[0-9]{4}-?[0-9]{7}/g)"
+                        <a v-else-if="info.text == '联系电话' && info.value.match(/^[0-9]{4}.?[0-9]{7}$/g)"
                            :href="'tel:' + info.value"
                            class="value right">
                             {{ info.value }}
@@ -134,7 +134,7 @@
                 <p>收藏</p>
             </a>
 
-            <a :href="'tel:' + (tel.match(/[0-9]{4}-?[0-9]{7}/g) ? tel : '')" class="icon">
+            <a :href="'tel:' + (tel.match(/[0-9]{4}.?[0-9]{7}/g) ? tel : '')" class="icon">
                 <img class="img" src="images/phone.png">
                 <p>电话</p>
             </a>
