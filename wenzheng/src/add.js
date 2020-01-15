@@ -67,14 +67,14 @@ const app = new Vue({
                     .then(response => {
                         if (response.data.msg == '未登录') { // go to login page
                             layer.msg(response.data.msg)
-                            setTimeout(() => window.location.href = 'login.html?appid=' + this.ym_id, 300)
+                            setTimeout(() => location.href = 'login.html?appid=' + this.ym_id, 300)
                         } else if (response.data.msg == '问政内容不能为空') {
                             layer.msg('请输入内容')
                         } else if (response.data.msg == '标题必须是3-50个字符') {
                             layer.msg(response.data.msg)
                         } else if (response.data.msg == '添加成功，等待管理员审核') { // go back to home page
                             layer.msg('问政成功')
-                            setTimeout(() => window.location.href = 'guestbook.html?ym_id=' + this.ym_id, 300)
+                            setTimeout(() => history.go(-1), 300)
                         } else { // reload the page
                             layer.msg('爆料失败')
                             setTimeout(() => location.reload(), 300)
