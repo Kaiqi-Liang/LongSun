@@ -25,13 +25,13 @@
                 <input name="title" placeholder="提问标题" class="title">
 
                 <select name="typeid">
-                    <option value="0">选择分类</option>
-                    <option v-for="type in typeList" :value="type.id">{{ type.name }}</option>
+                    <option v-for="type in typeList" :value="type.id" v-if="type.id == typeid" selected>{{ type.name }}</option>
+                    <option :value="type.id" v-else>{{ type.name }}</option>
                 </select>
 
                 <select name="adminId">
-                    <option value="0">选择部门</option>
-                    <option v-for="branch in branchList" :value="branch.id">{{ branch.name }}</option>
+                    <option v-for="branch in branchList" :value="branch.id" v-if="branch.id == adminId" selected>{{ branch.name }}</option>
+                    <option :value="branch.id" v-else>{{ branch.name }}</option>
                 </select>
 
                 <textarea name="introduce" placeholder="提问内容"></textarea>

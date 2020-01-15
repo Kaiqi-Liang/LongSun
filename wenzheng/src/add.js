@@ -1,10 +1,18 @@
 const API_URL = 'http://test.sogx.cn'
-new Vue({
+const app = new Vue({
     el: '#root',
     data: {
-        ym_id: location.href.split('?')[1].split('=')[1],
-        typeList: [],
-        branchList: [],
+        ym_id: location.href.split('?')[1].split('&&')[0].split('=')[1],
+        typeList: [{
+            id: 0,
+            name: '选择分类'
+        }],
+        typeid: location.href.split('?')[1].split('&&')[1].split('=')[1],
+        branchList: [{
+            id: 0,
+            name: '选择部门'
+        }],
+        adminId: location.href.split('?')[1].split('&&')[2].split('=')[1],
         images: '',
         video: '',
         lng: '',

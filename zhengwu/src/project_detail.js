@@ -21,7 +21,6 @@ new Vue({
         axios.get(this.API_URL + '/api/zwfw/project_detail/ym_id/' + this.ym_id + '/id/' + this.id)
             .then(response => response.data.data)
             .then(data => {
-                console.log(data)
                 this.title = data.maininfo.title
                 this.unit = data.maininfo.zwh_jbxx_sszt
                 this.service = data.maininfo.zwh_jbxx_dxccs
