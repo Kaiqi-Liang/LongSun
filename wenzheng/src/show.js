@@ -102,7 +102,7 @@ new Vue({
                         }
                         else if (response.data.msg == '未登录') {
                             layer.msg(response.data.msg)
-                            setTimeout(() => window.location.href = '../wap/my/login/appid/' + this.ym_id, 300)
+                            setTimeout(() => window.location.href = '../../wap/my/login/appid/' + this.ym_id, 300)
                         } else {
                             layer.msg('评论失败')
                             document.getElementsByName('content')[0].value = ''
