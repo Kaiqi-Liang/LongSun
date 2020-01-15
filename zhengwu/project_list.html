@@ -23,18 +23,16 @@
         </div>
 
         <ul class="list">
-            <li class="item" v-for="project in projectList">
-                <a @click=link(project.id)>
-                    <div class="info">
-                        <p class="subtitle">{{ project.title }}</p>
-                        <span class="service">{{ project.service }}</span>
-                        <hr>
-                    </div>
-                    <div class="button">
-                        <button class="guide">办事指南</button>
-                        <button class="advisory">咨询</button>
-                    </div>
-                </a>
+            <li class="item" v-for="project in projectList" @click="link(project.id)">
+                <div class="info">
+                    <p class="subtitle">{{ project.title }}</p>
+                    <span class="service">{{ project.service }}</span>
+                    <hr>
+                </div>
+                <div class="button">
+                    <button class="guide">办事指南</button>
+                    <button class="advisory">咨询</button>
+                </div>
             </li>
         </ul>
 
