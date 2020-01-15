@@ -188,7 +188,7 @@ new Vue({
         },
         link(id) {
             if (id) top.location.href = 'show.html?id=' + id + '&&ym_id=' + this.ym_id
-            else top.location.href = 'add.html?ym_id=' + this.ym_id
+            else top.location.href = 'add.html?ym_id=' + this.ym_id + '&&typeid=0&&adminId=0'
         }
     },
     created() {

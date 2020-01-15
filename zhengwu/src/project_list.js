@@ -47,7 +47,8 @@ new Vue({
                     this.projectList.push({
                         id: item.id,
                         title: item.zwh_title_bt,
-                        service: item.zwh_jbxx_dxccs
+                        service: item.zwh_jbxx_dxccs,
+                        zwh_id: item.zwh_id
                     })
                 })
             } else { // nothing is fetched
@@ -77,6 +78,11 @@ new Vue({
         },
         link(id) {
             top.location.href = 'project_detail.html?id=' + id + '&&ym_id=' + this.ym_id
+        },
+        advisory(id) {
+            this.projectList.forEach(item => {
+                if (item.id == id) top.location.href = '../wenzheng/add.html?ym_id=' + this.ym_id + '&&typeid=' + 1 + '&&adminId=' + item.zwh_id
+            })
         }
     },
     created() {
