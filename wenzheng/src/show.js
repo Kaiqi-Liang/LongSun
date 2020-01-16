@@ -126,7 +126,7 @@ new Vue({
             }
         },
         share() {
-            if (typeof WeixinJSBridge) {
+            if (typeof WeixinJSBridge == 'undefined') {
                 alert("Please open this page on Wechat");
             } else { // the app is opened on WeChat
                 const modal = document.querySelector('.share')
