@@ -130,8 +130,9 @@ new Vue({
             if (typeof WeixinJSBridge == "undefined") {
                 alert("请先通过微信打开，再分享文章.");
             } else { // 在微信中打开的
-                document.querySelector('.share').style.display = 'block'
-                document.querySelector('.share').addEventListener('click', () => document.querySelector('.share').style.display = 'none')
+                const modal = document.querySelector('.share')
+                modal.style.display = 'block'
+                modal.addEventListener('click', () => modal.style.display = 'none')
             }
         },
         onScroll() {
