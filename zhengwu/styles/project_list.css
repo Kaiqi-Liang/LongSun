@@ -26,6 +26,7 @@ p {
     padding: 0 35px;
     text-align: center;
     box-sizing: border-box;
+    border-bottom: solid 5px #eeeeee;
 
     display: flex;
     align-items: center;
@@ -59,7 +60,8 @@ p {
 .item {
     border-left: solid 10px #eeeeee;
     border-right: solid 10px #eeeeee;
-    border-top: solid 10px #eeeeee;
+    border-top: solid 5px #eeeeee;
+    border-bottom: solid 5px #eeeeee;
     overflow: auto;
     padding: 5px;
 }
@@ -112,7 +114,6 @@ p {
 }
 
 .footer {
-    border-top: solid 5px #eeeeee;
     color: #aaaaaa;
     width: 100%;
     height: 40px;
