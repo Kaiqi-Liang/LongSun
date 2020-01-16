@@ -126,23 +126,12 @@ new Vue({
             }
         },
         share() {
-            if (typeof WeixinJSBridge != "undefined") {
-                document.getElementsByClassName('modal')[1].style.display = 'block'
-                document.querySelector('.back').href = 'javascript: void(0)'
-
-                // 2 areas that will hide the comment writing section
-                document.querySelector('.back').addEventListener('click', () => { // the back icon
-                    this.hideShare()
-                })
-                // the grey area
-                document.getElementsByClassName('modal')[1].addEventListener('click', this.hideShare)
-            } else {
-                alert("请先通过微信打开，再分享文章.");
+            if (typeof WeixinJSBridge == "undefined") {
+                alert("Please open this page on Wechat");
+            } else { // the app is opened on WeChat
+                document.querySelector('.share').style.display = 'block'
+                document.querySelector('.share').addEventListener('click', () => document.querySelector('.share').style.display = 'none')
             }
-        },
-        hideShare() {
-            document.getElementsByClassName('modal')[1].style.display = 'none'
-            setTimeout(() => document.querySelector('.back').href = 'javascript: history.go(-1)', 0)
         },
         onScroll() {
             // overall scroll height
