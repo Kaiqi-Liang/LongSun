@@ -131,11 +131,8 @@ new Vue({
                 alert("请先通过微信打开，再分享文章.");
             } else { // 在微信中打开的
                 document.querySelector('.share').style.display = 'block'
-                document.querySelector('.share').addEventListener('click', this.hideShare)
+                document.querySelector('.share').addEventListener('click', () => document.querySelector('.share').style.display = 'none')
             }
-        },
-        hideShare() {
-            document.querySelector('.share').style.display = 'none'
         },
         onScroll() {
             // overall scroll height
