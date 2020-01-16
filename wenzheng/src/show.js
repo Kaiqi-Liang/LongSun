@@ -219,7 +219,6 @@ new Vue({
                             type: '', // 分享类型,music、video或link，不填默认为link
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                             success: function () { // 用户确认分享后执行的回调函数
-                                // this.hideShare()
                                 document.querySelector('.share').style.display = 'none'
                             },
                         });
@@ -231,7 +230,6 @@ new Vue({
                             type: '', // 分享类型,music、video或link，不填默认为link
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                             success: function () { // 用户确认分享后执行的回调函数
-                                // this.hideShare()
                                 document.querySelector('.share').style.display = 'none'
                             },
                         });
