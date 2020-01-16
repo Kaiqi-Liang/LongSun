@@ -134,7 +134,7 @@
                 <p>收藏</p>
             </a>
 
-            <a :href="'tel:' + (tel.match(/[0-9]{4}.?[0-9]{7}/g) ? tel : '')" class="icon">
+            <a :href="tel.match(/[0-9]{4}.?[0-9]{7}/g) ? 'tel:' + tel : 'javascript: void(0)'" class="icon">
                 <img class="img" src="images/phone.png">
                 <p>电话</p>
             </a>
