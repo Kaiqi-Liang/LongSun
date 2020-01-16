@@ -68,8 +68,8 @@
                         <div class="user">
                             <img class="avatar" :src="item.avatar" onerror="javascript: this.src='images/avatar.png'">
                             <div class="macro">
-                                <p>{{ item.username }}</p>
-                                <p class="time">{{ item.time }}</p>
+                                <p class="hide">{{ item.username }}</p>
+                                <p class="time hide">{{ item.time }}</p>
                             </div>
                             <div class="icon">
                                 <span class="not-yet-replied" v-if="item.status == 1">待回复</span>
@@ -77,7 +77,7 @@
                             </div>
                         </div>
 
-                        <p class="intro">{{ item.intro }}</p>
+                        <p class="intro hide">{{ item.intro }}</p>
 
                         <div class="bottom">
                             <p>{{ item.name }}</p>

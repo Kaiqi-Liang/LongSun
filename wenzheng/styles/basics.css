@@ -12,8 +12,11 @@ a {
 }
 
 p {
+    margin: 0;
+}
+
+.hide {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin: 0;
 }
