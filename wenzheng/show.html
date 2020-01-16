@@ -24,22 +24,22 @@
             <div class="user">
                 <img class="avatar" :src="avatar" onerror="javascript: this.src='images/avatar.png'">
                 <div class="macro">
-                    <p>{{ username }}</p>
-                    <p class="grey">{{ addtime }}</p>
+                    <p class="hide">{{ username }}</p>
+                    <p class="grey hide">{{ addtime }}</p>
                 </div>
                 <div class="type">
                     <span class="grey">{{ typename }}</span>
                 </div>
             </div>
 
-            <p class="intro">{{ intro }}</p>
+            <p class="intro hide">{{ intro }}</p>
 
             <div v-if="status == 2 && reply != ''" class="reply">
                 <div class="top">
-                    <p>{{ name }}</p>
+                    <p class="hide">{{ name }}</p>
                     <span>官方回复</span>
                 </div>
-                <p>{{ reply }}</p>
+                <p class="hide">{{ reply }}</p>
             </div>
         </div>
 
@@ -55,8 +55,8 @@
                 <li class="user" v-for="comment in comments" style="padding-bottom: 30px">
                     <img class="avatar" :src="comment.avatar" onerror="javascript: this.src='images/avatar.png'">
                     <div class="macro">
-                        <p class="grey">{{ comment.nickname }}</p>
-                        <p>{{ comment.content }}</p>
+                        <p class="grey hide">{{ comment.nickname }}</p>
+                        <p class="hide">{{ comment.content }}</p>
                     </div>
                     <div class="type">
                         <p class="grey">{{ comment.createtime }}</p>
