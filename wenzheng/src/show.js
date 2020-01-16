@@ -126,11 +126,12 @@ new Vue({
             }
         },
         share() {
-            if (typeof WeixinJSBridge == "undefined") {
+            if (typeof WeixinJSBridge) {
                 alert("Please open this page on Wechat");
             } else { // the app is opened on WeChat
-                document.querySelector('.share').style.display = 'block'
-                document.querySelector('.share').addEventListener('click', () => document.querySelector('.share').style.display = 'none')
+                const modal = document.querySelector('.share')
+                modal.style.display = 'block'
+                modal.addEventListener('click', () => modal.style.display = 'none')
             }
         },
         onScroll() {
