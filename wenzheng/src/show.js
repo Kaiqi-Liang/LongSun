@@ -127,23 +127,15 @@ new Vue({
             }
         },
         share() {
-            if (typeof WeixinJSBridge != "undefined") {
-                document.getElementsByClassName('modal')[1].style.display = 'block'
-                document.querySelector('.back').href = 'javascript: void(0)'
-
-                // 2 areas that will hide the comment writing section
-                document.querySelector('.back').addEventListener('click', () => { // the back icon
-                    this.hideShare()
-                })
-                // the grey area
-                document.getElementsByClassName('modal')[1].addEventListener('click', this.hideShare)
-            } else {
+            if (typeof WeixinJSBridge == "undefined") {
                 alert("请先通过微信打开，再分享文章.");
+            } else { // 在微信中打开的
+                document.querySelector('.share').style.display = 'block'
+                document.querySelector('.share').addEventListener('click', this.hideShare)
             }
         },
         hideShare() {
-            document.getElementsByClassName('modal')[1].style.display = 'none'
-            setTimeout(() => document.querySelector('.back').href = 'javascript: history.go(-1)', 0)
+            document.querySelector('.share').style.display = 'none'
         },
         onScroll() {
             // overall scroll height
@@ -230,8 +222,7 @@ new Vue({
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                             success: function () { // 用户确认分享后执行的回调函数
                                 // this.hideShare()
-                                document.getElementsByClassName('modal')[1].style.display = 'none'
-                                setTimeout(() => document.querySelector('.back').href = 'javascript: history.go(-1)', 0)
+                                document.querySelector('.share').style.display = 'none'
                             },
                         });
 
@@ -243,8 +234,7 @@ new Vue({
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                             success: function () { // 用户确认分享后执行的回调函数
                                 // this.hideShare()
-                                document.getElementsByClassName('modal')[1].style.display = 'none'
-                                setTimeout(() => document.querySelector('.back').href = 'javascript: history.go(-1)', 0)
+                                document.querySelector('.share').style.display = 'none'
                             },
                         });
 
