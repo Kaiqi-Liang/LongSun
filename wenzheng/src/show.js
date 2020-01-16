@@ -2,8 +2,8 @@ const API_URL = 'http://test.sogx.cn'
 new Vue({
     el: '#root',
     data: {
-        id: location.href.split('?')[1].split('&&')[0].split('=')[1],
-        ym_id: location.href.split('?')[1].split('&&')[1].split('=')[1],
+        id: location.href.split('?')[1].split('&')[0].split('=')[1],
+        ym_id: location.href.split('?')[1].split('&')[1].split('=')[1],
         title: '',
         username: '',
         avatar: '',
@@ -21,7 +21,7 @@ new Vue({
         favourite: 'images/favourite.png'
     }, methods: {
         getDetail() {
-            fetch(API_URL + '/api/guestbook/show?ym_id=' + this.ym_id + '&&id=' + this.id)
+            fetch(API_URL + '/api/guestbook/show?ym_id=' + this.ym_id + '&id=' + this.id)
                 .then(response => response.json())
                 .then(json => {
                     this.title = json.data.title
@@ -38,7 +38,7 @@ new Vue({
                 })
         },
         getComments(first) {
-            fetch(API_URL + '/api/guestbook/commentList?ym_id=' + this.ym_id + '&&rel_id=' + this.id + '&&page=' + this.page + '&&pagesize=' + this.pagesize)
+            fetch(API_URL + '/api/guestbook/commentList?ym_id=' + this.ym_id + '&rel_id=' + this.id + '&page=' + this.page + '&pagesize=' + this.pagesize)
                 .then(response => response.json())
                 .then(json => {
                     if (first) this.renderComments(json.data)

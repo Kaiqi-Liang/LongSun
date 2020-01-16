@@ -62,9 +62,9 @@ function render(page) {
             .then(json => {
                 for (data of json.data) {
                     if (data.imgurl) { // if there are icons
-                        render_icons(data, 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=icon')
+                        render_icons(data, 'project_list.html?id=' + data.id + '&ym_id=' + ym_id + '&name=' + data.name + '&type=icon')
                     } else {
-                        render_list(data, 'project_list.html?id=' + data.id + '&&ym_id=' + ym_id + '&&name=' + data.name + '&&type=list')
+                        render_list(data, 'project_list.html?id=' + data.id + '&ym_id=' + ym_id + '&name=' + data.name + '&type=list')
                     }
                 }
             })
