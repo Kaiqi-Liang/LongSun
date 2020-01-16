@@ -34,8 +34,7 @@ new Vue({
                     this.status = json.data.status
                     this.reply = json.data.reply
                     this.commentcount = json.data.commentcount
-
-                    this.setupSharing()
+                    //this.setupSharing()
                 })
         },
         getComments(first) {
@@ -200,6 +199,7 @@ new Vue({
             }
             return time
         },
+        /*
         setupSharing() {
             fetch('http://test.sogx.cn/api/app/getWechatSignPackage?url=' + location.href)
                 .then(response => response.json())
@@ -268,6 +268,7 @@ new Vue({
                     });
                 })
         }
+        */
     },
     created() {
         this.getDetail()
