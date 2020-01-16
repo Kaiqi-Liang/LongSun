@@ -34,6 +34,8 @@ new Vue({
                     this.status = json.data.status
                     this.reply = json.data.reply
                     this.commentcount = json.data.commentcount
+
+                    this.setupSharing()
                 })
         },
         getComments(first) {
@@ -214,7 +216,7 @@ new Vue({
                             'onMenuShareQQ',  //分享到QQ
                         ]
                     });
-                    wx.ready(function () {   //ready函数用于调用API，如果你的网页在加载后就需要自定义分享和回调功能，需要在此调用分享函数。//如果是微信游戏结束后，需要点击按钮触发得到分值后分享，这里就不需要调用API了，可以在按钮上绑定事件直接调用。因此，微信游戏由于大多需要用户先触发获取分值，此处请不要填写如下所示的分享API
+                    wx.ready(() => {   //ready函数用于调用API，如果你的网页在加载后就需要自定义分享和回调功能，需要在此调用分享函数。//如果是微信游戏结束后，需要点击按钮触发得到分值后分享，这里就不需要调用API了，可以在按钮上绑定事件直接调用。因此，微信游戏由于大多需要用户先触发获取分值，此处请不要填写如下所示的分享API
                         wx.onMenuShareAppMessage({
                             title: this.title,
                             desc: this.intro,
@@ -269,9 +271,6 @@ new Vue({
     created() {
         this.getDetail()
         this.getComments(true)
-        new Promise((resolve) => {
-            setTimeout(resolve(), 100)
-        }).then(() => this.setupSharing())
         window.addEventListener('scroll', this.onScroll);
     },
 })
