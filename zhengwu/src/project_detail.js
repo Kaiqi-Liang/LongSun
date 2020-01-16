@@ -2,8 +2,8 @@ new Vue({
     el: '#root',
     data: {
         API_URL: 'http://v.sogx.cn',
-        id: location.href.split('?')[1].split('&&')[0].split('=')[1],
-        ym_id: location.href.split('?')[1].split('&&')[1].split('=')[1],
+        id: location.href.split('?')[1].split('&')[0].split('=')[1],
+        ym_id: location.href.split('?')[1].split('&')[1].split('=')[1],
         zwh_id: '',
         title: '',
         unit: '',

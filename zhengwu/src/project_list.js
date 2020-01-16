@@ -2,11 +2,11 @@ const API_URL = 'http://v.sogx.cn'
 new Vue({
     el: '#root',
     data: {
-        // href = index.html?id=int&&ym_id=48&&name=str&&type=(icon|list)
-        id: location.href.split("?")[1].split('&&')[0].split('=')[1],
-        ym_id: location.href.split("?")[1].split('&&')[1].split('=')[1],
-        name: decodeURI(window.location.href.split("?")[1].split('&&')[2].split('=')[1]),
-        type: location.href.split("?")[1].split('&&')[3].split('=')[1],
+        // href = index.html?id=int&ym_id=48&name=str&type=(icon|list)
+        id: location.href.split("?")[1].split('&')[0].split('=')[1],
+        ym_id: location.href.split("?")[1].split('&')[1].split('=')[1],
+        name: decodeURI(window.location.href.split("?")[1].split('&')[2].split('=')[1]),
+        type: location.href.split("?")[1].split('&')[3].split('=')[1],
         page: 1,
         projectList: [],
         footer: '加载中...'
@@ -77,11 +77,11 @@ new Vue({
             footer.removeChild(footer.firstChild)
         },
         link(id) {
-            top.location.href = 'project_detail.html?id=' + id + '&&ym_id=' + this.ym_id
+            top.location.href = 'project_detail.html?id=' + id + '&ym_id=' + this.ym_id
         },
         advisory(id) {
             this.projectList.forEach(item => {
-                if (item.id == id) top.location.href = '../wenzheng/add.html?ym_id=' + this.ym_id + '&&typeid=' + 1 + '&&adminId=' + item.zwh_id
+                if (item.id == id) top.location.href = '../wenzheng/add.html?ym_id=' + this.ym_id + '&typeid=' + 1 + '&adminId=' + item.zwh_id
             })
         }
     },

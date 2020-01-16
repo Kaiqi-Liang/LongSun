@@ -142,7 +142,7 @@ new Vue({
             }
         },
         getList(type_id, first) {
-            fetch(API_URL + '/api/guestbook/list?ym_id=' + this.ym_id + '&&typeid=' + type_id + '&&page=' + this.page + '&&pagesize=' + this.pagesize)
+            fetch(API_URL + '/api/guestbook/list?ym_id=' + this.ym_id + '&typeid=' + type_id + '&page=' + this.page + '&pagesize=' + this.pagesize)
                 .then(response => response.json())
                 .then(json => {
                     if (first) this.renderList(json.data)
@@ -187,8 +187,8 @@ new Vue({
             return date.getFullYear() + '-' + (parseInt(date.getMonth()) + 1) + '-' + date.getDate()
         },
         link(id) {
-            if (id) top.location.href = 'show.html?id=' + id + '&&ym_id=' + this.ym_id
-            else top.location.href = 'add.html?ym_id=' + this.ym_id + '&&typeid=0&&adminId=0'
+            if (id) top.location.href = 'show.html?id=' + id + '&ym_id=' + this.ym_id
+            else top.location.href = 'add.html?ym_id=' + this.ym_id + '&typeid=0&adminId=0'
         }
     },
     created() {
