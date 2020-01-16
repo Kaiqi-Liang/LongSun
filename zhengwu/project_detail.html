@@ -72,13 +72,13 @@
                     <li class="info" v-for="info in base">
                         <p class="left"> {{ info.text }}：</p>
 
-                        <a v-if="info.text == '地点地图' && info.value.match(/https?:\/\/[\w|.]+\w+/g)"
+                        <a v-if="info.text == '地点地图' && info.value.match(/https?:\/\/[\w|.]+\w+/)"
                            :href="info.value"
                            class="value right">
                             {{ info.value }}
                         </a>
 
-                        <a v-else-if="info.text == '联系电话' && info.value.match(/^[0-9]{4}.?[0-9]{7}$/g)"
+                        <a v-else-if="info.text == '联系电话' && info.value.match(/^[0-9]{4}.?[0-9]{7}$/)"
                            :href="'tel:' + info.value"
                            class="value right">
                             {{ info.value }}
@@ -134,7 +134,7 @@
                 <p>收藏</p>
             </a>
 
-            <a :href="tel.match(/[0-9]{4}.?[0-9]{7}/g) ? 'tel:' + tel : 'javascript: void(0)'" class="icon">
+            <a :href="tel.match(/[0-9]{4}.?[0-9]{7}/) ? 'tel:' + tel : 'javascript: void(0)'" class="icon">
                 <img class="img" src="images/phone.png">
                 <p>电话</p>
             </a>
