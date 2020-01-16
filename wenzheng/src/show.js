@@ -233,9 +233,6 @@ new Vue({
                                 document.getElementsByClassName('modal')[1].style.display = 'none'
                                 setTimeout(() => document.querySelector('.back').href = 'javascript: history.go(-1)', 0)
                             },
-                            cancel: function () {
-                                // 用户取消分享后执行的回调函数
-                            }
                         });
 
                         wx.onMenuShareTimeline({ //例如分享到朋友圈的API
@@ -244,13 +241,13 @@ new Vue({
                             imgUrl: 'https://yun.longsunhd.com/images/lblogo.png', // 分享图标
                             type: '', // 分享类型,music、video或link，不填默认为link
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                            success: function () {
-                                // 用户确认分享后执行的回调函数
+                            success: function () { // 用户确认分享后执行的回调函数
+                                // this.hideShare()
+                                document.getElementsByClassName('modal')[1].style.display = 'none'
+                                setTimeout(() => document.querySelector('.back').href = 'javascript: history.go(-1)', 0)
                             },
-                            cancel: function () {
-                                // 用户取消分享后执行的回调函数
-                            }
                         });
+
                         wx.onMenuShareQQ({
                             title: this.title, // 分享标题
                             desc: this.intro, // 分享描述
