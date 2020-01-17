@@ -192,14 +192,19 @@ new Vue({
             else top.location.href = 'add.html?ym_id=' + this.ym_id + '&typeid=0&adminId=0'
         },
         like(id) {
-            const payload = new FormData()
-            payload.append('ym_id', this.ym_id)
-            payload.append('rel_id', id)
-            axios.post('http://www.sogx.cn/api/guestbook/addLikes', payload)
-                .then(response => {
-                    layer.msg(response.data.msg)
-                    if (response.data.msg == '未登录') {
-                        setTimeout(() => top.location.href = 'login.html?appid=' + this.ym_id, 300)
+            const form = new FormData()
+            form.append('ym_id', this.ym_id)
+            form.append('rel_id', id)
+            const options = {
+                method: 'POST',
+                body: form
+            }
+            fetch('http://www.sogx.cn/api/guestbook/addLikes', options)
+                .then(response => response.json())
+                .then(json => {
+                    layer.msg(json.msg)
+                    if (json.msg == '未登录') {
+                        setTimeout(() => aLinkClick('../../wap/my/login/appid/' + this.ym_id), 300)
                     }
                 })
         }
