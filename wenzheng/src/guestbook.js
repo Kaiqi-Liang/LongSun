@@ -189,17 +189,30 @@ new Vue({
             if (id) top.location.href = 'show.html?id=' + id + '&ym_id=' + this.ym_id
             else top.location.href = 'add.html?ym_id=' + this.ym_id + '&typeid=0&adminId=0'
         },
-        like() {
+        like(id) {
+            const form = new FormData()
+            form.append('ym_id', this.ym_id)
+            form.append('rel_id', id)
+            const options = {
+                method: 'POST',
+                body: form
+            }
+            fetch('http://www.sogx.cn/api/guestbook/addLikes', options)
+                .then(response => response.json())
+                .then(json => {
+                    layer.msg(json.msg)
+                    if (json.msg == '未登录') {
+                        setTimeout(() => window.location.href = 'login.html?appid=' + this.ym_id, 300)
+                    }
+                })
         }
     },
     created() {
         this.getCount()
         this.getList(0, true)
-        new Promise((resolve) => {
-            resolve()
-        }).then(() => {
+        setTimeout(() => {
             this.getClassify()
-        })
+        }, 0);
         window.addEventListener('scroll', this.onScroll);
     },
 })

@@ -86,7 +86,7 @@
                                     <span>{{ item.comments }}</span>
                                     <img src="images/comment_list.png">
                                 </div>
-                                <div class="likes" @click="like">
+                                <div class="likes" @click.stop="like(item.id)">
                                     <span>{{ item.likes }}</span>
                                     <img src="images/like.png">
                                 </div>
