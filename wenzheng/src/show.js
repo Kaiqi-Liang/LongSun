@@ -133,7 +133,7 @@ new Vue({
         },
         share() {
             if (typeof WeixinJSBridge == "undefined") {
-                alert("请先通过微信打开此页面再分享.");
+                alert("请先通过微信打开此页面再分享");
             } else { // 在微信中打开的
                 const modal = document.querySelector('.share')
                 modal.style.display = 'block'
