@@ -210,9 +210,7 @@ new Vue({
     created() {
         this.getCount()
         this.getList(0, true)
-        setTimeout(() => {
-            this.getClassify()
-        }, 0);
+        setTimeout(() => this.getClassify(), 0);
         window.addEventListener('scroll', this.onScroll);
     },
 })
