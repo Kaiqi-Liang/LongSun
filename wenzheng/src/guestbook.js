@@ -132,7 +132,6 @@ new Vue({
                         this.page = 1
                         // reload list
                         this.getList(id, true)
-                        this.addLinks()
                     }
                 } else { // the tick is green
                     if (tick != id) { // if the tick not clicked
@@ -189,6 +188,8 @@ new Vue({
         link(id) {
             if (id) top.location.href = 'show.html?id=' + id + '&ym_id=' + this.ym_id
             else top.location.href = 'add.html?ym_id=' + this.ym_id + '&typeid=0&adminId=0'
+        },
+        like() {
         }
     },
     created() {
