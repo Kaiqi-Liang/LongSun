@@ -1,5 +1,5 @@
 const API_URL = 'http://test.sogx.cn'
-new Vue({
+const vm = new Vue({
     el: '#root',
     data: {
         ym_id: location.href.split('?')[1].split('=')[1],
@@ -11,6 +11,7 @@ new Vue({
         page: 1,
         footer: '加载中...'
     },
+    vco
     methods: {
         getCount() {
             fetch(API_URL + '/api/guestbook/getCount?ym_id=' + this.ym_id)

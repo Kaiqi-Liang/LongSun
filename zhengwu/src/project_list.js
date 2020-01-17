@@ -1,5 +1,5 @@
 const API_URL = 'http://v.sogx.cn'
-new Vue({
+const vm = new Vue({
     el: '#root',
     data: {
         // href = project_list.html?id=int&ym_id=48&name=str&type=(icon|list)
