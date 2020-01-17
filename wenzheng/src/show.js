@@ -103,7 +103,7 @@ new Vue({
                         }
                         else if (response.data.msg == '未登录') {
                             layer.msg(response.data.msg)
-                            setTimeout(() => window.location.href = '../../wap/my/login/appid/' + this.ym_id, 300)
+                            setTimeout(() => top.location.href = '../../wap/my/login/appid/' + this.ym_id, 300)
                         } else {
                             layer.msg('评论失败')
                             document.getElementsByName('content')[0].value = ''
@@ -168,22 +168,18 @@ new Vue({
             const hours = parseInt(now.getHours()) - parseInt(date.getHours());
             const minutes = parseInt(now.getMinutes()) - parseInt(date.getMinutes());
             const seconds = parseInt(now.getSeconds()) - parseInt(date.getSeconds());
-            if (years === 1) {
-                time = '去年';
-            } else if (years === 0 && months > 1) {
-                time = months + '月前';
-            } else if (months === 1) {
-                time = '上个月';
-            } else if (months === 0 && days > 1) {
-                time = days + '天前';
+            if (days > 7) {
+                time = this.formatDate(time)
+            } else if (days > 1) {
+                time = days + '天前'
             } else if (days === 1) {
-                time = '昨天';
+                time = '昨天'
             } else if (days === 0 && hours > 0) {
-                time = hours + '小时前';
+                time = hours + '小时前'
             } else if (hours === 0 && minutes > 0) {
-                time = minutes + '分钟前';
+                time = minutes + '分钟前'
             } else if (minutes === 0 && seconds > 0) {
-                time = seconds + '秒前';
+                time = seconds + '秒前'
             } else {
                 time = years + '年前';
             }
@@ -215,7 +211,7 @@ new Vue({
                             title: this.title, // 分享标题
                             desc: this.intro, // 分享描述
                             link: location.href, // 分享链接
-                            imgUrl: 'https://yun.longsunhd.com/images/lblogo.png', // 分享图标
+                            imgUrl: this.avatar, // 分享图标
                             type: '', // 分享类型,music、video或link，不填默认为link
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                             success: function () { // 用户确认分享后执行的回调函数
@@ -226,7 +222,7 @@ new Vue({
                         wx.onMenuShareTimeline({ //例如分享到朋友圈的API
                             title: this.title, // 分享标题
                             link: location.href, // 分享链接
-                            imgUrl: 'https://yun.longsunhd.com/images/lblogo.png', // 分享图标
+                            imgUrl: this.avatar, // 分享图标
                             type: '', // 分享类型,music、video或link，不填默认为link
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                             success: function () { // 用户确认分享后执行的回调函数
@@ -238,7 +234,7 @@ new Vue({
                             title: this.title, // 分享标题
                             desc: this.intro, // 分享描述
                             link: location.href, // 分享链接
-                            imgUrl: 'https://yun.longsunhd.com/images/lblogo.png', // 分享图标
+                            imgUrl: this.avatar, // 分享图标
                             success: function () {
                                 // 用户确认分享后执行的回调函数
                             },
