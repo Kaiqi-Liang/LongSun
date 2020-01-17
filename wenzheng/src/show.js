@@ -46,7 +46,7 @@ new Vue({
                 method: 'POST',
                 body: form
             }
-            fetch('http://www.sogx.cn/api/guestbook/addLikes', options)
+            fetch(API_URL + '/api/guestbook/addLikes', options)
                 .then(response => response.json())
                 .then(json => {
                     layer.msg(json.msg)
