@@ -95,8 +95,16 @@ div {
 .like {
     width: 100%;
     display: flex;
+    padding: 5px;
     justify-content: center;
     align-items: center;
+    color: gray;
+    font-size: 14px;
+}
+
+.like img {
+    width: 30px;
+    padding-right: 5px;
 }
 
 #separator {
