@@ -134,6 +134,8 @@ new Vue({
         link(id) {
             if (id) aLinkClick('show.html?id=' + id + '&ym_id=' + this.ym_id)
             else aLinkClick('add.html?ym_id=' + this.ym_id + '&typeid=0&adminId=0')
+        },
+        like() {
         }
     },
     created() {
