@@ -18,7 +18,8 @@ new Vue({
         page: 1,
         pagesize: 10,
         footer: '加载中...',
-        favourite: 'images/favourite.png'
+        favourite: 'images/favourite.png',
+        imgUrl: ''
     }, methods: {
         getDetail() {
             fetch(API_URL + '/api/guestbook/show?ym_id=' + this.ym_id + '&id=' + this.id)
@@ -35,6 +36,13 @@ new Vue({
                     this.reply = json.data.reply
                     this.commentcount = json.data.commentcount
                     this.setupSharing()
+                })
+        },
+        getLogo() {
+            fetch(API_URL + '/api/app/logo/appid/' + this.ym_id)
+                .then(response => response.json())
+                .then(json => {
+                    this.imgUrl = json.data
                 })
         },
         getComments(first) {
@@ -214,7 +222,7 @@ new Vue({
                             title: this.title, // 分享标题
                             desc: this.intro, // 分享描述
                             link: location.href, // 分享链接
-                            imgUrl: API_URL + '/assets/img/yum_logo.png', // 分享图标
+                            imgUrl: this.imgUrl, // 分享图标
                             type: '', // 分享类型,music、video或link，不填默认为link
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                             success: function () { // 用户确认分享后执行的回调函数
@@ -225,7 +233,7 @@ new Vue({
                         wx.onMenuShareTimeline({ //例如分享到朋友圈的API
                             title: this.title, // 分享标题
                             link: location.href, // 分享链接
-                            imgUrl: API_URL + '/assets/img/yum_logo.png', // 分享图标
+                            imgUrl: this.imgUrl, // 分享图标
                             type: '', // 分享类型,music、video或link，不填默认为link
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                             success: function () { // 用户确认分享后执行的回调函数
@@ -237,7 +245,7 @@ new Vue({
                             title: this.title, // 分享标题
                             desc: this.intro, // 分享描述
                             link: location.href, // 分享链接
-                            imgUrl: API_URL + '/assets/img/yum_logo.png', // 分享图标
+                            imgUrl: this.imgUrl, // 分享图标
                             success: function () {
                                 // 用户确认分享后执行的回调函数
                             },
@@ -256,6 +264,7 @@ new Vue({
     created() {
         this.getDetail()
         this.getComments(true)
+        this.getLogo()
         window.addEventListener('scroll', this.onScroll);
     },
 })
