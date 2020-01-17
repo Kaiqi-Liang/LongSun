@@ -261,6 +261,8 @@ new Vue({
                     });
                 }
             });
+        },
+        like() {
         }
     },
     created() {
