@@ -155,7 +155,9 @@ new Vue({
         },
         formatDate(time) {
             const date = new Date(time * 1000)
-            return date.getFullYear() + '-' + (parseInt(date.getMonth()) + 1) + '-' + date.getDate()
+            const days = parseInt(date.getDate())
+            const months = parseInt(date.getMonth() + 1)
+            return date.getFullYear() + '-' + (months < 10 ? '0' + months : months) + '-' + (days < 10 ? '0' + days : days)
         },
         computeTime(time) {
             const date = new Date(time * 1000)
