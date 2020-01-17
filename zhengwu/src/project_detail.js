@@ -19,7 +19,7 @@ new Vue({
     },
     methods: {
         favourite() {
-            layer.msg('该功能暂未开发!')
+            layer.msg('该功能暂未开发!', {icon: 5, offset: ['80%']})
         }
     },
     created() {
