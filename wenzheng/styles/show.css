@@ -92,6 +92,13 @@ div {
     border-radius: 25px 0 0 25px;
 }
 
+.like {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #separator {
     border: solid #ddd 5px;
     margin-bottom: 5px;
