@@ -13,7 +13,8 @@ new Vue({
         name: '',
         status: '',
         reply: '',
-        commentcount: '',
+        likes: 0,
+        commentcount: 0,
         comments: [],
         page: 1,
         pagesize: 10,
@@ -33,6 +34,7 @@ new Vue({
                     this.name = json.data.name
                     this.status = json.data.status
                     this.reply = json.data.reply
+                    this.likes = json.data.likes
                     this.commentcount = json.data.commentcount
                 })
         },
