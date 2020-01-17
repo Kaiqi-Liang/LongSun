@@ -60,7 +60,7 @@ new Vue({
                 .then(json => {
                     layer.msg(json.msg)
                     if (json.msg == '未登录') {
-                        setTimeout(() => top.location.href = 'login.html?appid=' + this.ym_id, 300)
+                        setTimeout(() => top.location.href = '../../wap/my/login/appid/' + this.ym_id, 300)
                     }
                 })
         },
