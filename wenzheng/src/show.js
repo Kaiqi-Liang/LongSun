@@ -1,5 +1,5 @@
 const API_URL = 'http://test.sogx.cn'
-new Vue({
+const vm = new Vue({
     el: '#root',
     data: {
         id: location.href.split('?')[1].split('&')[0].split('=')[1],

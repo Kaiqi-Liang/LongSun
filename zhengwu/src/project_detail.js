@@ -1,4 +1,4 @@
-new Vue({
+const vm = new Vue({
     el: '#root',
     data: {
         API_URL: 'http://v.sogx.cn',
