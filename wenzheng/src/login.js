@@ -13,12 +13,17 @@ document.querySelector('.login').addEventListener('click', (event) => {
  
         const data = new FormData(document.getElementById('form'))
         data.append('appid', id)
-        axios.post(API_URL + '/api/user/login', data)
-            .then(response => {
-                layer.msg(response.data.msg, { offset: 'b' })
+        const options = {
+            method: 'POST',
+            body: data
+        }
+        fetch(API_URL + '/api/user/login', options)
+            .then(response => response.json())
+            .then(json => {
+                layer.msg(json.msg, { offset: 'b' })
                 setTimeout(() => {
                     modal.style.display = 'none'
-                    if (response.data.msg == '登录成功') history.go(-1)
+                    if (json.msg == '登录成功') history.go(-1)
                 }, 500)
             })
     }
