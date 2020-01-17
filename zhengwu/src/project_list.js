@@ -19,11 +19,11 @@ new Vue({
                 path = API_URL + '/api/zwfw/project_list_new/ym_id/' + this.ym_id + '/dept_id/' + this.id + '/page/' + this.page 
             }
 
-            axios.get(path)
-                .then(response => response.data.data)
-                .then(data => {
+            fetch(path)
+                .then(response => response.json())
+                .then(json => {
                     if (first) { // fetching it for the first time
-                        if (data == '') { // no data at all
+                        if (json.data == '') { // no data at all
                             const footer = document.querySelector('.footer')
                             footer.className = 'exclamation'
                             const children = footer.children
@@ -31,10 +31,10 @@ new Vue({
                             children[0].setAttribute('src', 'images/exclamation.png')
                             children[0].style = "width: unset; height: unset;"
                         } else {
-                            this.processData(data)
+                            this.processData(json.data)
                         }
                     } else { // show a bit of delay
-                        setTimeout(() => this.processData(data), 200)
+                        setTimeout(() => this.processData(json.data), 200)
                     }
                 })
         },

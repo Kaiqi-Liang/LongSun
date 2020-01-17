@@ -63,16 +63,21 @@ const app = new Vue({
                 if (this.video) payload.set('video', this.video)
                 // remove the video field
                 else payload.delete('video')
-                axios.post(API_URL + '/api/guestbook/add', payload)
-                    .then(response => {
-                        if (response.data.msg == '未登录') { // go to login page
-                            layer.msg(response.data.msg)
+                const options = {
+                    method: 'POST',
+                    body: payload
+                }
+                fetch(API_URL + '/api/guestbook/add', options)
+                    .then(response => response.json())
+                    .then(json => {
+                        if (json.msg == '未登录') { // go to login page
+                            layer.msg(json.msg)
                             setTimeout(() => top.location.href = '../../wap/my/login/appid/' + this.ym_id, 300)
-                        } else if (response.data.msg == '问政内容不能为空') {
+                        } else if (json.msg == '问政内容不能为空') {
                             layer.msg('请输入内容')
-                        } else if (response.data.msg == '标题必须是3-50个字符') {
-                            layer.msg(response.data.msg)
-                        } else if (response.data.msg == '添加成功，等待管理员审核') { // go back to home page
+                        } else if (json.msg == '标题必须是3-50个字符') {
+                            layer.msg(json.msg)
+                        } else if (json.msg == '添加成功，等待管理员审核') { // go back to home page
                             layer.msg('问政成功')
                             setTimeout(() => history.go(-1), 300)
                         } else { // reload the page
@@ -88,16 +93,21 @@ const app = new Vue({
             const data = new FormData()
             data.append('appid', this.ym_id)
             data.append('file', new FormData(document.getElementById('form')).get('images'))
-            axios.post(API_URL + '/api/common/uploadImage', data)
-                .then(response => {
-                    layer.msg(response.data.msg)
-                    if (response.data.msg == '上传成功') { // image is uploaded successfully
-                        if (this.images) this.images += ',' + response.data.data.url
-                        else this.images = response.data.data.url
+            const options = {
+                method: 'POST',
+                body: data
+            }
+            fetch(API_URL + '/api/common/uploadImage', options)
+                .then(response => response.json())
+                .then(json => {
+                    layer.msg(json.msg)
+                    if (json.msg == '上传成功') { // image is uploaded successfully
+                        if (this.images) this.images += ',' + json.data.url
+                        else this.images = json.data.url
 
                         // add the image preview
                         const img = document.createElement('img')
-                        img.src = response.data.data.url
+                        img.src = json.data.url
                         img.className = 'preview'
 
                         const div = document.createElement('div')
@@ -128,11 +138,16 @@ const app = new Vue({
             const data = new FormData()
             data.append('appid', this.ym_id)
             data.append('file', new FormData(document.getElementById('form')).get('video'))
-            axios.post(API_URL + '/api/common/uploadVideo', data)
-                .then(response => {
-                    layer.msg(response.data.msg)
-                    if (response.data.msg == '上传成功') { // video is uploaded successfully
-                        this.video = response.data.data.url
+            const options = {
+                method: 'POST',
+                body: data
+            }
+            fetch(API_URL + '/api/common/uploadVideo', options)
+                .then(response => response.json())
+                .then(json => {
+                    layer.msg(json.msg)
+                    if (json.msg == '上传成功') { // video is uploaded successfully
+                        this.video = json.data.url
                         const add = document.getElementsByClassName('add')[1]
                         const input = document.getElementsByName('video')[0]
                         input.style.display = 'none'
@@ -140,7 +155,7 @@ const app = new Vue({
 
                         // add the video preview
                         const video = document.createElement('video')
-                        video.src = response.data.data.url
+                        video.src = json.data.url
                         video.className = 'preview'
 
                         const div = document.createElement('div')
