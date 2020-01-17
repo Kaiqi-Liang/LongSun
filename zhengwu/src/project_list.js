@@ -2,7 +2,7 @@ const API_URL = 'http://v.sogx.cn'
 new Vue({
     el: '#root',
     data: {
-        // href = index.html?id=int&ym_id=48&name=str&type=(icon|list)
+        // href = project_list.html?id=int&ym_id=48&name=str&type=(icon|list)
         id: location.href.split("?")[1].split('&')[0].split('=')[1],
         ym_id: location.href.split("?")[1].split('&')[1].split('=')[1],
         name: decodeURI(window.location.href.split("?")[1].split('&')[2].split('=')[1]),
