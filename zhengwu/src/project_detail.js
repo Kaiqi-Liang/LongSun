@@ -23,18 +23,18 @@ new Vue({
         }
     },
     created() {
-        axios.get(this.API_URL + '/api/zwfw/project_detail/ym_id/' + this.ym_id + '/id/' + this.id)
-            .then(response => response.data.data)
-            .then(data => {
-                this.title = data.maininfo.title
-                this.unit = data.maininfo.zwh_jbxx_sszt
-                this.service = data.maininfo.zwh_jbxx_dxccs
-                this.address = data.maininfo.zwh_jbxx_bldd
-                this.window = data.maininfo.zwh_kzxx_ckmc
-                this.tel = data.maininfo.zwh_kzxx_ckdh
-                this.zwh_id = data.maininfo.zwh_id
+        fetch(this.API_URL + '/api/zwfw/project_detail/ym_id/' + this.ym_id + '/id/' + this.id)
+            .then(response => response.json())
+            .then(json => {
+                this.title = json.data.maininfo.title
+                this.unit = json.data.maininfo.zwh_jbxx_sszt
+                this.service = json.data.maininfo.zwh_jbxx_dxccs
+                this.address = json.data.maininfo.zwh_jbxx_bldd
+                this.window = json.data.maininfo.zwh_kzxx_ckmc
+                this.tel = json.data.maininfo.zwh_kzxx_ckdh
+                this.zwh_id = json.data.maininfo.zwh_id
 
-                data.meterial.forEach(material => {
+                json.data.meterial.forEach(material => {
                     if (material.templateLinks[1]) {
                         this.materials.push({
                             name: material.name,
@@ -52,11 +52,11 @@ new Vue({
                     }
                 })
 
-                this.base = data.base
-                this.notice = data.notice
-                this.condition = data.condition
+                this.base = json.data.base
+                this.notice = json.data.notice
+                this.condition = json.data.condition
 
-                data.flowchart.forEach(flowchart => {
+                json.data.flowchart.forEach(flowchart => {
                     this.flowcharts.push(flowchart)
                 })
 
