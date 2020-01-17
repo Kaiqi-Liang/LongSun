@@ -95,7 +95,7 @@ div {
 .like {
     width: 100%;
     display: flex;
-    padding: 5px;
+    padding-top: 10px;
     justify-content: center;
     align-items: center;
     color: gray;

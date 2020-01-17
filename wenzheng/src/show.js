@@ -188,6 +188,8 @@ new Vue({
                 time = seconds + '秒前'
             }
             return time
+        },
+        like() {
         }
     },
     created() {
