@@ -47,6 +47,23 @@ new Vue({
                     this.imgUrl = json.data
                 })
         },
+        like() {
+            const form = new FormData()
+            form.append('ym_id', this.ym_id)
+            form.append('rel_id', this.id)
+            const options = {
+                method: 'POST',
+                body: form
+            }
+            fetch('http://www.sogx.cn/api/guestbook/addLikes', options)
+                .then(response => response.json())
+                .then(json => {
+                    layer.msg(json.msg)
+                    if (json.msg == '未登录') {
+                        setTimeout(() => top.location.href = 'login.html?appid=' + this.ym_id, 300)
+                    }
+                })
+        },
         getComments(first) {
             fetch(API_URL + '/api/guestbook/commentList?ym_id=' + this.ym_id + '&rel_id=' + this.id + '&page=' + this.page + '&pagesize=' + this.pagesize)
                 .then(response => response.json())
@@ -262,8 +279,6 @@ new Vue({
                 }
             });
         },
-        like() {
-        }
     },
     created() {
         this.getDetail()
