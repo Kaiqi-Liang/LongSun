@@ -94,15 +94,20 @@ new Vue({
             payload.append('rel_id', this.id)
             payload.append('ym_id', this.ym_id)
             if (payload.get('content')) {
-                axios.post(API_URL + '/api/guestbook/addComment', payload)
-                    .then(response => {
-                        if (response.data.msg == '评论成功，等待管理员审核') {
+                const options = {
+                    method: 'POST',
+                    body: payload
+                }
+                fetch(API_URL + '/api/guestbook/addComment', options)
+                    .then(response => response.json())
+                    .then(json => {
+                        if (json.msg == '评论成功，等待管理员审核') {
                             layer.msg('评论成功')
                             document.getElementsByName('content')[0].value = ''
                             this.hideComment()
                         }
-                        else if (response.data.msg == '未登录') {
-                            layer.msg(response.data.msg)
+                        else if (json.msg == '未登录') {
+                            layer.msg(json.msg)
                             setTimeout(() => top.location.href = '../../wap/my/login/appid/' + this.ym_id, 300)
                         } else {
                             layer.msg('评论失败')
