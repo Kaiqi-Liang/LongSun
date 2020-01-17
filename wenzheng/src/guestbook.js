@@ -160,7 +160,7 @@ new Vue({
                 .then(response => {
                     layer.msg(response.data.msg)
                     if (response.data.msg == '未登录') {
-                        setTimeout(() => top.location.href = 'login.html?appid=' + this.ym_id, 300)
+                        setTimeout(() => aLinkClick('../../wap/my/login/appid/' + this.ym_id), 300)
                     }
                 })
         }
