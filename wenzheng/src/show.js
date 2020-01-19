@@ -278,12 +278,12 @@ const vm = new Vue({
                     });
                 }
             });
-        },
+        }
     },
     created() {
+        this.getLogo()
         this.getDetail()
         this.getComments(true)
-        this.getLogo()
         window.addEventListener('scroll', this.onScroll);
     },
 })
