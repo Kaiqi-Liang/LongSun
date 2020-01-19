@@ -11,7 +11,6 @@ const vm = new Vue({
         page: 1,
         footer: '加载中...'
     },
-    vco
     methods: {
         getCount() {
             fetch(API_URL + '/api/guestbook/getCount?ym_id=' + this.ym_id)
