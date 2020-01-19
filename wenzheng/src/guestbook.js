@@ -174,9 +174,6 @@ const vm = new Vue({
                             imgUrl: this.imgUrl, // 分享图标
                             type: '', // 分享类型,music、video或link，不填默认为link
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                            success: function () { // 用户确认分享后执行的回调函数
-                                document.querySelector('.share').style.display = 'none'
-                            },
                         });
 
                         wx.onMenuShareTimeline({ //例如分享到朋友圈的API
@@ -185,9 +182,6 @@ const vm = new Vue({
                             imgUrl: this.imgUrl, // 分享图标
                             type: '', // 分享类型,music、video或link，不填默认为link
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                            success: function () { // 用户确认分享后执行的回调函数
-                                document.querySelector('.share').style.display = 'none'
-                            },
                         });
 
                         wx.onMenuShareQQ({
@@ -211,9 +205,9 @@ const vm = new Vue({
         }
     },
     created() {
+        this.getCount()
         this.getLogo()
         this.setupSharing()
-        this.getCount()
         this.getList(0, true)
         setTimeout(() => this.getClassify(), 0);
         window.addEventListener('scroll', this.onScroll);
