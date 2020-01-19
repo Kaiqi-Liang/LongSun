@@ -168,7 +168,7 @@ const vm = new Vue({
                     });
                     wx.ready(() => { //ready函数用于调用API，如果你的网页在加载后就需要自定义分享和回调功能，需要在此调用分享函数。//如果是微信游戏结束后，需要点击按钮触发得到分值后分享，这里就不需要调用API了，可以在按钮上绑定事件直接调用。因此，微信游戏由于大多需要用户先触发获取分值，此处请不要填写如下所示的分享API
                         wx.onMenuShareAppMessage({ //例如分享到朋友圈的API
-                            title: '问政', // 分享标题
+                            title: '', // 分享标题
                             desc: '', // 分享描述
                             link: location.href, // 分享链接
                             imgUrl: this.imgUrl, // 分享图标
@@ -177,7 +177,7 @@ const vm = new Vue({
                         });
 
                         wx.onMenuShareTimeline({ //例如分享到朋友圈的API
-                            title: '问政', // 分享标题
+                            title: '', // 分享标题
                             link: location.href, // 分享链接
                             imgUrl: this.imgUrl, // 分享图标
                             type: '', // 分享类型,music、video或link，不填默认为link
@@ -185,7 +185,7 @@ const vm = new Vue({
                         });
 
                         wx.onMenuShareQQ({
-                            title: '问政', // 分享标题
+                            title: '', // 分享标题
                             desc: '', // 分享描述
                             link: location.href, // 分享链接
                             imgUrl: this.imgUrl, // 分享图标
