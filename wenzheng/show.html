@@ -54,7 +54,7 @@
             </div>
 
             <ul class="list">
-                <li class="user" v-for="comment in comments" style="padding: 10px 0 20px">
+                <li class="item" v-for="comment in comments">
                     <img class="avatar" :src="comment.avatar" onerror="javascript: this.src='images/avatar.png'">
                     <div class="macro">
                         <p class="hide username">{{ comment.nickname }}</p>

@@ -94,7 +94,7 @@ div {
 }
 
 .comments {
-    padding: 20px 15px;
+    padding: 20px 15px 0;
 }
 
 .end {
@@ -156,8 +156,12 @@ div {
 
 .list {
     list-style-type: none;
-    padding: 15px;
+    padding: 0 15px;
     margin: 0;
+}
+
+.item {
+    padding: 15px 0
 }
 
 .footer {
