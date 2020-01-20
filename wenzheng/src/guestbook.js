@@ -209,7 +209,7 @@ const vm = new Vue({
         this.getLogo()
         this.setupSharing()
         this.getList(0, true)
-        setTimeout(() => this.getClassify(), 0);
-        window.addEventListener('scroll', this.onScroll);
-    },
+        setTimeout(() => this.getClassify(), 0)
+        window.addEventListener('scroll', this.onScroll)
+    }
 })
