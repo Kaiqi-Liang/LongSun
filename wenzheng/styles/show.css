@@ -32,35 +32,15 @@ div {
 }
 
 .main {
-    padding: 50px 10px 0 10px;
+    padding: 50px 15px 0 15px;
 }
 
-.user {
-    overflow: auto;
-    padding: 10px 0;
+.icon img {
+    width: 20px;
 }
 
-.avatar {
-    float: left;
-    width: 60px;
-    border-radius: 50%;
-}
-
-.macro {
-    padding: 10px;
-    width: calc(100% - 160px);
-    float: left;
-}
-
-.type {
-    float: right;
-    line-height: 56px;
-}
-
-.grey {
-    color: #888;
-    font-size: 0.7em;
-    padding: 5px 0;
+.icon span {
+    padding-left: 5px;
 }
 
 .intro {
@@ -69,26 +49,28 @@ div {
 }
 
 .reply {
-    border: solid 1px #ccc;
+    border: solid 1px #bbb;
     padding: 10px 0 10px 10px;
     border-radius: 10px;
 }
 
 .top {
     overflow: auto;
+    font-size: 0.9em;
     padding-bottom: 10px;
 }
 
 .top p {
     float: left;
     color: #888;
+    line-height: 25px;
 }
 
 .top span {
     float: right;
     color: white;
-    background-color: #006bff;
-    padding: 3px 10px;
+    background-color: #006bffb8;
+    padding: 3px 20px 3px 10px;
     border-radius: 25px 0 0 25px;
 }
 
@@ -107,31 +89,16 @@ div {
     padding-right: 5px;
 }
 
-#separator {
-    border: solid #ddd 5px;
-    margin-bottom: 5px;
-}
-
 .bottom {
     padding-bottom: 50px;
 }
 
 .comments {
-    padding: 0 5px 5px 5px;
-    display: flex;
-    align-items: center;
-    border-bottom: solid 1px #eee;
-}
-
-.comments div {
-    margin: 5px 8px 5px 5px;
-    width: 3px;
-    height: 25px;
-    background-color: #006bff;
+    padding: 20px 15px;
 }
 
 .end {
-    border-top: solid 1px #ccc;
+    border-top: solid 1px #ddd;
     background-color: white;
     position: fixed;
     bottom: 0;
@@ -141,7 +108,8 @@ div {
 
 .comment {
     float: left;
-    border: solid 1px #ccc;
+    border: solid 1px white;
+    background-color: #f5f5f5f5;
     border-radius: 30px;
     margin: 8px;
     padding: 5px;
@@ -161,6 +129,7 @@ div {
 
 .comment p {
     padding-left: 5px;
+    color: #888;
 }
 
 .icons {
@@ -180,9 +149,14 @@ div {
     height: 20px;
 }
 
+.text {
+    clear: both;
+    padding: 0 10px 0 60px;
+}
+
 .list {
     list-style-type: none;
-    padding: 10px;
+    padding: 15px;
     margin: 0;
 }
 

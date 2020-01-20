@@ -68,8 +68,8 @@
                         <div class="user">
                             <img class="avatar" :src="item.avatar" onerror="javascript: this.src='images/avatar.png'">
                             <div class="macro">
-                                <p class="hide">{{ item.username }}</p>
-                                <p class="time hide">{{ item.time }}</p>
+                                <p class="hide username">{{ item.username }}</p>
+                                <p class="hide grey">{{ item.time }}</p>
                             </div>
                             <div class="icon">
                                 <span class="not-yet-replied" v-if="item.status == 1">待回复</span>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="likes">
                                     <span>{{ item.likes }}</span>
-                                    <img src="images/like.png">
+                                    <img src="images/like_list.png">
                                 </div>
                             </div>
                         </div>
@@ -108,11 +108,11 @@
         </a>
     </div>
 
-    <script src="http://test.sogx.cn/assets/wap/style/js/aLinkClick.js"></script>
     <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
     <script src="https://www.jq22.com/jquery/jquery-2.1.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="/assets/wap/style/js/layer/layer.js"></script>
+    <script src="/assets/wap/style/js/aLinkClick.js"></script>
     <script src="src/guestbook.js"></script>
 </body>
 

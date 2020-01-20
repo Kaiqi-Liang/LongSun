@@ -21,13 +21,13 @@
 
         <div class="main">
             <h2>{{ title }}</h2>
-            <div class="user">
+            <div class="user" style="padding-bottom: 10px;">
                 <img class="avatar" :src="avatar" onerror="javascript: this.src='images/avatar.png'">
                 <div class="macro">
-                    <p class="hide">{{ username }}</p>
-                    <p class="grey hide">{{ addtime }}</p>
+                    <p class="hide username">{{ username }}</p>
+                    <p class="hide grey">{{ addtime }}</p>
                 </div>
-                <div class="type">
+                <div class="icon">
                     <span class="grey">{{ typename }}</span>
                 </div>
             </div>
@@ -36,10 +36,10 @@
 
             <div v-if="status == 2 && reply != ''" class="reply">
                 <div class="top">
-                    <p class="hide">{{ name }}</p>
+                    <p class="hide">@{{ name }}</p>
                     <span>官方回复</span>
                 </div>
-                <p class="hide">{{ reply }}</p>
+                <p>{{ reply }}</p>
             </div>
 
             <div class="like" @click="like">
@@ -48,24 +48,24 @@
             </div>
         </div>
 
-        <hr id="separator">
-
         <div class="bottom">
             <div class="comments">
-                <div></div>
-                <p>评论</p>
+                <p>评论({{ commentcount }})</p>
             </div>
 
             <ul class="list">
-                <li class="user" v-for="comment in comments" style="padding-bottom: 30px">
+                <li class="user" v-for="comment in comments" style="padding: 10px 0 20px">
                     <img class="avatar" :src="comment.avatar" onerror="javascript: this.src='images/avatar.png'">
                     <div class="macro">
-                        <p class="grey hide">{{ comment.nickname }}</p>
-                        <p class="hide">{{ comment.content }}</p>
+                        <p class="hide username">{{ comment.nickname }}</p>
+                        <p class="hide grey">{{ comment.createtime }}</p>
                     </div>
-                    <div class="type">
-                        <p class="grey">{{ comment.createtime }}</p>
+                    <div class="icon">
+                        <img src="images/like_detail.png">
+                        <span class="grey">{{ likes }}</span>
                     </div>
+
+                    <p class="text">{{ comment.content }}</p>
                 </li>
             </ul>
 
