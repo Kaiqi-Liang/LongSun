@@ -107,10 +107,10 @@ const vm = new Vue({
             json.forEach(data => {
                 this.list.push({
                     id: data.id,
+                    title: data.title,
                     username: data.username,
                     time: this.formatDate(data.addtime),
                     status: data.status,
-                    intro: data.introduce,
                     name: data.name,
                     comments: data.commentcount,
                     likes: data.likes,

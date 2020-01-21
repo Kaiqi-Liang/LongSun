@@ -1,18 +1,3 @@
-body {
-    background-color: #eee;
-}
-
-.header {
-    text-align: center;
-    background: white;
-    position: fixed;
-    width: 100%;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-}
-
 .header a {
     position: absolute;
     left: 10px;
@@ -33,18 +18,28 @@ body {
 }
 
 .form {
-    padding: 70px 8px 8px;
+    padding: 75px 10px 10px;
     box-sizing: border-box;
 }
 
-.title, select, textarea {
+.asterisk {
+    color: red;
+    position: absolute;
+    left: 25px
+}
+
+.title, .caption, select, textarea {
     font-size: 1em;
     margin-bottom: 15px;
-    padding: 10px;
+    padding: 10px 10px 10px 30px;
     width: 100%;
     border: none;
-    background-color: white;
     box-sizing: border-box;
+    background-color: #eee;
+    border-radius: 5px;
+    font-family: 'SourceHanSerifCN-Regular';
+    letter-spacing: 1px;
+    color: #888;
 }
 
 .title, select {
@@ -52,43 +47,42 @@ body {
 }
 
 select {
-    padding-left: 6px;
+    padding-left: 27px;
 }
 
 textarea {
     resize: none;
-    font-family: Arial, Helvetica, sans-serif;
     height: 120px;
 }
 
-.grey {
+.caption {
     color: #888;
-    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .upload {
-    margin-bottom: 15px;
     width: 100%;
     background-color: white;
     box-sizing: border-box;
+    margin-bottom: 5px;
+    padding: 5px;
 }
 
 .add {
     position: relative;
     background: url(../images/upload.png) center;
     background-size: cover;
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
     float: left;
-    margin: 5px;
 }
 
 .add input {
     position: absolute;
     display: block;
     opacity: 0;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
 }
 
 .image {
@@ -115,6 +109,7 @@ textarea {
 .bottom {
     display: flex;
     align-items: center;
+    padding-top: 5px;
 }
 
 .bottom img {

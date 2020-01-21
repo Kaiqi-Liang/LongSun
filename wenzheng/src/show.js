@@ -15,12 +15,16 @@ const vm = new Vue({
         reply: '',
         likes: 0,
         commentcount: 0,
+        images: [],
+        video: '',
         comments: [],
         page: 1,
         pagesize: 10,
         footer: '加载中...',
-        favourite: 'images/favourite.png',
-        imgUrl: ''
+        favourite: '',
+        imgUrl: '',
+        liketime: -1,
+        counter: 0
     }, methods: {
         getDetail() {
             fetch(API_URL + '/api/guestbook/show?ym_id=' + this.ym_id + '&id=' + this.id)
@@ -37,7 +41,14 @@ const vm = new Vue({
                     this.reply = json.data.reply
                     this.likes = json.data.likes
                     this.commentcount = json.data.commentcount
+                    this.images = json.data.images
+                    this.video = json.data.video
+                    if (json.data.is_collection) this.favourite = 'images/favourite_add.png'
+                    else this.favourite = 'images/favourite.png'
                     this.setupSharing()
+                    setTimeout(() => {
+                        this.setupExpand()
+                    }, 50);
                 })
         },
         getLogo() {
@@ -47,22 +58,45 @@ const vm = new Vue({
                     this.imgUrl = json.data
                 })
         },
-        like() {
-            const form = new FormData()
-            form.append('ym_id', this.ym_id)
-            form.append('rel_id', this.id)
+        like(comment) {
+            const time = new Date()
+            const now = time.getTime()
+            const min = 60 * 1000
+            const payload = new FormData()
+            payload.append('appid', this.ym_id)
             const options = {
                 method: 'POST',
-                body: form
+                body: payload
             }
-            fetch(API_URL + '/api/guestbook/addLikes', options)
-                .then(response => response.json())
-                .then(json => {
-                    layer.msg(json.msg)
-                    if (json.msg == '未登录') {
-                        setTimeout(() => top.location.href = '../../wap/my/login/appid/' + this.ym_id, 300)
-                    }
-                })
+            if (comment) {
+                const index = this.comments.indexOf(comment)
+                payload.append('id', comment.id)
+                payload.append('type', 6)
+                if (this.comments[index].liketime < 0 || this.comments[index].liketime > 0 && now - this.comments[index].liketime > min) {
+                    fetch(API_URL + '/api/news/praise', options)
+                        .then(response => response.json())
+                        .then(json => {
+                            if (json.msg == '操作成功') {
+                                this.comments[index].likes = json.data
+                                this.comments[index].liketime = new Date().getTime()
+                            } else layer.msg(json.msg)
+                        })
+                    this.comments[index].likeImg = 'images/thumbsup.png'
+                } else layer.msg('操作太频繁')
+            } else {
+                payload.append('id', this.id)
+                payload.append('type', 5)
+                if (this.liketime < 0 || this.liketime > 0 && now - this.liketime > min) {
+                    fetch(API_URL + '/api/news/praise', options)
+                        .then(response => response.json())
+                        .then(json => {
+                            if (json.msg == '操作成功') {
+                                this.likes = json.data
+                                this.liketime = new Date().getTime()
+                            } else layer.msg(json.msg)
+                        })
+                } else layer.msg('操作太频繁')
+            }
         },
         getComments(first) {
             fetch(API_URL + '/api/guestbook/commentList?ym_id=' + this.ym_id + '&rel_id=' + this.id + '&page=' + this.page + '&pagesize=' + this.pagesize)
@@ -82,7 +116,10 @@ const vm = new Vue({
                         content: data.content,
                         createtime: this.computeTime(data.create_time),
                         nickname: data.nickname,
-                        avatar: data.avatar
+                        avatar: data.avatar,
+                        likes: data.likes,
+                        liketime: -1,
+                        likeImg: 'images/like_detail.png'
                     })
                 })
             } else { // nothing is fetched
@@ -146,17 +183,33 @@ const vm = new Vue({
                 layer.msg('请输入评论内容')
             }
         },
-        refreshComment() {
-            if (this.commentcount == 0) layer.msg('还没有评论。')
+        scrollToComment() {
+            const top = document.querySelector('.comments').offsetTop
+            let current = document.documentElement.scrollTop
+            const timer = setInterval(() => {
+                current += 10
+                window.scrollTo(0, current)
+                if (current >= top) clearInterval(timer)
+            }, 0.01);
+            if (this.commentcount == 0) layer.msg('还没有评论。', {time: 1000})
         },
         addFavourite() {
-            if (this.favourite == 'images/favourite.png') {
-                this.favourite = 'images/favourite_add.png'
-                layer.msg('收藏成功')
-            } else {
-                this.favourite = 'images/favourite.png'
-                layer.msg('取消收藏成功')
+            const payload = new FormData()
+            payload.append('appid', this.ym_id)
+            payload.append('id', this.id)
+            payload.append('type', 5)
+            const options = {
+                method: 'POST',
+                body: payload
             }
+            fetch(API_URL + '/api/news/collection', options)
+                .then(response => response.json())
+                .then(json => {
+                    layer.msg(json.msg)
+                    if (json.msg == '收藏成功') this.favourite = 'images/favourite_add.png'
+                    else if (json.msg == '未登录') setTimeout(() => top.location.href = '../../wap/my/login/appid/' + this.ym_id, 300)
+                    else this.favourite = 'images/favourite.png'
+                })
         },
         share() {
             if (typeof WeixinJSBridge == "undefined") {
@@ -215,7 +268,41 @@ const vm = new Vue({
             }
             return time
         },
+        setupExpand() {
+            const images = document.querySelector('.images')
+            if (this.images || this.video) {
+                if (images.offsetHeight > 200) {
+                    images.style.height = '200px'
+                    const expand = document.querySelector('.expand')
+                    expand.style.display = 'block'
+                    expand.onclick = () => {
+                        this.expand(images, expand)
+                        // for the moment no need collapse hide expand bar after expanding
+                        expand.style.display = 'none'
+                    }
+                } else {
+                    if (this.counter < 15) setTimeout(() => this.setupExpand(), 50);
+                }
+            }
+        },
+        expand(images, expand) {
+            const children = expand.children
+            images.style.height = 'unset'
+            children[0].innerText = '收起'
+            children[1].style.transform = 'rotate(270deg)'
+            expand.onclick = () => this.collapse(images, expand)
+        },
+        collapse(images, expand) {
+            const children = expand.children
+            images.style.height = '200px'
+            children[0].innerText = '展开'
+            children[1].style.transform = 'rotate(90deg)'
+            expand.onclick = () => this.expand(images, expand)
+        },
         setupSharing() {
+            if (this.images) {
+                this.imgUrl = this.images[0]
+            } 
             $.ajax({
                 url: API_URL + '/api/app/getWechatSignPackage',
                 type: 'get',

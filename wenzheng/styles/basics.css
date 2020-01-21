@@ -2,6 +2,11 @@
     display: none!important;
 }
 
+@font-face {
+	font-family:'SourceHanSerifCN-Regular';
+	src:url('/assets/wap/style/fonts/SourceHanSerifCN-Regular.otf');
+}
+
 body {
     margin: 0;
 }
@@ -13,6 +18,19 @@ a {
 
 p {
     margin: 0;
+}
+
+.header {
+    text-align: center;
+    background: white;
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    font-family: 'SourceHanSerifCN-Regular';
+    border-bottom: solid 1px #eee;
+    display: flex;
+    align-items: center;
+    z-index: 1;
 }
 
 .hide {
@@ -27,12 +45,12 @@ p {
 
 .avatar {
     float: left;
-    width: 50px;
+    width: 45px;
     border-radius: 50%;
 }
 
 .macro {
-    padding: 2px 10px;
+    padding: 0 10px;
     width: calc(100% - 160px);
     float: left;
 }

@@ -20,8 +20,13 @@ hr {
     box-sizing: border-box;
 }
 
-.header {
+.icons {
     display: flex;
+}
+
+.icons p {
+    color: white;
+    text-align: center;
 }
 
 .left {
@@ -61,11 +66,6 @@ hr {
     font-weight: bold;
     font-size: 1.5rem;
     padding-right: 3px;
-}
-
-.header p {
-    color: white;
-    text-align: center;
 }
 
 .main {
@@ -158,7 +158,7 @@ hr {
 }
 
 .intro {
-    padding-bottom: 10px;
+    padding: 10px 0;
     font-size: 1.1em;
 }
 

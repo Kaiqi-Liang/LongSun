@@ -22,21 +22,25 @@
 
         <div class="form">
             <form id="form">
+                <span class="asterisk" style="top: 93px">*</span>
                 <input name="title" placeholder="提问标题" class="title">
 
+                <span class="asterisk" style="top: 157px">*</span>
                 <select name="typeid">
                     <option v-for="type in typeList" :value="type.id" v-if="type.id == typeid" selected>{{ type.name }}</option>
                     <option :value="type.id" v-else>{{ type.name }}</option>
                 </select>
 
+                <span class="asterisk" style="top: 222px">*</span>
                 <select name="adminId">
                     <option v-for="branch in branchList" :value="branch.id" v-if="branch.id == adminId" selected>{{ branch.name }}</option>
                     <option :value="branch.id" v-else>{{ branch.name }}</option>
                 </select>
 
+                <span class="asterisk" style="top: 283px">*</span>
                 <textarea name="introduce" placeholder="提问内容"></textarea>
 
-                <p class="grey">上传图片</p>
+                <p class="caption">选择图片</p>
                 <div class="upload">
                     <div id="images"></div>
                     <div class="add">
@@ -45,7 +49,7 @@
                     <div style="clear: both;"></div>
                 </div>
 
-                <p class="grey">上传视频</p>
+                <p class="caption">选择小于100M的视频</p>
                 <div class="upload">
                     <div class="add">
                         <input name="video" type="file" accept="video/*" @change="uploadVideo">

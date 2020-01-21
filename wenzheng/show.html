@@ -32,7 +32,18 @@
                 </div>
             </div>
 
-            <p class="intro hide">{{ intro }}</p>
+            <div class="images">
+                <p class="intro">{{ intro }}</p>
+                <template v-if="images">
+                    <img v-for="image in images" :src="image">
+                </template>
+                <video v-show="video" :src="video" controls="controls"></video>
+            </div>
+
+            <div class="expand">
+                <span>展开</span>
+                <div>></div>
+            </div>
 
             <div v-if="status == 2 && reply != ''" class="reply">
                 <div class="top">
@@ -42,7 +53,7 @@
                 <p>{{ reply }}</p>
             </div>
 
-            <div class="like" @click="like">
+            <div class="like" @click="like()">
                 <img src="/assets/wap/style/image/heart_red.png">
                 <p>{{ likes }}人点赞</p>
             </div>
@@ -61,8 +72,8 @@
                         <p class="hide grey">{{ comment.createtime }}</p>
                     </div>
                     <div class="icon">
-                        <img src="images/like_detail.png">
-                        <span class="grey">{{ likes }}</span>
+                        <img :src="comment.likeImg" @click="like(comment)">
+                        <span class="grey">{{ comment.likes }}</span>
                     </div>
 
                     <p class="text">{{ comment.content }}</p>
@@ -84,7 +95,8 @@
             </div>
             <div class="icons">
                 <div>
-                    <img src="images/comment_detail.png" @click="refreshComment">
+                    <img src="images/comment_detail.png" @click="scrollToComment">
+                    <span>{{ commentcount }}</span>
                 </div>
                 <div>
                     <img :src="favourite" @click="addFavourite">
