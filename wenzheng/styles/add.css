@@ -81,7 +81,6 @@ textarea {
 
 .add input {
     position: absolute;
-    display: block;
     opacity: 0;
     width: 70px;
     height: 70px;
