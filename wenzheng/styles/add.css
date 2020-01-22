@@ -53,6 +53,7 @@ select {
 textarea {
     resize: none;
     height: 120px;
+    display: block;
 }
 
 .caption {
