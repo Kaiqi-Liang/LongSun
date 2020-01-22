@@ -154,7 +154,7 @@ const vm = new Vue({
                 dataType: 'json',
                 success: res => {
                     wx.config({
-                        debug: true, //调式模式，设置为ture后会直接在网页上弹出调试信息，用于排查问题
+                        debug: false, //调式模式，设置为ture后会直接在网页上弹出调试信息，用于排查问题
                         appId: res.data.appId,
                         timestamp: res.data.timestamp,
                         nonceStr: res.data.nonceStr,
