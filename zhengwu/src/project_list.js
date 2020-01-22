@@ -19,6 +19,7 @@ const vm = new Vue({
                 .then(response => response.json())
                 .then(json => {
                     this.imgUrl = json.data
+                    this.setupSharing()
                 })
         },
         getData(first) {
@@ -45,6 +46,7 @@ const vm = new Vue({
                     } else { // show a bit of delay
                         setTimeout(() => this.processData(json.data), 200)
                     }
+                    this.getLogo()
                 })
         },
         processData(data) {
@@ -153,8 +155,6 @@ const vm = new Vue({
         }
     },
     created() {
-        this.getLogo()
-        this.setupSharing()
         this.getData(true)
         window.addEventListener('scroll', this.onScroll)
     }

@@ -34,7 +34,7 @@
 
             <div class="images">
                 <p class="intro">{{ intro }}</p>
-                <template v-if="images">
+                <template v-if="images.length">
                     <img v-for="image in images" :src="image">
                 </template>
                 <video v-show="video" :src="video" controls="controls"></video>

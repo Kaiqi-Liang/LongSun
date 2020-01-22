@@ -45,7 +45,7 @@ const vm = new Vue({
                     this.video = json.data.video
                     if (json.data.is_collection) this.favourite = 'images/favourite_add.png'
                     else this.favourite = 'images/favourite.png'
-                    this.setupSharing()
+                    this.getLogo()
                     setTimeout(() => {
                         this.setupExpand()
                     }, 50);
@@ -56,6 +56,7 @@ const vm = new Vue({
                 .then(response => response.json())
                 .then(json => {
                     this.imgUrl = json.data
+                    this.setupSharing()
                 })
         },
         like(comment) {
@@ -280,6 +281,10 @@ const vm = new Vue({
                         // for the moment no need collapse hide expand bar after expanding
                         expand.style.display = 'none'
                     }
+
+                    // if there is an expand section and a reply section set some space between them
+                    const reply = document.querySelector('.reply')
+                    if (reply) reply.style = "margin-top: 15px;"
                 } else {
                     if (this.counter < 15) setTimeout(() => this.setupExpand(), 50);
                 }
@@ -300,7 +305,7 @@ const vm = new Vue({
             expand.onclick = () => this.expand(images, expand)
         },
         setupSharing() {
-            if (this.images) {
+            if (this.images.length) {
                 this.imgUrl = this.images[0]
             } 
             $.ajax({
@@ -368,7 +373,6 @@ const vm = new Vue({
         }
     },
     created() {
-        this.getLogo()
         this.getDetail()
         this.getComments(true)
         window.addEventListener('scroll', this.onScroll);

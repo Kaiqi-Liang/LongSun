@@ -108,7 +108,7 @@ const vm = new Vue({
                             }
                         })
                     }
-                    this.setupSharing()
+                    this.getLogo()
                 })
         },
         getLogo() {
@@ -116,6 +116,7 @@ const vm = new Vue({
                 .then(response => response.json())
                 .then(json => {
                     this.imgUrl = json.data
+                    this.setupSharing()
                 })
         },
         favourite() {
@@ -182,6 +183,5 @@ const vm = new Vue({
     },
     created() {
         this.getData()
-        this.getLogo()
     }
 })

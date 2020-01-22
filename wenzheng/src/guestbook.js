@@ -26,6 +26,7 @@ const vm = new Vue({
                 .then(response => response.json())
                 .then(json => {
                     this.imgUrl = json.data
+                    this.setupSharing()
                 })
         },
         getClassify() {
@@ -153,7 +154,7 @@ const vm = new Vue({
                 dataType: 'json',
                 success: res => {
                     wx.config({
-                        debug: false, //调式模式，设置为ture后会直接在网页上弹出调试信息，用于排查问题
+                        debug: true, //调式模式，设置为ture后会直接在网页上弹出调试信息，用于排查问题
                         appId: res.data.appId,
                         timestamp: res.data.timestamp,
                         nonceStr: res.data.nonceStr,
@@ -207,7 +208,6 @@ const vm = new Vue({
     created() {
         this.getCount()
         this.getLogo()
-        this.setupSharing()
         this.getList(0, true)
         setTimeout(() => this.getClassify(), 0)
         window.addEventListener('scroll', this.onScroll)
